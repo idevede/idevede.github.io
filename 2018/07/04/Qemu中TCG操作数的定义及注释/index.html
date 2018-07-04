@@ -79,13 +79,17 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+<meta name="description" content="tcg/tcg.h: Define type and accessor macros for TCG variables. TCG variables are the inputs and outputs of TCG ops, as describedin tcg/README. Target CPU front-end code uses these types to dealwith TCG">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qemu中TCG操作数的定义及注释">
+<meta property="og:url" content="http://yoursite.com/2018/07/04/Qemu中TCG操作数的定义及注释/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="tcg/tcg.h: Define type and accessor macros for TCG variables. TCG variables are the inputs and outputs of TCG ops, as describedin tcg/README. Target CPU front-end code uses these types to dealwith TCG">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-04T01:46:41.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Qemu中TCG操作数的定义及注释">
+<meta name="twitter:description" content="tcg/tcg.h: Define type and accessor macros for TCG variables. TCG variables are the inputs and outputs of TCG ops, as describedin tcg/README. Target CPU front-end code uses these types to dealwith TCG">
 
 
 
@@ -115,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2018/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/04/Qemu中TCG操作数的定义及注释/"/>
 
 
 
 
 
-  <title>Archive | Hexo</title>
+  <title>Qemu中TCG操作数的定义及注释 | Hexo</title>
   
 
 
@@ -140,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,148 +218,162 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/04/Qemu中TCG操作数的定义及注释/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Qemu中TCG操作数的定义及注释</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-04T09:46:41+08:00">
+                2018-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 3 posts in total. Keep on posting.
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/04/Qemu中TCG操作数的定义及注释/" itemprop="url">
-              
-                <span itemprop="name">Qemu中TCG操作数的定义及注释</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-04T09:46:41+08:00"
-              content="2018-07-04" >
-          07-04
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/26/defu/" itemprop="url">
-              
-                <span itemprop="name">defu</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-26T16:30:42+08:00"
-              content="2018-05-26" >
-          05-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/05/26/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-05-26T16:14:05+08:00"
-              content="2018-05-26" >
-          05-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>tcg/tcg.h:</p>
+<p>Define type and accessor macros for TCG variables.</p>
+<p>TCG variables are the inputs and outputs of TCG ops, as described<br>in tcg/README. Target CPU front-end code uses these types to deal<br>with TCG variables as it emits TCG code via the tcg_gen_* functions.<br>They come in several flavours:</p>
+<ul>
+<li>TCGv_i32 : 32 bit integer type</li>
+<li>TCGv_i64 : 64 bit integer type</li>
+<li>TCGv_ptr : a host pointer type</li>
+<li>TCGv_vec : a host vector type; the exact size is not exposed<br>to the CPU front-end code.</li>
+<li>TCGv : an integer type the same size as target_ulong<br>(an alias for either TCGv_i32 or TCGv_i64)<br>The compiler’s type checking will complain if you mix them<br>up and pass the wrong sized TCGv to a function.</li>
+</ul>
+<p>Users of tcg_gen_* don’t need to know about any of the internal<br>details of these, and should treat them as opaque types.<br>You won’t be able to look inside them in a debugger either.</p>
+<p>Internal implementation details follow:</p>
+<p>Note that there is no definition of the structs TCGv_i32_d etc anywhere.<br>This is deliberate, because the values we store in variables of type<br>TCGv_i32 are not really pointers-to-structures. They’re just small<br>integers, but keeping them in pointer types like this means that the<br>compiler will complain if you accidentally pass a TCGv_i32 to a<br>function which takes a TCGv_i64, and so on. Only the internals of<br>TCG need to care about the actual contents of the types.</p>
+<p>tcg/optimize.c<br>static TCGArg do_constant_folding_2(TCGOpcode op, TCGArg x, TCGArg y)<br>{<br>uint64_t l64, h64;</p>
+<p>switch (op) {<br>CASE_OP_32_64(add):<br>return x + y;</p>
+<p>CASE_OP_32_64(sub):<br>return x - y;</p>
+<p>CASE_OP_32_64(mul):<br>return x * y;</p>
+<p>CASE_OP_32_64(and):<br>return x &amp; y;</p>
+<p>CASE_OP_32_64(or):<br>return x | y;</p>
+<p>CASE_OP_32_64(xor):<br>return x ^ y;</p>
+<p>case INDEX_op_shl_i32:<br>return (uint32_t)x &lt;&lt; (y &amp; 31);</p>
+<p>可以看到TCGV就是普通的操作数</p>
 
       
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/26/defu/" rel="next" title="defu">
+                <i class="fa fa-chevron-left"></i> defu
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -363,6 +381,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -559,6 +581,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
