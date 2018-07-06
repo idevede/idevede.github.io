@@ -5,16 +5,20 @@
   
 
   
-  <title>defu | Dove&#39;s bolg</title>
+  <title>计算机网络:各种时延的计算 | Dove&#39;s bolg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="defu">
-<meta property="og:url" content="https://idevede.github.io/2018/05/26/defu/index.html">
+  <meta name="description" content="本文在CSDN的地址：点这里_时延_：是数据（一个报文或分组，甚至比特）从网络或链路的一段传送到另一端所需要的时间。">
+<meta name="keywords" content="计算机网络,时延">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络:各种时延的计算">
+<meta property="og:url" content="https://idevede.github.io/2016/03/14/[计算机网络]各种时延的计算/index.html">
 <meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里_时延_：是数据（一个报文或分组，甚至比特）从网络或链路的一段传送到另一端所需要的时间。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-26T08:30:42.050Z">
+<meta property="og:updated_time" content="2018-07-06T07:27:17.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="defu">
+<meta name="twitter:title" content="计算机网络:各种时延的计算">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里_时延_：是数据（一个报文或分组，甚至比特）从网络或链路的一段传送到另一端所需要的时间。">
   
     <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
   
@@ -61,12 +65,16 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-defu" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-[计算机网络]各种时延的计算" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/05/26/defu/" class="article-date">
-  <time datetime="2018-05-26T08:30:42.000Z" itemprop="datePublished">2018-05-26</time>
+    <a href="/2016/03/14/[计算机网络]各种时延的计算/" class="article-date">
+  <time datetime="2016-03-14T15:09:26.000Z" itemprop="datePublished">2016-03-14</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/学习心得/">学习心得</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -75,7 +83,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      defu
+      计算机网络:各种时延的计算
     </h1>
   
 
@@ -83,32 +91,52 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/50994907" target="_blank" rel="noopener">点这里</a><br>_时延_：是数据（一个报文或分组，甚至比特）从网络或链路的一段传送到另一端所需要的时间。</p>
+<a id="more"></a>
+<p><em>发送时延</em>：是从发送数据帧的第一个比特算起，到该帧的最后一个比特发送完毕所需的时间。</p>
+<p>发送时延=数据帧长度(b) /信道带宽(b/s)      [信道带宽就是数据率]</p>
+<p><em>传播时延</em>：电磁波在信道中需要传播一定的距离而花费的时间。</p>
+<p><em>传播时延</em>=信道长度(m)/电磁波在信道上的传播速率(m/s)</p>
+<p><em>处理时延</em>：主机或路由器处理所收到的分组的时间。</p>
+<p><em>排队时延</em>：分组在输入队列中排队等待处理，在输出队列中等待转发，就形成了排队时延。</p>
+<p><em>总时延</em>=发送时延+传播时延+处理时延+排队时延</p>
+<p>例题1：</p>
+<p>试在下列条件下比较电路交换和分组交换。要传送的报文共x（bit）。从源点到终点共经过k段链路，每段链路的传播时延为d（s），数据率为b(b/s)。在电路交换时电路的建立时间为s(s)。在分组交换时分组长度为p(bit)，且各结点的排队等待时间可忽略不计。问在怎样的条件下，分组交换的时延比电路交换的要小？（提示：画一下草图观察k段链路共有几个结点。）</p>
+<p>答：在电路交换中，电路的建立时延是s,报文的发送时延是x/b,报文的传播时延是：kd,故总时延为：x/b+kd+s;</p>
+<p>在分组交换中,报文的发送时延是(x/p)<em>(p/b); K段传输中，有(k-1)次的储存转发延迟,(p/b)</em>(k-1);传播时延是kd;故总时延是：（x/p）<em>(p/b)+ (p/b)</em>(k-1)+kd=x/b+kd+(p/b)*(k-1);</p>
+<p>当s&gt;(k-1)*(p/b)时，电路交换的时延比分组交换的时延大，当x&gt;&gt;p,相反。</p>
+<p>例题2：</p>
+<p>在上题的分组交换网中，设报文长度和分组长度分别为x和(p+h)(bit),其中p为分组的数据部分的长度，而h为每个分组所带的控制信息固定长度，与p的大小无关。通信的两端共经过k段链路。链路的数据率为b(b/s)，但传播时延和结点的排队时间均可忽略不计。若打算使总的时延为最小，问分组的数据部分长度p应取为多大？（提示：参考图1-12的分组交换部分，观察总的时延是由哪几部分组成。）</p>
+<p>答：总时延：y=(x/p)<em>((p+h)/b)+(k-1)</em> ((p+h)/b)+kd</p>
+<p>两边求导，并令其值为0得p=[(xh)/(k-1)]^0.5</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://idevede.github.io/2018/05/26/defu/" data-id="cjj9nq2m10006pqqt61nwigri" class="article-share-link">Share</a>
+      <a data-url="https://idevede.github.io/2016/03/14/[计算机网络]各种时延的计算/" data-id="cjj9nqfva0000q0qtjzxrnu9y" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/时延/">时延</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2018/07/06/Qemu中TCG操作数的定义及注释/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/04/05/最小生成树Prim算法理解/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Qemu中TCG操作数的定义及注释
+          最小生成树Prim算法理解
         
       </div>
     </a>
   
   
-    <a href="/2018/05/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/02/14/我写数据结构排序部分的部分心得/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
+      <div class="article-nav-title">我写数据结构排序部分的部分心得</div>
     </a>
   
 </nav>
