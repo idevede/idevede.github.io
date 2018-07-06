@@ -64,8 +64,8 @@
   
     <article id="post-Qemu中TCG操作数的定义及注释" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/07/04/Qemu中TCG操作数的定义及注释/" class="article-date">
-  <time datetime="2018-07-04T01:46:41.503Z" itemprop="datePublished">2018-07-04</time>
+    <a href="/2018/07/06/Qemu中TCG操作数的定义及注释/" class="article-date">
+  <time datetime="2018-07-06T03:57:46.474Z" itemprop="datePublished">2018-07-06</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/04/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+      <a class="article-title" href="/2018/07/06/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
     </h1>
   
 
@@ -86,31 +86,15 @@
       
         <p>tcg/tcg.h:</p>
 <p>Define type and accessor macros for TCG variables.</p>
-<p>TCG variables are the inputs and outputs of TCG ops, as described<br>in tcg/README. Target CPU front-end code uses these types to deal<br>with TCG variables as it emits TCG code via the tcg_gen_* functions.<br>They come in several flavours:</p>
-<ul>
-<li>TCGv_i32 : 32 bit integer type</li>
-<li>TCGv_i64 : 64 bit integer type</li>
-<li>TCGv_ptr : a host pointer type</li>
-<li>TCGv_vec : a host vector type; the exact size is not exposed<br>to the CPU front-end code.</li>
-<li>TCGv : an integer type the same size as target_ulong<br>(an alias for either TCGv_i32 or TCGv_i64)<br>The compiler’s type checking will complain if you mix them<br>up and pass the wrong sized TCGv to a function.</li>
-</ul>
-<p>Users of tcg_gen_* don’t need to know about any of the internal<br>details of these, and should treat them as opaque types.<br>You won’t be able to look inside them in a debugger either.</p>
-<p>Internal implementation details follow:</p>
-<p>Note that there is no definition of the structs TCGv_i32_d etc anywhere.<br>This is deliberate, because the values we store in variables of type<br>TCGv_i32 are not really pointers-to-structures. They’re just small<br>integers, but keeping them in pointer types like this means that the<br>compiler will complain if you accidentally pass a TCGv_i32 to a<br>function which takes a TCGv_i64, and so on. Only the internals of<br>TCG need to care about the actual contents of the types.</p>
-<p>tcg/optimize.c<br>static TCGArg do_constant_folding_2(TCGOpcode op, TCGArg x, TCGArg y)<br>{<br>uint64_t l64, h64;</p>
-<p>switch (op) {<br>CASE_OP_32_64(add):<br>return x + y;</p>
-<p>CASE_OP_32_64(sub):<br>return x - y;</p>
-<p>CASE_OP_32_64(mul):<br>return x * y;</p>
-<p>CASE_OP_32_64(and):<br>return x &amp; y;</p>
-<p>CASE_OP_32_64(or):<br>return x | y;</p>
-<p>CASE_OP_32_64(xor):<br>return x ^ y;</p>
-<p>case INDEX_op_shl_i32:<br>return (uint32_t)x &lt;&lt; (y &amp; 31);</p>
-<p>可以看到TCGV就是普通的操作数</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2018/07/06/Qemu中TCG操作数的定义及注释/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://idevede.github.io/2018/07/04/Qemu中TCG操作数的定义及注释/" data-id="cjj9cropl000039qtosx07qoi" class="article-share-link">Share</a>
+      <a data-url="https://idevede.github.io/2018/07/06/Qemu中TCG操作数的定义及注释/" data-id="cjj9nfxzy00052aqtnv0h73sa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,7 +130,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://idevede.github.io/2018/05/26/defu/" data-id="cjj9cropw000139qtmuhjw3ay" class="article-share-link">Share</a>
+      <a data-url="https://idevede.github.io/2018/05/26/defu/" data-id="cjj9nfy0a000a2aqtxzojvl9t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -191,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://idevede.github.io/2018/05/26/hello-world/" data-id="cjj9croq3000239qtiss5blgl" class="article-share-link">Share</a>
+      <a data-url="https://idevede.github.io/2018/05/26/hello-world/" data-id="cjj9nfy0e000f2aqtoe4fp4v1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,12 +185,16 @@
 
 
   
-    <article id="post-课设有感--第一份博客给已经逝去的Java课堂" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-我写数据结构排序部分的部分心得" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/13/课设有感--第一份博客给已经逝去的Java课堂/" class="article-date">
-  <time datetime="2015-05-12T16:42:16.000Z" itemprop="datePublished">2015-05-13</time>
+    <a href="/2016/02/14/我写数据结构排序部分的部分心得/" class="article-date">
+  <time datetime="2016-02-14T15:09:26.000Z" itemprop="datePublished">2016-02-14</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>►<a class="article-category-link" href="/categories/数据结构/学习心得/">学习心得</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -215,7 +203,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/13/课设有感--第一份博客给已经逝去的Java课堂/">课设有感--第一份博客给已经逝去的Java课堂</a>
+      <a class="article-title" href="/2016/02/14/我写数据结构排序部分的部分心得/">我写数据结构排序部分的部分心得</a>
     </h1>
   
 
@@ -223,19 +211,302 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>经过短暂的八周的Java程序设计，终于把你画我猜的基本功能实现，看着自己用代码砌成的程序可以运行的接近自己的想法，使我不仅技术进步，能用代码去解决实际的问题了，更重要的，提高了我的编程兴趣，使我下意识留出时间每天编程。</p>
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/50659816" target="_blank" rel="noopener">点这里</a><br>详细代码请参考我的上一篇博客<br>
         
           <p class="article-more-link">
-            <a href="/2015/05/13/课设有感--第一份博客给已经逝去的Java课堂/#more">Read More</a>
+            <a href="/2016/02/14/我写数据结构排序部分的部分心得/#more">Read More</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://idevede.github.io/2015/05/13/课设有感--第一份博客给已经逝去的Java课堂/" data-id="cjj9croq5000339qt67b4opra" class="article-share-link">Share</a>
+      <a data-url="https://idevede.github.io/2016/02/14/我写数据结构排序部分的部分心得/" data-id="cjj9nfy0p000k2aqtr4ipphac" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译码/">译码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-BST 存储结构建立（插入）、删除、 查找算法的实现及应用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/14/BST 存储结构建立（插入）、删除、 查找算法的实现及应用/" class="article-date">
+  <time datetime="2016-02-14T14:09:26.000Z" itemprop="datePublished">2016-02-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>►<a class="article-category-link" href="/categories/数据结构/学习心得/">学习心得</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/14/BST 存储结构建立（插入）、删除、 查找算法的实现及应用/">BST 存储结构建立（插入）、删除、 查找算法的实现及应用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/50659727" target="_blank" rel="noopener">点这里</a><br>（一）下面的代码要实现的任务：<br>1.设计 BST 的左右链存储结构；<br>2.实现 BST 左右链存储结构上的插入（建立）、删除、查找和排序算法。<br>3.利用 BST 结构和相应的操作算法，实现班级学习成绩管理（单科成绩管理， 排名；加权绩点管理与排名等）。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/14/BST 存储结构建立（插入）、删除、 查找算法的实现及应用/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/02/14/BST 存储结构建立（插入）、删除、 查找算法的实现及应用/" data-id="cjj9nfxzd00012aqtrhhhnp7b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译码/">译码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-我写哈夫曼树的一点心得及改进" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/13/我写哈夫曼树的一点心得及改进/" class="article-date">
+  <time datetime="2016-02-13T14:09:26.000Z" itemprop="datePublished">2016-02-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>►<a class="article-category-link" href="/categories/数据结构/学习心得/">学习心得</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/13/我写哈夫曼树的一点心得及改进/">数据结构：我写哈夫曼树的一点心得及改进</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/50659705" target="_blank" rel="noopener">点这里</a><br>一：首先，讨论并比较基于字符的压缩与基于单词的压缩<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/13/我写哈夫曼树的一点心得及改进/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/02/13/我写哈夫曼树的一点心得及改进/" data-id="cjj9nfy0m000j2aqt50axna0p" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译码/">译码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-数据结构：哈夫曼树，哈夫曼编码与译码系统" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/13/数据结构：哈夫曼树，哈夫曼编码与译码系统/" class="article-date">
+  <time datetime="2016-02-13T12:09:26.000Z" itemprop="datePublished">2016-02-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/13/数据结构：哈夫曼树，哈夫曼编码与译码系统/">数据结构：哈夫曼树，哈夫曼编码与译码系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/50659685" target="_blank" rel="noopener">点这里</a><br>将文本文件利用哈夫曼树进行编码，存储成压缩文件<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/13/数据结构：哈夫曼树，哈夫曼编码与译码系统/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/02/13/数据结构：哈夫曼树，哈夫曼编码与译码系统/" data-id="cjj9nfy0t000q2aqtj5ax39s0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/译码/">译码</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-最小生成树Prim算法理解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/02/05/最小生成树Prim算法理解/" class="article-date">
+  <time datetime="2016-02-05T15:11:39.000Z" itemprop="datePublished">2016-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/05/最小生成树Prim算法理解/">Mysql的安装及完全卸载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/51069178" target="_blank" rel="noopener">点这里</a><br>MST（Minimum Spanning Tree，最小生成树）问题有两种通用的解法，Prim算法就是其中之一，它是从点的方面考虑构建一颗MST，大致思想是：设图G顶点集合为U，首先任意选择图G中的一点作为起始点a，将该点加入集合V，再从集合U-V中找到另一点b使得点b到V中任意一点的权值最小，此时将b点也加入集合V；以此类推，现在的集合V={a，b}，再从集合U-V中找到另一点c使得点c到V中任意一点的权值最小，此时将c点加入集合V，直至所有顶点全部被加入V，此时就构建出了一颗MST。因为有N个顶点，所以该MST就有N-1条边，每一次向集合V中加入一个点，就意味着找到一条MST的边。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/05/最小生成树Prim算法理解/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/02/05/最小生成树Prim算法理解/" data-id="cjj9nfy0z000t2aqtmf9f6i29" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/最小生成树/">最小生成树</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-我眼中的操作系统中断" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/08/我眼中的操作系统中断/" class="article-date">
+  <time datetime="2015-12-08T13:09:35.000Z" itemprop="datePublished">2015-12-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/操作系统/">操作系统</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/08/我眼中的操作系统中断/">我眼中的操作系统中断</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/50224305" target="_blank" rel="noopener">点这里</a><br>没学过汇编和计算机组成原理就直接接触了操作系统，这是我根据个人理解目前用到的中断知识，以后应该会不断添加<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/12/08/我眼中的操作系统中断/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2015/12/08/我眼中的操作系统中断/" data-id="cjj9nfy0r000o2aqt6b3jhpw3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/中断/">中断</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-蚁群算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/20/蚁群算法/" class="article-date">
+  <time datetime="2015-11-20T13:19:31.000Z" itemprop="datePublished">2015-11-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/算法/">算法</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/20/蚁群算法/">蚁群算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/49952133" target="_blank" rel="noopener">点这里</a></p>
+<p>自1991年由意大利学者 M. Dorigo，V. Maniezzo 和 A. Colorni 通过模拟蚁群觅食行为提出了一种基于种群的模拟进化算法——蚁群优化。<br>
+        
+          <p class="article-more-link">
+            <a href="/2015/11/20/蚁群算法/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2015/11/20/蚁群算法/" data-id="cjj9nfy12000v2aqtgi5raa02" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li></ul>
 
     </footer>
   </div>
@@ -246,18 +517,30 @@
   
 
 
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
+
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li></ul>
+    </div>
+  </div>
+
 
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li></ul>
     </div>
   </div>
 
@@ -267,7 +550,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/java/" style="font-size: 10px;">java</a>
+      <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/哈弗曼树/" style="font-size: 16.67px;">哈弗曼树</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 16.67px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/最小生成树/" style="font-size: 10px;">最小生成树</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/编码/" style="font-size: 16.67px;">编码</a> <a href="/tags/网络编程/" style="font-size: 10px;">网络编程</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/译码/" style="font-size: 16.67px;">译码</a> <a href="/tags/软件安装/" style="font-size: 13.33px;">软件安装</a>
     </div>
   </div>
 
@@ -276,7 +559,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
     </div>
   </div>
 
@@ -289,7 +572,7 @@
       <ul>
         
           <li>
-            <a href="/2018/07/04/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+            <a href="/2018/07/06/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
           </li>
         
           <li>
@@ -301,7 +584,11 @@
           </li>
         
           <li>
-            <a href="/2015/05/13/课设有感--第一份博客给已经逝去的Java课堂/">课设有感--第一份博客给已经逝去的Java课堂</a>
+            <a href="/2016/02/14/我写数据结构排序部分的部分心得/">我写数据结构排序部分的部分心得</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/14/BST 存储结构建立（插入）、删除、 查找算法的实现及应用/">BST 存储结构建立（插入）、删除、 查找算法的实现及应用</a>
           </li>
         
       </ul>
