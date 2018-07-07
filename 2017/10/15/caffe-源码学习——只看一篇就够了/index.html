@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>caffe-源码学习——只看一篇就够了 | Dove&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文在CSDN的地址：点这里 网络模型说caffe代码难懂，其实关键点在于caffe中有很多基础的数学运算代码，如果能够对掌握这些数学运算，剩下的就是推公式了。">
+<meta name="keywords" content="机器学习,caffe,神经网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="caffe-源码学习——只看一篇就够了">
+<meta property="og:url" content="https://idevede.github.io/2017/10/15/caffe-源码学习——只看一篇就够了/index.html">
+<meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里 网络模型说caffe代码难懂，其实关键点在于caffe中有很多基础的数学运算代码，如果能够对掌握这些数学运算，剩下的就是推公式了。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-07T09:01:34.477Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="caffe-源码学习——只看一篇就够了">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里 网络模型说caffe代码难懂，其实关键点在于caffe中有很多基础的数学运算代码，如果能够对掌握这些数学运算，剩下的就是推公式了。">
+  
+    <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dove&#39;s bolg</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://idevede.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-caffe-源码学习——只看一篇就够了" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/15/caffe-源码学习——只看一篇就够了/" class="article-date">
+  <time datetime="2017-10-15T07:24:48.000Z" itemprop="datePublished">2017-10-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      caffe-源码学习——只看一篇就够了
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/78606832" target="_blank" rel="noopener">点这里</a></p>
+<h2 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h2><p>说caffe代码难懂，其实关键点在于caffe中有很多基础的数学运算代码，如果能够对掌握这些数学运算，剩下的就是推公式了。</p>
+<a id="more"></a>
+<hr>
+<h2 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h2><p>###sigmoid</p>
+<p>看softmax函数之前先看一下简单的sigmoid, 这个sigmoid layer的cpp实现是非常简洁的。 sigmoid的cpp文件里主要给了三个函数的实现，分别是sigmoid函数，forward_cpu, backward_cpu,在cpp文件里只实现了算法的CPU版本，至于GPU版本的函数实现放在.cu文件里面。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">template &lt;typename Dtype&gt;</span><br><span class="line">inline Dtype sigmoid(Dtype x) &#123;</span><br><span class="line">  return 0.5 * tanh(0.5 * x) + 0.5;</span><br><span class="line">&#125;</span><br><span class="line">template &lt;typename Dtype&gt;</span><br><span class="line">void SigmoidLayer&lt;Dtype&gt;::Forward_cpu(const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">    const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; top) &#123;</span><br><span class="line">  const Dtype* bottom_data = bottom[0]-&gt;cpu_data();</span><br><span class="line">  Dtype* top_data = top[0]-&gt;mutable_cpu_data();</span><br><span class="line">  const int count = bottom[0]-&gt;count();</span><br><span class="line">  for (int i = 0; i &lt; count; ++i) &#123;</span><br><span class="line">    top_data[i] = sigmoid(bottom_data[i]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">template &lt;typename Dtype&gt;</span><br><span class="line">void SigmoidLayer&lt;Dtype&gt;::Backward_cpu(const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; top,</span><br><span class="line">    const vector&lt;bool&gt;&amp; propagate_down,</span><br><span class="line">    const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom) &#123;</span><br><span class="line">  if (propagate_down[0]) &#123;</span><br><span class="line">    const Dtype* top_data = top[0]-&gt;cpu_data();</span><br><span class="line">    const Dtype* top_diff = top[0]-&gt;cpu_diff();</span><br><span class="line">    Dtype* bottom_diff = bottom[0]-&gt;mutable_cpu_diff();</span><br><span class="line">    const int count = bottom[0]-&gt;count();</span><br><span class="line">    for (int i = 0; i &lt; count; ++i) &#123;</span><br><span class="line">      const Dtype sigmoid_x = top_data[i];</span><br><span class="line">      bottom_diff[i] = top_diff[i] * sigmoid_x * (1. - sigmoid_x);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###sigmoid函数<br>注意这里的sigmoid函数与标准的定义不太一样。参见ufld里面的定义<br><a href="http://ufldl.stanford.edu/wiki/index.php/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">神经网络UFLD</a></p>
+<p>而在这里 sigmoid = 0.5 tanh(0.5 x) + 0.5, sigmoid变化范围为从0-1, tanh从-1到1，乘于0.5再加上0.5两者变化范围就一样了。</p>
+<blockquote>
+<p>forward_cpu</p>
+</blockquote>
+<p>这个很容易就能看懂，就是对每一个bottom元素计算sigmoid就得到来top的元素。</p>
+<blockquote>
+<p>backward_cpu</p>
+</blockquote>
+<p>发现新版的代码真的很好懂，sigmoid函数的到函数是sigmoid*(1-sigmoid) , 所以这里就直接利用来。其中propagate_down表明这一层是否要反传。</p>
+<blockquote>
+<p>softmaxlayer</p>
+</blockquote>
+<p>这段代码比较复杂，比较好的注释如下。但是这个注释针对的代码版本比较老。<br><a href="http://blog.csdn.net/u010668083/article/details/44857455" target="_blank" rel="noopener">caffe深度学习网络softmax层代码注释</a></p>
+<p>这里我们分析比较新的代码，当前(20170622)比较新的代码是20161202提交的代码，结构如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">/template &lt;typename Dtype&gt;</span><br><span class="line">void SoftmaxLayer&lt;Dtype&gt;::Reshape(const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">      const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; top) &#123;</span><br><span class="line">  softmax_axis_ =</span><br><span class="line">      bottom[0]-&gt;CanonicalAxisIndex(this-&gt;layer_param_.softmax_param().axis());</span><br><span class="line">  //softmax层的输出应该与输入层一致</span><br><span class="line">  top[0]-&gt;ReshapeLike(*bottom[0]);</span><br><span class="line">  vector&lt;int&gt; mult_dims(1, bottom[0]-&gt;shape(softmax_axis_));</span><br><span class="line">  sum_multiplier_.Reshape(mult_dims);</span><br><span class="line">  Dtype* multiplier_data = sum_multiplier_.mutable_cpu_data();</span><br><span class="line">  caffe_set(sum_multiplier_.count(), Dtype(1), multiplier_data);</span><br><span class="line">  outer_num_ = bottom[0]-&gt;count(0, softmax_axis_);</span><br><span class="line">  inner_num_ = bottom[0]-&gt;count(softmax_axis_ + 1);</span><br><span class="line">  vector&lt;int&gt; scale_dims = bottom[0]-&gt;shape();</span><br><span class="line">  // scale_尺寸为：num*1*height*width</span><br><span class="line">  scale_dims[softmax_axis_] = 1;</span><br><span class="line">  scale_.Reshape(scale_dims);</span><br><span class="line">&#125;</span><br><span class="line">//前向计算，得到softmax的值</span><br><span class="line">template &lt;typename Dtype&gt;</span><br><span class="line">void SoftmaxLayer&lt;Dtype&gt;::Forward_cpu(const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">    const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; top) &#123;</span><br><span class="line">  const Dtype* bottom_data = bottom[0]-&gt;cpu_data();</span><br><span class="line">  Dtype* top_data = top[0]-&gt;mutable_cpu_data();</span><br><span class="line">  Dtype* scale_data = scale_.mutable_cpu_data();</span><br><span class="line">  int channels = bottom[0]-&gt;shape(softmax_axis_);</span><br><span class="line">  int dim = bottom[0]-&gt;count() / outer_num_;</span><br><span class="line">  caffe_copy(bottom[0]-&gt;count(), bottom_data, top_data);</span><br><span class="line">  // We need to subtract the max to avoid numerical issues, compute the exp,</span><br><span class="line">  // and then normalize.</span><br><span class="line">  // 先找到最大值</span><br><span class="line">  for (int i = 0; i &lt; outer_num_; ++i) &#123;//outer_num就是num输出数据的数目</span><br><span class="line">    // initialize scale_data to the first plane</span><br><span class="line">    caffe_copy(inner_num_, bottom_data + i * dim, scale_data);//dim表示每个数据有多少个不同类别的值.</span><br><span class="line">    for (int j = 0; j &lt; channels; j++) &#123;</span><br><span class="line">      for (int k = 0; k &lt; inner_num_; k++) &#123;</span><br><span class="line">        scale_data[k] = std::max(scale_data[k],//每个元素表示应该是当前位置中所有类别和channel里面最大的那一个。</span><br><span class="line">            bottom_data[i * dim + j * inner_num_ + k]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // subtraction 减去最大值 详细分析见后面 </span><br><span class="line">    caffe_cpu_gemm&lt;Dtype&gt;(CblasNoTrans, CblasNoTrans, channels, inner_num_,</span><br><span class="line">        1, -1., sum_multiplier_.cpu_data(), scale_data, 1., top_data);</span><br><span class="line">    // exponentiation 求指数</span><br><span class="line">    caffe_exp&lt;Dtype&gt;(dim, top_data, top_data);</span><br><span class="line">    // sum after exp 求和</span><br><span class="line">    caffe_cpu_gemv&lt;Dtype&gt;(CblasTrans, channels, inner_num_, 1.,</span><br><span class="line">        top_data, sum_multiplier_.cpu_data(), 0., scale_data);</span><br><span class="line">    // division 做除法</span><br><span class="line">    for (int j = 0; j &lt; channels; j++) &#123;</span><br><span class="line">      caffe_div(inner_num_, top_data, scale_data, top_data);</span><br><span class="line">      top_data += inner_num_;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">template &lt;typename Dtype&gt;</span><br><span class="line">void SoftmaxLayer&lt;Dtype&gt;::Backward_cpu(const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; top,</span><br><span class="line">    const vector&lt;bool&gt;&amp; propagate_down,</span><br><span class="line">    const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom) &#123;</span><br><span class="line">  const Dtype* top_diff = top[0]-&gt;cpu_diff();</span><br><span class="line">  const Dtype* top_data = top[0]-&gt;cpu_data();</span><br><span class="line">  Dtype* bottom_diff = bottom[0]-&gt;mutable_cpu_diff();</span><br><span class="line">  Dtype* scale_data = scale_.mutable_cpu_data();</span><br><span class="line">  int channels = top[0]-&gt;shape(softmax_axis_);</span><br><span class="line">  int dim = top[0]-&gt;count() / outer_num_;</span><br><span class="line">  caffe_copy(top[0]-&gt;count(), top_diff, bottom_diff);</span><br><span class="line">  for (int i = 0; i &lt; outer_num_; ++i) &#123;</span><br><span class="line">    // compute dot(top_diff, top_data) and subtract them from the bottom diff</span><br><span class="line">	//计算top_diff与top_data的点集</span><br><span class="line">    for (int k = 0; k &lt; inner_num_; ++k) &#123;</span><br><span class="line">      scale_data[k] = caffe_cpu_strided_dot&lt;Dtype&gt;(channels,</span><br><span class="line">          bottom_diff + i * dim + k, inner_num_,</span><br><span class="line">          top_data + i * dim + k, inner_num_);</span><br><span class="line">    &#125;</span><br><span class="line">    // subtraction</span><br><span class="line">    caffe_cpu_gemm&lt;Dtype&gt;(CblasNoTrans, CblasNoTrans, channels, inner_num_, 1,</span><br><span class="line">        -1., sum_multiplier_.cpu_data(), scale_data, 1., bottom_diff + i * dim);</span><br><span class="line">  &#125;</span><br><span class="line">  // elementwise multiplication</span><br><span class="line">  caffe_mul(top[0]-&gt;count(), bottom_diff, top_data, bottom_diff);</span><br><span class="line">&#125;</span><br><span class="line">#ifdef CPU_ONLY</span><br><span class="line">STUB_GPU(SoftmaxLayer);</span><br><span class="line">#endif</span><br><span class="line">INSTANTIATE_CLASS(SoftmaxLayer);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>caffe_cpu_gemm减法 </p>
+</blockquote>
+<p>在forward_cpu函数里做减法的时候调用来caffe_cpu_gemm函数，这个函数的实现在 src/caffe/util/math_functions.cpp里面<br><a href="http://blog.csdn.net/seven_first/article/details/47378697#1-caffecpugemm-函数" target="_blank" rel="noopener">caffecpugemm-函数</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">template&lt;&gt;</span><br><span class="line">void caffe_cpu_gemm&lt;float&gt;(const CBLAS_TRANSPOSE TransA,</span><br><span class="line">    const CBLAS_TRANSPOSE TransB, const int M, const int N, const int K,</span><br><span class="line">    const float alpha, const float* A, const float* B, const float beta,</span><br><span class="line">    float* C) &#123;</span><br><span class="line">  int lda = (TransA == CblasNoTrans) ? K : M;</span><br><span class="line">  int ldb = (TransB == CblasNoTrans) ? N : K;</span><br><span class="line">  cblas_sgemm(CblasRowMajor, TransA, TransB, M, N, K, alpha, A, lda, B,</span><br><span class="line">      ldb, beta, C, N);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>功能： C=alphaAB+beta*C<br>A,B,C 是输入矩阵（一维数组格式）<br>CblasRowMajor :数据是行主序的（二维数据也是用一维数组储存的）<br>TransA, TransB：是否要对A和B做转置操作（CblasTrans CblasNoTrans）<br>M： A、C 的行数<br>N： B、C 的列数<br>K： A 的列数， B 的行数<br>lda ： A的列数（不做转置）行数（做转置）<br>ldb： B的列数（不做转置）行数（做转置）</p>
+</blockquote>
+<p>所以这里求减法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">caffe_cpu_gemm&lt;Dtype&gt;(CblasNoTrans, CblasNoTrans, channels, inner_num_,</span><br><span class="line">    1, -1., sum_multiplier_.cpu_data(), scale_data, 1., top_data);</span><br></pre></td></tr></table></figure>
+<p>就是： $top_data = top_data - 1 sum_multiplier_.cpu_data()scale_data$， 这里用top_data来减而不用bottom一方面是因为bottom是const的，取的是cpu_data(), 而top_data是mutable_cpu_data,另一方面之前已经把数据从bottom拷贝到top里面去了。</p>
+<p>而在back_ward函数里面也用到了这个函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">caffe_cpu_gemm&lt;Dtype&gt;(CblasNoTrans, CblasNoTrans, channels, inner_num_, 1,</span><br><span class="line">        -1., sum_multiplier_.cpu_data(), scale_data, 1., bottom_diff + i * dim);</span><br></pre></td></tr></table></figure>
+<p>$$bottom_diff + i dim = bottom_diff + i dim - sum_multiplier_.cpu_data() * scale_data$$</p>
+<blockquote>
+<p>caffe_exp指数</p>
+</blockquote>
+<p>caffe_exp函数是用来求指数的，其中一个实现是这样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">template &lt;&gt;</span><br><span class="line">void caffe_exp&lt;float&gt;(const int n, const float* a, float* y) &#123;</span><br><span class="line">  vsExp(n, a, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>功能： y[i] = exp(a[i] )</p>
+</blockquote>
+<p>所以， forward_cpu里面的指数就很容易理解了。</p>
+<p>caffe_exp<dtype>(dim, top_data, top_data);</dtype></p>
+<blockquote>
+<p>caffe_cpu_gemv求和</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">template &lt;&gt;</span><br><span class="line">void caffe_cpu_gemv&lt;float&gt;(const CBLAS_TRANSPOSE TransA, const int M,</span><br><span class="line">    const int N, const float alpha, const float* A, const float* x,</span><br><span class="line">    const float beta, float* y) &#123;</span><br><span class="line">  cblas_sgemv(CblasRowMajor, TransA, M, N, alpha, A, N, x, 1, beta, y, 1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>功能： y=alphaAx+beta*y<br>其中X和Y是向量，A 是矩阵<br>M：A 的行数<br>N：A 的列数<br>cblas_sgemv 中的 参数1 表示对X和Y的每个元素都进行操作</p>
+</blockquote>
+<p>forward_cpu里面的求和就很容易理解了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// sum after exp 求和</span><br><span class="line">caffe_cpu_gemv&lt;Dtype&gt;(CblasTrans, channels, inner_num_, 1.,</span><br><span class="line">    top_data, sum_multiplier_.cpu_data(), 0., scale_data);</span><br></pre></td></tr></table></figure>
+<p>scale_data =\sum top_data[i]*sum_multiplier_.cpu_data()[i];</p>
+<blockquote>
+<p>caffe_div除法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template &lt;&gt;</span><br><span class="line">void caffe_div&lt;float&gt;(const int n, const float* a, const float* b,</span><br><span class="line">    float* y) &#123;</span><br><span class="line">  vsDiv(n, a, b, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>功能 y[i] = a[i] / b[i]</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// division 做除法</span><br><span class="line">for (int j = 0; j &lt; channels; j++) &#123;</span><br><span class="line">  caffe_div(inner_num_, top_data, scale_data, top_data);</span><br><span class="line">  top_data += inner_num_;</span><br></pre></td></tr></table></figure>
+<p>top_data[i] = top_data[i] / scale_data[i];</p>
+<blockquote>
+<p>caffe_cpu_strided_dot</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template &lt;&gt;</span><br><span class="line">double caffe_cpu_strided_dot&lt;double&gt;(const int n, const double* x,</span><br><span class="line">    const int incx, const double* y, const int incy) &#123;</span><br><span class="line">  return cblas_ddot(n, x, incx, y, incy);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>功能： 返回 vector X 和 vector Y 的内积。<br>incx， incy ： 步长，即每隔incx 或 incy 个element 进行操作。</p>
+</blockquote>
+<p>–</p>
+<blockquote>
+<p>caffe_mul</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">template &lt;&gt;</span><br><span class="line">void caffe_mul&lt;float&gt;(const int n, const float* a, const float* b,</span><br><span class="line">    float* y) &#123;</span><br><span class="line">  vsMul(n, a, b, y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>功能 $y[i]=a[i] * b[i] $</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">caffe_mul(top[0]-&gt;count(), bottom_diff, top_data, bottom_diff);</span><br></pre></td></tr></table></figure>
+<p>bottom_diff[i] = bottom_diff[i] * top_data[i]</p>
+<p>##反向传播公式推导<br><a href="https://www.zhihu.com/question/28927103" target="_blank" rel="noopener">Caffe Softmax层的实现原理,知乎</a></p>
+<p>看完softmax layer的实现，我们再来看一下SoftmaxWithLossLayer的代码实现。</p>
+<p>##卷积层</p>
+<p>##计算量与参数量</p>
+<p>每个样本做一次前向传播时卷积计算量为： $ i jMNKL $ ，其中$ij$是卷积核的大小，$M*L$是输出特征图的大小，K是输入特征图通道数，L是输出特征图通道数。</p>
+<p>参数量为：$ iJK*L $</p>
+<p>所以有个比例叫做计算量参数量之比 CPR，如果在前馈时每个批次batch_size = B, 则表示将B个输入合并成一个矩阵进行计算，那么相当于每次的输出特征图增大来B倍，所以CPR提升来B倍，也就是，每次计算的时候参数重复利用率提高来B倍。</p>
+<p>卷积层：局部互连，权值共享，</p>
+<p>##源码学习<br>先用grep函数在caffe根目录下搜索一下包含ConvolutionLayer的文件有哪些，然后从头文件入手慢慢分析，下面是结果，精简来一些无效成分，在caffe的include文件夹下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -n -H -R &quot;ConvolutionLayer&quot;</span><br></pre></td></tr></table></figure>
+<p>-n表示显示行号，-H表示显示文件名，-R表示递归查找 后面部分表示查找的内容<br>结果如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">caffe/layer_factory.hpp:31: * (for example, when your layer has multiple backends, see GetConvolutionLayer</span><br><span class="line">caffe/layers/base_conv_layer.hpp:15: *        ConvolutionLayer and DeconvolutionLayer.</span><br><span class="line">caffe/layers/base_conv_layer.hpp:18:class BaseConvolutionLayer : public Layer&lt;Dtype&gt; &#123;</span><br><span class="line">caffe/layers/base_conv_layer.hpp:20:  explicit BaseConvolutionLayer(const LayerParameter&amp; param)</span><br><span class="line">caffe/layers/deconv_layer.hpp:17: *        opposite sense as ConvolutionLayer.</span><br><span class="line">caffe/layers/deconv_layer.hpp:19: *   ConvolutionLayer computes each output value by dotting an input window with</span><br><span class="line">caffe/layers/deconv_layer.hpp:22: *   DeconvolutionLayer is ConvolutionLayer with the forward and backward passes</span><br><span class="line">caffe/layers/deconv_layer.hpp:24: *   parameters, but they take the opposite sense as in ConvolutionLayer (so</span><br><span class="line">caffe/layers/deconv_layer.hpp:29:class DeconvolutionLayer : public BaseConvolutionLayer&lt;Dtype&gt; &#123;</span><br><span class="line">caffe/layers/deconv_layer.hpp:32:      : BaseConvolutionLayer&lt;Dtype&gt;(param) &#123;&#125;</span><br><span class="line">caffe/layers/im2col_layer.hpp:14: *        column vectors.  Used by ConvolutionLayer to perform convolution</span><br><span class="line">caffe/layers/conv_layer.hpp:31:class ConvolutionLayer : public BaseConvolutionLayer&lt;Dtype&gt; &#123;</span><br><span class="line">caffe/layers/conv_layer.hpp:35:   *    with ConvolutionLayer options:</span><br><span class="line">caffe/layers/conv_layer.hpp:64:  explicit ConvolutionLayer(const LayerParameter&amp; param)</span><br><span class="line">caffe/layers/conv_layer.hpp:65:      : BaseConvolutionLayer&lt;Dtype&gt;(param) &#123;&#125;</span><br><span class="line">caffe/layers/cudnn_conv_layer.hpp:16: * @brief cuDNN implementation of ConvolutionLayer.</span><br><span class="line">caffe/layers/cudnn_conv_layer.hpp:17: *        Fallback to ConvolutionLayer for CPU mode.</span><br><span class="line">caffe/layers/cudnn_conv_layer.hpp:30:class CuDNNConvolutionLayer : public ConvolutionLayer&lt;Dtype&gt; &#123;</span><br><span class="line">caffe/layers/cudnn_conv_layer.hpp:32:  explicit CuDNNConvolutionLayer(const LayerParameter&amp; param)</span><br><span class="line">caffe/layers/cudnn_conv_layer.hpp:33:      : ConvolutionLayer&lt;Dtype&gt;(param), handles_setup_(false) &#123;&#125;</span><br><span class="line">caffe/layers/cudnn_conv_layer.hpp:38:  virtual ~CuDNNConvolutionLayer();</span><br></pre></td></tr></table></figure>
+<p>主要有三个类包含这个卷积层的实现：<br>base_conv_layer：主要是卷积层基类的实现<br>deconv_layer： 目测是反向传播时候的卷积层的逆向过程<br>cudnn_conv_layer：目测是cudnn实现的卷积层版本继承自BaseConvolutionLayer,GPU版本</p>
+<p>接下来我们就打开这三个文件，跳转到相关行，详细看一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">class BaseConvolutionLayer : public Layer&lt;Dtype&gt; &#123;</span><br><span class="line"> public:</span><br><span class="line">  explicit BaseConvolutionLayer(const LayerParameter&amp; param)</span><br><span class="line">      : Layer&lt;Dtype&gt;(param) &#123;&#125;</span><br><span class="line">  virtual void LayerSetUp(const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">      const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; top);</span><br><span class="line">  virtual void Reshape(const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; bottom,</span><br><span class="line">      const vector&lt;Blob&lt;Dtype&gt;*&gt;&amp; top);</span><br><span class="line">  virtual inline int MinBottomBlobs() const &#123; return 1; &#125;</span><br><span class="line">  virtual inline int MinTopBlobs() const &#123; return 1; &#125;</span><br><span class="line">  virtual inline bool EqualNumBottomTopBlobs() const &#123; return true; &#125;</span><br><span class="line"> protected:</span><br><span class="line">  // Helper functions that abstract away the column buffer and gemm arguments.</span><br><span class="line">  // The last argument in forward_cpu_gemm is so that we can skip the im2col if</span><br><span class="line">  // we just called weight_cpu_gemm with the same input.</span><br><span class="line">  void forward_cpu_gemm(const Dtype* input, const Dtype* weights,</span><br><span class="line">      Dtype* output, bool skip_im2col = false);</span><br><span class="line">  void forward_cpu_bias(Dtype* output, const Dtype* bias);</span><br><span class="line">  void backward_cpu_gemm(const Dtype* input, const Dtype* weights,</span><br><span class="line">      Dtype* output);</span><br><span class="line">  void weight_cpu_gemm(const Dtype* input, const Dtype* output, Dtype*</span><br><span class="line">      weights);</span><br><span class="line">  void backward_cpu_bias(Dtype* bias, const Dtype* input);</span><br><span class="line">#ifndef CPU_ONLY</span><br><span class="line">  void forward_gpu_gemm(const Dtype* col_input, const Dtype* weights,</span><br><span class="line">      Dtype* output, bool skip_im2col = false);</span><br><span class="line">  void forward_gpu_bias(Dtype* output, const Dtype* bias);</span><br><span class="line">  void backward_gpu_gemm(const Dtype* input, const Dtype* weights,</span><br><span class="line">      Dtype* col_output);</span><br><span class="line">  void weight_gpu_gemm(const Dtype* col_input, const Dtype* output, Dtype*</span><br><span class="line">      weights);</span><br><span class="line">  void backward_gpu_bias(Dtype* bias, const Dtype* input);</span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+<p>这里给出来CPU和GPU版本的代码的声明，这些代码比较底层，先放一放以后再看。<br>forward_cpu_gemm:猜测可能是前馈过程计算weight部分，来看看CPP里面的实现吧。</p>
+<p>在BaseConvolutionLayer中的卷积的实现中有一个重要的函数就是<strong>im2col以及col2im，im2colnd以及col2imnd</strong>。前面的两个函数是二维卷积的正向和逆向过程，而后面的两个函数是n维卷积的正向和逆向过程。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">void BaseConvolutionLayer&lt;Dtype&gt;::forward_cpu_gemm(const Dtype* input,</span><br><span class="line">    const Dtype* weights, Dtype* output, bool skip_im2col) &#123;</span><br><span class="line">  const Dtype* col_buff = input;</span><br><span class="line">  if (!is_1x1_) &#123;</span><br><span class="line">    if (!skip_im2col) &#123;</span><br><span class="line">	  // 如果没有1x1卷积，也没有skip_im2col  </span><br><span class="line">      // 则使用conv_im2col_cpu对使用卷积核滑动过程中的每一个kernel大小的图像块  </span><br><span class="line">      // 变成一个列向量，形成一个height=kernel_dim_  </span><br><span class="line">      // width = 卷积后图像heght*卷积后图像width  </span><br><span class="line">      conv_im2col_cpu(input, col_buffer_.mutable_cpu_data());</span><br><span class="line">    &#125;</span><br><span class="line">    col_buff = col_buffer_.cpu_data();</span><br><span class="line">  &#125;</span><br><span class="line">  for (int g = 0; g &lt; group_; ++g) &#123;</span><br><span class="line">    caffe_cpu_gemm&lt;Dtype&gt;(CblasNoTrans, CblasNoTrans, conv_out_channels_ /</span><br><span class="line">        group_, conv_out_spatial_dim_, kernel_dim_,</span><br><span class="line">        (Dtype)1., weights + weight_offset_ * g, col_buff + col_offset_ * g,</span><br><span class="line">        (Dtype)0., output + output_offset_ * g);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###参考资料<br><a href="http://blog.csdn.net/xizero00/article/details/51049858" target="_blank" rel="noopener">caffe代码阅读10：Caffe中卷积的实现细节</a></p>
+<p>##数据集</p>
+<p>###生成数据集的均值文件<br>这里计算图像的均值使用的是pper_image_mean方法，在natural images上训练的时候，这种方式比较好，以imagenet数据集为例，caffe在使用imagenet数据集的时候需要计算均值文件，详细见 <a href="https://github.com/DragonFive/deep-learning-exercise/blob/master/caffe_python1.ipynb" target="_blank" rel="noopener">python-caffe</a></p>
+<p>###caffe-blob<br><a href="http://blog.csdn.net/chenriwei2/article/details/46367023" target="_blank" rel="noopener">【Caffe代码解析】Blob</a><br><a href="http://blog.csdn.net/lingerlanlan/article/details/24379689" target="_blank" rel="noopener">caffe源码分析–Blob类代码研究</a><br><a href="http://www.cnblogs.com/louyihang-loves-baiyan/p/5149628.html" target="_blank" rel="noopener">Caffe源码解析1：Blob</a></p>
+<p>##结构体分析<br>Blob 是Caffe作为数据传输的媒介，无论是网络权重参数，还是输入数据，都是转化为Blob数据结构来存储，网络，求解器等都是直接与此结构打交道的。</p>
+<p>4纬的结构体（包含数据和梯度)，其4维结构通过shape属性得以计算出来.</p>
+<p>###成员变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">protected:</span><br><span class="line"> shared_ptr&lt;SyncedMemory&gt; data_;// 存放数据</span><br><span class="line"> shared_ptr&lt;SyncedMemory&gt; diff_;//存放梯度</span><br><span class="line"> vector&lt;int&gt; shape_; //存放形状</span><br><span class="line"> int count_; //数据个数</span><br><span class="line"> int capacity_; //数据容量</span><br></pre></td></tr></table></figure>
+<p>###成员函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> const Dtype* cpu_data() const;			 //cpu使用的数据</span><br><span class="line">  void set_cpu_data(Dtype* data);		//用数据块的值来blob里面的data。</span><br><span class="line">  const Dtype* gpu_data() const;		//返回不可更改的指针，下同</span><br><span class="line">  const Dtype* cpu_diff() const;</span><br><span class="line">  const Dtype* gpu_diff() const;</span><br><span class="line">  Dtype* mutable_cpu_data();    		//返回可更改的指针，下同</span><br><span class="line">  Dtype* mutable_gpu_data();</span><br><span class="line">  Dtype* mutable_cpu_diff();</span><br><span class="line">  Dtype* mutable_gpu_diff();</span><br><span class="line">  </span><br><span class="line">  int offset(const int n, const int c = 0, const int h = 0,const int w = 0) const</span><br><span class="line">// 通过n,c,h,w 4个参数来计算一维向量的偏移量。</span><br><span class="line">Dtype data_at(const int n, const int c, const int h,const int w) const//通过n,c,h,w 4个参数来来获取该向量位置上的值。</span><br><span class="line">Dtype diff_at(const int n, const int c, const int h,const int w) const//同上</span><br><span class="line">inline const shared_ptr&lt;SyncedMemory&gt;&amp; data() const &#123;</span><br><span class="line">    CHECK(data_);</span><br><span class="line">    return data_;			//返回数据，不能修改</span><br><span class="line">  &#125;</span><br><span class="line">inline const shared_ptr&lt;SyncedMemory&gt;&amp; diff() const &#123;</span><br><span class="line">    CHECK(diff_);</span><br><span class="line">    return diff_;			//返回梯度，不能修改</span><br><span class="line">  &#125;</span><br><span class="line">Reshape(...)//reshape 有多种多态的实现，可以是四个数字，长度为四的vector，其它blob等。</span><br><span class="line">if (count_ &gt; capacity_) &#123;</span><br><span class="line">    capacity_ = count_;</span><br><span class="line">    data_.reset(new SyncedMemory(capacity_ * sizeof(Dtype)));</span><br><span class="line">    diff_.reset(new SyncedMemory(capacity_ * sizeof(Dtype)));</span><br><span class="line">  &#125;//当空间不够的时候，需要扩大容量，reset。</span><br></pre></td></tr></table></figure>
+<p>函数名中带mutable的表示可以对返回的指针内容进行修改。</p>
+<p>##caffe学习资料收集<br><a href="https://absentm.github.io/2016/05/14/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0Caffe%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B%E9%9B%86%E5%90%88/" target="_blank" rel="noopener">深度学习Caffe系列教程集合</a><br><a href="https://yufeigan.github.io/" target="_blank" rel="noopener">甘宇飞</a><br><a href="https://zhuanlan.zhihu.com/Edison-G" target="_blank" rel="noopener">计算机视觉战队</a></p>
+<p><a href="http://blog.163.com/yuyang_tech/blog/static/2160500832015713105052452/" target="_blank" rel="noopener">caffe源码简单解析——Layer层</a></p>
+<p><a href="http://blog.csdn.net/kkk584520/article/details/41681085" target="_blank" rel="noopener">Caffe代码导读（0）：路线图</a></p>
+<p><a href="https://www.zhihu.com/question/27982282" target="_blank" rel="noopener">知乎问题-深度学习caffe的代码怎么读？</a></p>
+<p><a href="http://www.cnblogs.com/louyihang-loves-baiyan/p/5149628.html" target="_blank" rel="noopener">Caffe源码解析1：Blob</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/24343706" target="_blank" rel="noopener">深度学习大讲堂——深度学习框架Caffe源码解析</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/24709689" target="_blank" rel="noopener">Caffe代码夜话1</a></p>
+<p><a href="http://blog.leanote.com/post/fishing_piggy/Caffe%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%EF%BC%88%E4%B8%80%EF%BC%89" target="_blank" rel="noopener">Caffe源码分析（一）</a></p>
+<blockquote>
+<p>本文作者： DragonFive<br>本文链接： <a href="https://dragonfive.github.io/2017-06-12/caffe_code_study1/" target="_blank" rel="noopener">https://dragonfive.github.io/2017-06-12/caffe_code_study1/</a><br>版权声明： 本博客所有文章除特别声明外，均采用 CC BY-NC-SA 3.0 许可协议。转载请注明出处！</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2017/10/15/caffe-源码学习——只看一篇就够了/" data-id="cjjb6fryd001uiiqtbszhqqvg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/caffe/">caffe</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/06/Qemu中TCG操作数的定义及注释/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Qemu中TCG操作数的定义及注释
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/15/linux C串口常规设置参考/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux C串口常规设置参考</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我的心得/">我的心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程/">硬件编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程语言/">硬件编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法设计/">算法设计</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FPGA/">FPGA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/caffe/">caffe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地图/">地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的心得/">我的心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/硬件编程/">硬件编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法设计/">算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C语言/" style="font-size: 11.43px;">C语言</a> <a href="/tags/FPGA/" style="font-size: 10px;">FPGA</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MATLAB/" style="font-size: 10px;">MATLAB</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nachos/" style="font-size: 14.29px;">Nachos</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/可视化/" style="font-size: 12.86px;">可视化</a> <a href="/tags/哈弗曼树/" style="font-size: 14.29px;">哈弗曼树</a> <a href="/tags/图论/" style="font-size: 12.86px;">图论</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/我的心得/" style="font-size: 11.43px;">我的心得</a> <a href="/tags/操作系统/" style="font-size: 18.57px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 15.71px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/机器学习/" style="font-size: 11.43px;">机器学习</a> <a href="/tags/硬件编程/" style="font-size: 10px;">硬件编程</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法设计/" style="font-size: 17.14px;">算法设计</a> <a href="/tags/线程/" style="font-size: 14.29px;">线程</a> <a href="/tags/编码/" style="font-size: 20px;">编码</a> <a href="/tags/编程/" style="font-size: 11.43px;">编程</a> <a href="/tags/网络编程/" style="font-size: 10px;">网络编程</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/设计模式/" style="font-size: 11.43px;">设计模式</a> <a href="/tags/译码/" style="font-size: 14.29px;">译码</a> <a href="/tags/软件安装/" style="font-size: 12.86px;">软件安装</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 11.43px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/07/网上调研：主流网络技术和设备的性能与市场/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/06/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/15/caffe-源码学习——只看一篇就够了/">caffe-源码学习——只看一篇就够了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/linux C串口常规设置参考/">linux C串口常规设置参考</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/P问题NP问题和NPC问题/">什么是P问题、NP问题和NPC问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Dove Cao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

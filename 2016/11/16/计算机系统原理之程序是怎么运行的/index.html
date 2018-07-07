@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>计算机系统原理之程序是怎么运行的 | Dove&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文在CSDN的地址：点这里 计算机的组成 计算机是由硬件和软件组成的，这两个部分共同协作完成程序的运行。这两部分如何协作完成程序的运行，是本系列的重点。">
+<meta name="keywords" content="编码,操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机系统原理之程序是怎么运行的">
+<meta property="og:url" content="https://idevede.github.io/2016/11/16/计算机系统原理之程序是怎么运行的/index.html">
+<meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里 计算机的组成 计算机是由硬件和软件组成的，这两个部分共同协作完成程序的运行。这两部分如何协作完成程序的运行，是本系列的重点。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://images.cnitblog.com/blog/558323/201309/19215446-28cd336ade294ec8a88db75092e836e8.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/558323/201309/20012001-b4516f4b8df44165abeaf329bc6865bf.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/558323/201309/20174444-1afe1aadf42d43148d6b761c39498d5b.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/558323/201309/20175327-764fa6dc592a4178aeb2933054bb7e6e.jpg">
+<meta property="og:image" content="http://images.cnitblog.com/blog/558323/201309/20180058-b0eedd2bd90c419099e026688e83598f.jpg">
+<meta property="og:updated_time" content="2018-07-07T07:30:19.847Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机系统原理之程序是怎么运行的">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里 计算机的组成 计算机是由硬件和软件组成的，这两个部分共同协作完成程序的运行。这两部分如何协作完成程序的运行，是本系列的重点。">
+<meta name="twitter:image" content="http://images.cnitblog.com/blog/558323/201309/19215446-28cd336ade294ec8a88db75092e836e8.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dove&#39;s bolg</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://idevede.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-计算机系统原理之程序是怎么运行的" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/16/计算机系统原理之程序是怎么运行的/" class="article-date">
+  <time datetime="2016-11-16T01:33:59.000Z" itemprop="datePublished">2016-11-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/操作系统/">操作系统</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机系统原理之程序是怎么运行的
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/53188341" target="_blank" rel="noopener">点这里</a></p>
+<p>计算机的组成</p>
+<p>计算机是由硬件和软件组成的，这两个部分共同协作完成程序的运行。这两部分如何协作完成程序的运行，是本系列的重点。<br><a id="more"></a></p>
+<p><em>信息的表示</em></p>
+<p>信息的表示说到底就是位加上下文。举个小例子，比如11011101这一串二进制，在表示整数的时候它表示221，但是如果放在Java的class文件当中，它可能代表一个JVM的指令。</p>
+<p><em>程序的编译</em></p>
+<p>对于一个简单的C语言程序来说，一般要经过预处理器、编译器、汇编器和链接器的处理，才能被翻译成一段可执行的二进制文件。</p>
+<p> 比如对于一个简单的C语言程序，如下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">     printf(&quot;hello,world\n&quot;);    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们保存在hello.c当中，那么它的翻译过程如下。</p>
+<p><img src="http://images.cnitblog.com/blog/558323/201309/19215446-28cd336ade294ec8a88db75092e836e8.jpg" alt=""></p>
+<p><em>程序的运行</em> </p>
+<p>程序的运行由解释器负责，它将逐个解释最终生成的二进制文件并执行。</p>
+<p><em>计算机的硬件组成</em></p>
+<p>首先，我们来看下计算机中硬件的大致分布，如下图。<br><img src="http://images.cnitblog.com/blog/558323/201309/20012001-b4516f4b8df44165abeaf329bc6865bf.jpg" alt=""></p>
+<p> 其中有几个非常重要的部分，一一看下都是什么作用。</p>
+<p> _总线_：贯穿整个系统的是一组电子管道（其实就是传输数据的线路），也就是总线。总线传送的是字，字的大小与系统相关，比如在32位操作系统当中，一个字是4个字节。</p>
+<p><em>I/O设备</em>：I/O设备是系统与外部联系的通道。I/O设备（键盘、鼠标、显示器等）由控制器（USB控制器）或者适配器（图形适配器，也就是显卡）与I/O总线相连，两者的区别在于一个是主板上的芯片组，一个是主板插槽上的卡。</p>
+<p>_主存_：它是计算机中的一个临时存储设备，在处理器执行程序的时候，主存就是临时存放数据的地方。物理上来说，它是由动态随即存取存储器芯片组成，逻辑上来说，它是一组连续的字节数组，每一个字节都有唯一的地址。</p>
+<p><em>处理器</em>：全称中央处理单元，是解释存储在主存中指令的引擎。处理器的核心是一个程序计数器，它在整个计算机运行的期间都会指向一个主存中的一个内存地址，而地址当中则是一个计算机指令。处理器所做的，就是不停的执行程序计数器所指向的每一条指令。处理器所做的操作是围绕主存、寄存器文件以及算术/逻辑单元进行的，这里面处理器做的最多的动作就是加载（从主存将数据复制到寄存器）、存储（从寄存器将数据复制到主存）、操作（将两个寄存器的内容复制到算术/逻辑单元进行操作，结果会再次复制到寄存器）以及跳转（改变程序计数器当中的内容）。</p>
+<p>处理器当中提到的是指令集结构，不过实际当中指令集的实现是非常复杂的，这么做的目的是为了加速CPU的运算速度。我们可以这样去区分指令集机构以及微体系结构，指令集结构是指令集的抽象描述，而微体系结构则是这个抽象描述的某一个具体实现，类似于JAVA虚拟机与JAVA虚拟机实现的关系。</p>
+<p>总结 ：计算机是由软件与硬件组成的，而硬件又包括了总线、I/O设备、主存以及处理器，其中信息是由位以及上下文表示的，而信息则是从I/O设备以位的形式通过总线进入主存，然后由处理器从主存将信息取出处理。</p>
+<p>一个程序的执行，是经历了预处理器、编译器、汇编器以及链接器的处理之后，才最终成为可执行的文件。当程序成为可执行文件时就已经保存在了磁盘上，具体的执行过程在下一章再总结。</p>
+<p><em>Hello world的执行</em></p>
+<p>我们以Linux系统为例，当我们执行一个简单的打印字符串的C程序时，我们需要在命令行输入./hello以及回车去执行该程序。在整个执行过程中，计算机主要做了三件事，或者说经历了三个阶段来完成程序的运行。</p>
+<p>1、linux的外壳扫描用户输入的字符</p>
+<p>当我们在键盘输入./hello时，linux的外壳程序（也就是命令行）会扫描我们输入的字符，将这些字符一一读入到寄存器当中，然后再一一放入主存。换句话说，./hello这几个字符是经过了CPU中的寄存器从而到达了主存。下面LZ将这一过程的图示画出来。</p>
+<p><img src="http://images.cnitblog.com/blog/558323/201309/20174444-1afe1aadf42d43148d6b761c39498d5b.jpg" alt=""></p>
+<p>2、加载hello文件的代码以及数据到主存</p>
+<p>这一过程的触发是在我们按下回车的那一刻，此时系统会将存储在磁盘上的hello文件加载到主存，而此过程会利用一种叫做存储器存取的技术，使得数据不通过寄存器直接到达主存。下图是这一过程的图示。</p>
+<p><img src="http://images.cnitblog.com/blog/558323/201309/20175327-764fa6dc592a4178aeb2933054bb7e6e.jpg" alt=""></p>
+<p>3、根据主存中代码的指令执行程序</p>
+<p>在代码以及程序所需要的数据加载到主存后，CPU就开始从main函数的起始位置，依次执行代码中的指令。由于我们的代码只是简单的输出“hello world”这样的字符串，因此系统只是将这个字符串依次加载到寄存器，然后传输到显示器终端显示。这个过程如下图。</p>
+<p><img src="http://images.cnitblog.com/blog/558323/201309/20180058-b0eedd2bd90c419099e026688e83598f.jpg" alt=""></p>
+<p>总结 ：本章只是简单的介绍了一下hello程序的执行过程，我们可以简单的这么理解，hello程序的执行，其实就是将数据和代码加载到主存，并由CPU从主存获取指令从而执行的过程。</p>
+<p>原文链接：<a href="http://www.cnblogs.com/zuoxiaolong/archive/2013/09/20/computer1.html" target="_blank" rel="noopener">http://www.cnblogs.com/zuoxiaolong/archive/2013/09/20/computer1.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/11/16/计算机系统原理之程序是怎么运行的/" data-id="cjjb39a1g0000iiqtb4jj6xyo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/30/ 从键盘按下字符到它出现在显示器的过程详解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          总结－从键盘按下字符到它出现在显示器的过程详解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/09/Nachos操作系统：Pro1.1：完成KThread.join方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Nachos操作系统：Pro1.1：完成KThread.join方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我的心得/">我的心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程/">硬件编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程语言/">硬件编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法设计/">算法设计</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FPGA/">FPGA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/caffe/">caffe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地图/">地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的心得/">我的心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/硬件编程/">硬件编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法设计/">算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/C语言/" style="font-size: 11.43px;">C语言</a> <a href="/tags/FPGA/" style="font-size: 10px;">FPGA</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MATLAB/" style="font-size: 10px;">MATLAB</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nachos/" style="font-size: 14.29px;">Nachos</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/可视化/" style="font-size: 12.86px;">可视化</a> <a href="/tags/哈弗曼树/" style="font-size: 14.29px;">哈弗曼树</a> <a href="/tags/图论/" style="font-size: 12.86px;">图论</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/嵌入式/" style="font-size: 10px;">嵌入式</a> <a href="/tags/我的心得/" style="font-size: 11.43px;">我的心得</a> <a href="/tags/操作系统/" style="font-size: 18.57px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据挖掘/" style="font-size: 10px;">数据挖掘</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 15.71px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/机器学习/" style="font-size: 11.43px;">机器学习</a> <a href="/tags/硬件编程/" style="font-size: 10px;">硬件编程</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法设计/" style="font-size: 17.14px;">算法设计</a> <a href="/tags/线程/" style="font-size: 14.29px;">线程</a> <a href="/tags/编码/" style="font-size: 20px;">编码</a> <a href="/tags/编程/" style="font-size: 11.43px;">编程</a> <a href="/tags/网络编程/" style="font-size: 10px;">网络编程</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/设计模式/" style="font-size: 11.43px;">设计模式</a> <a href="/tags/译码/" style="font-size: 14.29px;">译码</a> <a href="/tags/软件安装/" style="font-size: 12.86px;">软件安装</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 11.43px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/07/网上调研：主流网络技术和设备的性能与市场/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/06/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+          </li>
+        
+          <li>
+            <a href="/2017/10/15/caffe-源码学习——只看一篇就够了/">caffe-源码学习——只看一篇就够了</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/linux C串口常规设置参考/">linux C串口常规设置参考</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/15/P问题NP问题和NPC问题/">什么是P问题、NP问题和NPC问题</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Dove Cao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
