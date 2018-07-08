@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives: 2018 | Dove&#39;s bolg</title>
+  <title>设计模式之Decorator(油漆工) 装饰者模式 | Dove&#39;s bolg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dove&#39;s bolg">
-<meta property="og:url" content="https://idevede.github.io/archives/2018/page/2/index.html">
+  <meta name="description" content="本文在CSDN的地址：点这里 装饰模式:Decorator常被翻译成”装饰”,我觉得翻译成”油漆工”更形象点,油漆工(decorator)是用来刷油漆的,那么被刷油漆的对象我们称decoratee.这两种实体在Decorator模式中是必须的.">
+<meta name="keywords" content="编码,面向对象,设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式之Decorator(油漆工) 装饰者模式">
+<meta property="og:url" content="https://idevede.github.io/2016/12/03/设计模式之Decorator装饰者模式/index.html">
 <meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里 装饰模式:Decorator常被翻译成”装饰”,我觉得翻译成”油漆工”更形象点,油漆工(decorator)是用来刷油漆的,那么被刷油漆的对象我们称decoratee.这两种实体在Decorator模式中是必须的.">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-08T04:00:04.741Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dove&#39;s bolg">
+<meta name="twitter:title" content="设计模式之Decorator(油漆工) 装饰者模式">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里 装饰模式:Decorator常被翻译成”装饰”,我觉得翻译成”油漆工”更形象点,油漆工(decorator)是用来刷油漆的,那么被刷油漆的对象我们称decoratee.这两种实体在Decorator模式中是必须的.">
   
     <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
   
@@ -60,45 +65,85 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/01/12/新型硬件发展趋势及其对数据管理与分析的挑2/" class="archive-article-date">
-  <time datetime="2018-01-12T07:24:48.000Z" itemprop="datePublished">Jan 12</time>
+        <section id="main"><article id="post-设计模式之Decorator装饰者模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/03/设计模式之Decorator装饰者模式/" class="article-date">
+  <time datetime="2016-12-03T01:33:59.000Z" itemprop="datePublished">2016-12-03</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/我的心得/">我的心得</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/12/新型硬件发展趋势及其对数据管理与分析的挑2/">新型硬件发展趋势及其对数据管理与分析的挑战（上）</a>
+    <h1 class="article-title" itemprop="name">
+      设计模式之Decorator(油漆工) 装饰者模式
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
+      </header>
     
-    <a class="extend prev" rel="prev" href="/archives/2018/">&laquo; Prev</a><a class="page-number" href="/archives/2018/">1</a><span class="page-number current">2</span>
-  </nav>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/53401252" target="_blank" rel="noopener">点这里</a></p>
+<p>装饰模式:Decorator常被翻译成”装饰”,我觉得翻译成”油漆工”更形象点,油漆工(decorator)是用来刷油漆的,那么被刷油漆的对象我们称decoratee.这两种实体在Decorator模式中是必须的.<br><a id="more"></a></p>
+<p><em>Decorator定义:</em><br>动态给一个对象添加一些额外的职责,就象在墙上刷油漆.使用Decorator模式相比用生成子类方式达到功能的扩充显得更为灵活.</p>
+<p><em>为什么使用Decorator?</em></p>
+<p>我们通常可以使用继承来实现功能的拓展,如果这些需要拓展的功能的种类很繁多,那么势必生成很多子类,增加系统的复杂性,同时,使用继承实现功能拓展,我们必须可预见这些拓展功能,这些功能是编译时就确定了,是静态的.<br>使用Decorator的理由是:这些功能需要由用户动态决定加入的方式和时机.Decorator提供了”即插即用”的方法,在运行期间决定何时增加何种功能.</p>
+<p><em>如何使用?</em><br>举Adapter中的打桩示例,在Adapter中有两种类:方形桩 圆形桩,Adapter模式展示如何综合使用这两个类,在Decorator模式中,我们是要在打桩时增加一些额外功能,比如,挖坑 在桩上钉木板等,不关心如何使用两个不相关的类.</p>
+<p>我们先建立一个接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public interface Work</span><br><span class="line">&#123; </span><br><span class="line">　　public void insert();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>接口Work有一个具体实现:插入方形桩或圆形桩,这两个区别对Decorator是无所谓.我们以插入方形桩为例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class SquarePeg implements Work&#123;</span><br><span class="line">　　public void insert()&#123;</span><br><span class="line">　　　　System.out.println(&quot;方形桩插入&quot;);</span><br><span class="line">　　&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在有一个应用:需要在桩打入前,挖坑,在打入后,在桩上钉木板,这些额外的功能是动态,可能随意增加调整修改,比如,可能又需要在打桩之后钉架子(只是比喻).</p>
+<p>那么我们使用Decorator模式,这里方形桩SquarePeg是decoratee(被刷油漆者),我们需要在decoratee上刷些”油漆”,这些油漆就是那些额外的功能.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">public class Decorator implements Work&#123;</span><br><span class="line"></span><br><span class="line">　　private Work work;</span><br><span class="line">　　//额外增加的功能被打包在这个List中</span><br><span class="line">　　private ArrayList others = new ArrayList();</span><br><span class="line"></span><br><span class="line">　　//在构造器中使用组合new方式,引入Work对象;</span><br><span class="line">　　public Decorator(Work work)</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　this.work=work;</span><br><span class="line">　　 </span><br><span class="line">　　　　others.add(&quot;挖坑&quot;);</span><br><span class="line"></span><br><span class="line">　　　　others.add(&quot;钉木板&quot;);</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　public void insert()&#123;</span><br><span class="line"></span><br><span class="line">　　　　newMethod();</span><br><span class="line">　　&#125;</span><br><span class="line"></span><br><span class="line">　　</span><br><span class="line">　　//在新方法中,我们在insert之前增加其他方法,这里次序先后是用户灵活指定的 　　 </span><br><span class="line">　　public void newMethod()</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　otherMethod();</span><br><span class="line">　　　　work.insert();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">　　&#125; </span><br><span class="line"></span><br><span class="line">　　public void otherMethod()</span><br><span class="line">　　&#123;</span><br><span class="line">　　　　ListIterator listIterator = others.listIterator();</span><br><span class="line">　　　　while (listIterator.hasNext())</span><br><span class="line">　　　　&#123;</span><br><span class="line">　　　　　　System.out.println(((String)(listIterator.next())) + &quot; 正在进行&quot;);</span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125; </span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在上例中,我们把挖坑和钉木板都排在了打桩insert前面,这里只是举例说明额外功能次序可以任意安排.</p>
+<p>好了,Decorator模式出来了,我们看如何调用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Work squarePeg = new SquarePeg(); </span><br><span class="line">Work decorator = new Decorator(squarePeg);</span><br><span class="line">decorator.insert();</span><br></pre></td></tr></table></figure></p>
+<p>Decorator模式至此完成.</p>
+<p>如果你细心,会发现,上面调用类似我们读取文件时的调用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FileReader fr = new FileReader(filename);</span><br><span class="line">BufferedReader br = new BufferedReader(fr);</span><br></pre></td></tr></table></figure></p>
+<p>实际上Java 的I/O API就是使用Decorator实现的,I/O变种很多,如果都采取继承方法,将会产生很多子类,显然相当繁琐.</p>
+<p>Jive中的Decorator实现<br>在论坛系统中,有些特别的字是不能出现在论坛中如”打倒XXX”,我们需要过滤这些”反动”的字体.不让他们出现或者高亮度显示.</p>
+<p>在IBM Java专栏中专门谈Jive的文章中,有谈及Jive中ForumMessageFilter.java使用了Decorator模式,其实,该程序并没有真正使用Decorator,而是提示说:针对特别论坛可以设计额外增加的过滤功能,那么就可以重组ForumMessageFilter作为Decorator模式了.</p>
+<p>所以,我们在分辨是否真正是Decorator模式,以及会真正使用Decorator模式,一定要把握好Decorator模式的定义,以及其中参与的角色(Decoratee 和Decorator).</p>
+<p>更多资料，见《JAVA实用系统开发指南》</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/12/03/设计模式之Decorator装饰者模式/" data-id="cjjcb7qyh004ildqtmfjv3p83" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/09/Nachos操作系_实现线程部分/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          操作系统：Nachos，java实现线程部分
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/30/ 从键盘按下字符到它出现在显示器的过程详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">总结－从键盘按下字符到它出现在显示器的过程详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
