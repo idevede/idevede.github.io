@@ -5,15 +5,20 @@
   
 
   
-  <title>Category: 数据结构 | Dove&#39;s bolg</title>
+  <title>静态块 简单例子 | Dove&#39;s bolg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Dove&#39;s bolg">
-<meta property="og:url" content="https://idevede.github.io/categories/数据结构/page/2/index.html">
+  <meta name="description" content="本文在CSDN的地址：点这里 一个简单的例子">
+<meta name="keywords" content="编码,面向对象,静态块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="静态块 简单例子">
+<meta property="og:url" content="https://idevede.github.io/2016/12/05/静态块/index.html">
 <meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里 一个简单的例子">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-08T04:00:46.730Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dove&#39;s bolg">
+<meta name="twitter:title" content="静态块 简单例子">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里 一个简单的例子">
   
     <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
   
@@ -60,45 +65,83 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2016/02/13/哈夫曼树_哈夫曼编码与译码系统/" class="archive-article-date">
-  <time datetime="2016-02-13T12:09:26.000Z" itemprop="datePublished">Feb 13</time>
+        <section id="main"><article id="post-静态块" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/05/静态块/" class="article-date">
+  <time datetime="2016-12-05T07:24:48.000Z" itemprop="datePublished">2016-12-05</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/我的心得/">我的心得</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/02/13/哈夫曼树_哈夫曼编码与译码系统/">数据结构：哈夫曼树，哈夫曼编码与译码系统</a>
+    <h1 class="article-title" itemprop="name">
+      静态块 简单例子
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
+      </header>
     
-    <a class="extend prev" rel="prev" href="/categories/数据结构/">&laquo; Prev</a><a class="page-number" href="/categories/数据结构/">1</a><span class="page-number current">2</span>
-  </nav>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/53465744" target="_blank" rel="noopener">点这里</a></p>
+<p>一个简单的例子<br><a id="more"></a></p>
+<ol>
+<li><p>所有静态的(无论其是变量还是块)都按顺序执行. </p>
+</li>
+<li><p>所有的非静态的块都在静态的(无论其是变量还是块)后执行. </p>
+</li>
+<li><p>所有的块(无论是静态的还是非静态的)都在构造之前执行.</p>
+</li>
+<li><p>静态块在类被加载到内存后就开始执行</p>
+</li>
+<li><p>非静态块是在创建对象时，构造之前被调用</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class TestStaticMode &#123;  </span><br><span class="line">    public TestStaticMode() &#123;  </span><br><span class="line">        System.out.println(&quot;in structure&quot;);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    static int i = 0;  </span><br><span class="line">  </span><br><span class="line">    &#123;  </span><br><span class="line">        System.out.println(&quot;in first no static i=&quot; + i);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    static &#123;  </span><br><span class="line">        i = 1;  </span><br><span class="line">        System.out.println(&quot;in static i=&quot; + i);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    &#123;  </span><br><span class="line">        System.out.println(&quot;in second no static i=&quot; + i);  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    public static void main(String args[]) &#123;  </span><br><span class="line">        TestStaticMode testStaticMode = new TestStaticMode();  </span><br><span class="line">        System.out.println(&quot;i=&quot; + i);  </span><br><span class="line">  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">public class TestStaticMode &#123;</span><br><span class="line">	public TestStaticMode() &#123;</span><br><span class="line">		System.out.println(&quot;in structure&quot;);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	static int i = 0;</span><br><span class="line"> </span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(&quot;in first no static i=&quot; + i);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	static &#123;</span><br><span class="line">		i = 1;</span><br><span class="line">		System.out.println(&quot;in static i=&quot; + i);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	&#123;</span><br><span class="line">		System.out.println(&quot;in second no static i=&quot; + i);</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">	public static void main(String args[]) &#123;</span><br><span class="line">		TestStaticMode testStaticMode = new TestStaticMode();</span><br><span class="line">		System.out.println(&quot;i=&quot; + i);</span><br><span class="line"> </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">in static i=1 </span><br><span class="line">in first no static i=1 </span><br><span class="line">in second no static i=1 </span><br><span class="line">in structure</span><br><span class="line">i=1</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/12/05/静态块/" data-id="cjjcb8rf8004nmyqtccmuxrjj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/静态块/">静态块</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/12/09/Nachos操作系_实现线程部分/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          操作系统：Nachos，java实现线程部分
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/12/03/设计模式之Decorator装饰者模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">设计模式之Decorator(油漆工) 装饰者模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
