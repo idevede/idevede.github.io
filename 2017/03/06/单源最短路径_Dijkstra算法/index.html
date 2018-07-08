@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>单源最短路径-Dijkstra算法 | Dove&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文在CSDN的地址：点这里 迪杰斯特拉算法解决的事带权重的有向图上单源最短路径问题，该算法要求所有边的权重都为非负值。他在运行过程中维护的关键信息是一组节点集合S。算法重复从节点集V-S中选择最短路径估计最小的节点u，将u加入到集合S中，然后对所有从u发出的边进行松弛。 我们使用最小优先队列Q来保存节点集合，每个节点的关键值为其d值">
+<meta name="keywords" content="数据结构,算法设计,图论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单源最短路径-Dijkstra算法">
+<meta property="og:url" content="https://idevede.github.io/2017/03/06/单源最短路径_Dijkstra算法/index.html">
+<meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里 迪杰斯特拉算法解决的事带权重的有向图上单源最短路径问题，该算法要求所有边的权重都为非负值。他在运行过程中维护的关键信息是一组节点集合S。算法重复从节点集V-S中选择最短路径估计最小的节点u，将u加入到集合S中，然后对所有从u发出的边进行松弛。 我们使用最小优先队列Q来保存节点集合，每个节点的关键值为其d值">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/1046690/201612/1046690-20161214112603339-1886806307.jpg">
+<meta property="og:image" content="http://images2015.cnblogs.com/blog/1046690/201612/1046690-20161214112617448-1703879788.jpg">
+<meta property="og:updated_time" content="2018-07-08T03:55:46.653Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单源最短路径-Dijkstra算法">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里 迪杰斯特拉算法解决的事带权重的有向图上单源最短路径问题，该算法要求所有边的权重都为非负值。他在运行过程中维护的关键信息是一组节点集合S。算法重复从节点集V-S中选择最短路径估计最小的节点u，将u加入到集合S中，然后对所有从u发出的边进行松弛。 我们使用最小优先队列Q来保存节点集合，每个节点的关键值为其d值">
+<meta name="twitter:image" content="http://images2015.cnblogs.com/blog/1046690/201612/1046690-20161214112603339-1886806307.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dove&#39;s bolg</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://idevede.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-单源最短路径_Dijkstra算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/06/单源最短路径_Dijkstra算法/" class="article-date">
+  <time datetime="2017-03-06T07:24:48.000Z" itemprop="datePublished">2017-03-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/数据结构/">数据结构</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      单源最短路径-Dijkstra算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/60572715" target="_blank" rel="noopener">点这里</a></p>
+<p>迪杰斯特拉算法解决的事带权重的有向图上单源最短路径问题，该算法要求所有边的权重都为非负值。他在运行过程中维护的关键信息是一组节点集合S。算法重复从节点集V-S中选择最短路径估计最小的节点u，将u加入到集合S中，然后对所有从u发出的边进行松弛。</p>
+<p>我们使用最小优先队列Q来保存节点集合，每个节点的关键值为其d值</p>
+<a id="more"></a>
+<h2 id="算法步骤"><a href="#算法步骤" class="headerlink" title="算法步骤"></a>算法步骤</h2><p>G={V,E}</p>
+<ol>
+<li>初始时令 S={V0},T=V-S={其余顶点}，T中顶点对应的距离值<br>若存在\&lt;V0,Vi&gt;，d(V0,Vi)为\&lt;V0,Vi&gt;弧上的权值<br>若不存在\&lt;V0,Vi&gt;，d(V0,Vi)为∞</li>
+<li>在（T）未确定的点中选取当前以得的最短路径（与S中顶点有关联边且权值最小）</li>
+<li>对其余T中顶点的距离值进行修改：若加进W作中间顶点，从V0到Vi的距离值缩短，则修改此距离值<br>4.重复上述步骤2、3，直到S中包含所有顶点，即W=Vi为止</li>
+</ol>
+<p>##　算法举例</p>
+<p><img src="http://images2015.cnblogs.com/blog/1046690/201612/1046690-20161214112603339-1886806307.jpg" alt=""><br><img src="http://images2015.cnblogs.com/blog/1046690/201612/1046690-20161214112617448-1703879788.jpg" alt=""></p>
+<h2 id="算法实现"><a href="#算法实现" class="headerlink" title="算法实现"></a>算法实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;stdio.h&quot;    </span><br><span class="line">#include &quot;stdlib.h&quot;   </span><br><span class="line">#include &quot;io.h&quot;  </span><br><span class="line">#include &quot;math.h&quot;  </span><br><span class="line">#include &quot;time.h&quot;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">#define OK 1</span><br><span class="line">#define ERROR 0</span><br><span class="line">#define TRUE 1</span><br><span class="line">#define FALSE 0</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">#define MAXEDGE 20</span><br><span class="line">#define MAXVEX 20</span><br><span class="line">#define INFINITY 65535</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">typedef int Status;	/* Status是函数的类型,其值是函数结果状态代码，如OK等 */ </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">	int vexs[MAXVEX];</span><br><span class="line">	int arc[MAXVEX][MAXVEX];</span><br><span class="line">	int numVertexes, numEdges;</span><br><span class="line">&#125;MGraph;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">typedef int Patharc[MAXVEX];    /* 用于存储最短路径下标的数组 */</span><br><span class="line">typedef int ShortPathTable[MAXVEX];/* 用于存储到各点最短路径的权值和 */</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">/* 构件图 */</span><br><span class="line">void CreateMGraph(MGraph *G)</span><br><span class="line">&#123;</span><br><span class="line">	int i, j;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	/* printf(&quot;请输入边数和顶点数:&quot;); */</span><br><span class="line">	G-&gt;numEdges=16;</span><br><span class="line">	G-&gt;numVertexes=9;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	for (i = 0; i &lt; G-&gt;numVertexes; i++)/* 初始化图 */</span><br><span class="line">	&#123;</span><br><span class="line">		G-&gt;vexs[i]=i;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	for (i = 0; i &lt; G-&gt;numVertexes; i++)/* 初始化图 */</span><br><span class="line">	&#123;</span><br><span class="line">		for ( j = 0; j &lt; G-&gt;numVertexes; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			if (i==j)</span><br><span class="line">				G-&gt;arc[i][j]=0;</span><br><span class="line">			else</span><br><span class="line">				G-&gt;arc[i][j] = G-&gt;arc[j][i] = INFINITY;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	G-&gt;arc[0][1]=1;</span><br><span class="line">	G-&gt;arc[0][2]=5; </span><br><span class="line">	G-&gt;arc[1][2]=3; </span><br><span class="line">	G-&gt;arc[1][3]=7; </span><br><span class="line">	G-&gt;arc[1][4]=5; </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	G-&gt;arc[2][4]=1; </span><br><span class="line">	G-&gt;arc[2][5]=7; </span><br><span class="line">	G-&gt;arc[3][4]=2; </span><br><span class="line">	G-&gt;arc[3][6]=3; </span><br><span class="line">	G-&gt;arc[4][5]=3;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	G-&gt;arc[4][6]=6;</span><br><span class="line">	G-&gt;arc[4][7]=9; </span><br><span class="line">	G-&gt;arc[5][7]=5; </span><br><span class="line">	G-&gt;arc[6][7]=2; </span><br><span class="line">	G-&gt;arc[6][8]=7;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	G-&gt;arc[7][8]=4;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	for(i = 0; i &lt; G-&gt;numVertexes; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		for(j = i; j &lt; G-&gt;numVertexes; j++)</span><br><span class="line">		&#123;</span><br><span class="line">			G-&gt;arc[j][i] =G-&gt;arc[i][j];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">/*  Dijkstra算法，求有向网G的v0顶点到其余顶点v的最短路径P[v]及带权长度D[v] */    </span><br><span class="line">/*  P[v]的值为前驱顶点下标,D[v]表示v0到v的最短路径长度和 */  </span><br><span class="line">void ShortestPath_Dijkstra(MGraph G, int v0, Patharc *P, ShortPathTable *D)</span><br><span class="line">&#123;    </span><br><span class="line">	int v,w,k,min;    </span><br><span class="line">	int final[MAXVEX];/* final[w]=1表示求得顶点v0至vw的最短路径 */</span><br><span class="line">	for(v=0; v&lt;G.numVertexes; v++)    /* 初始化数据 */</span><br><span class="line">	&#123;        </span><br><span class="line">		final[v] = 0;			/* 全部顶点初始化为未知最短路径状态 */</span><br><span class="line">		(*D)[v] = G.arc[v0][v];/* 将与v0点有连线的顶点加上权值 */</span><br><span class="line">		(*P)[v] = -1;				/* 初始化路径数组P为-1  */       </span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	(*D)[v0] = 0;  /* v0至v0路径为0 */  </span><br><span class="line">	final[v0] = 1;    /* v0至v0不需要求路径 */        </span><br><span class="line">	/* 开始主循环，每次求得v0到某个v顶点的最短路径 */   </span><br><span class="line">	for(v=1; v&lt;G.numVertexes; v++)   </span><br><span class="line">	&#123;</span><br><span class="line">		min=INFINITY;    /* 当前所知离v0顶点的最近距离 */        </span><br><span class="line">		for(w=0; w&lt;G.numVertexes; w++) /* 寻找离v0最近的顶点 */    </span><br><span class="line">		&#123;            </span><br><span class="line">			if(!final[w] &amp;&amp; (*D)[w]&lt;min)             </span><br><span class="line">			&#123;                   </span><br><span class="line">				k=w;                    </span><br><span class="line">				min = (*D)[w];    /* w顶点离v0顶点更近 */            </span><br><span class="line">			&#125;        </span><br><span class="line">		&#125;        </span><br><span class="line">		final[k] = 1;    /* 将目前找到的最近的顶点置为1 */</span><br><span class="line">		for(w=0; w&lt;G.numVertexes; w++) /* 修正当前最短路径及距离 */</span><br><span class="line">		&#123;</span><br><span class="line">			/* 如果经过v顶点的路径比现在这条路径的长度短的话 */</span><br><span class="line">			if(!final[w] &amp;&amp; (min+G.arc[k][w]&lt;(*D)[w]))   </span><br><span class="line">			&#123; /*  说明找到了更短的路径，修改D[w]和P[w] */</span><br><span class="line">				(*D)[w] = min + G.arc[k][w];  /* 修改当前路径长度 */               </span><br><span class="line">				(*P)[w]=k;        </span><br><span class="line">			&#125;       </span><br><span class="line">		&#125;   </span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">int main(void)</span><br><span class="line">&#123;   </span><br><span class="line">	int i,j,v0;</span><br><span class="line">	MGraph G;    </span><br><span class="line">	Patharc P;    </span><br><span class="line">	ShortPathTable D; /* 求某点到其余各点的最短路径 */   </span><br><span class="line">	v0=0;</span><br><span class="line">	</span><br><span class="line">	CreateMGraph(&amp;G);</span><br><span class="line">	</span><br><span class="line">	ShortestPath_Dijkstra(G, v0, &amp;P, &amp;D);  </span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">	printf(&quot;最短路径倒序如下:\n&quot;);    </span><br><span class="line">	for(i=1;i&lt;G.numVertexes;++i)   </span><br><span class="line">	&#123;       </span><br><span class="line">		printf(&quot;v%d - v%d : &quot;,v0,i);</span><br><span class="line">		j=i;</span><br><span class="line">		while(P[j]!=-1)</span><br><span class="line">		&#123;</span><br><span class="line">			printf(&quot;%d &quot;,P[j]);</span><br><span class="line">			j=P[j];</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;\n&quot;);</span><br><span class="line">	&#125;    </span><br><span class="line">	printf(&quot;\n源点到各顶点的最短路径长度为:\n&quot;);  </span><br><span class="line">	for(i=1;i&lt;G.numVertexes;++i)        </span><br><span class="line">		printf(&quot;v%d - v%d : %d \n&quot;,G.vexs[0],G.vexs[i],D[i]);     </span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2017/03/06/单源最短路径_Dijkstra算法/" data-id="cjjcb20z1000j1wqtc8l3ypz6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论/">图论</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法设计/">算法设计</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/12/CCF_消除类问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CCF 消除类问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/28/POJ/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">POJ题单及算法训练练习顺序</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我的心得/">我的心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程/">硬件编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程语言/">硬件编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法设计/">算法设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chisel/">Chisel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FPGA/">FPGA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RISC-V/">RISC-V</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rocket-chip/">Rocket chip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xilinx/">Xilinx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/caffe/">caffe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ipv6/">ipv6</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存分配/">内存分配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地图/">地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能剖析/">性能剖析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的心得/">我的心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展指令集/">拓展指令集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能硬件/">智能硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟器/">模拟器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/硬件编程/">硬件编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法设计/">算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机系统/">计算机系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/静态块/">静态块</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chisel/" style="font-size: 15.71px;">Chisel</a> <a href="/tags/C语言/" style="font-size: 11.43px;">C语言</a> <a href="/tags/FPGA/" style="font-size: 10px;">FPGA</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MATLAB/" style="font-size: 10px;">MATLAB</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nachos/" style="font-size: 14.29px;">Nachos</a> <a href="/tags/QEMU/" style="font-size: 10px;">QEMU</a> <a href="/tags/RISC-V/" style="font-size: 15.71px;">RISC-V</a> <a href="/tags/Rocket-chip/" style="font-size: 11.43px;">Rocket chip</a> <a href="/tags/Scala/" style="font-size: 11.43px;">Scala</a> <a href="/tags/Xilinx/" style="font-size: 11.43px;">Xilinx</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/ipv6/" style="font-size: 10px;">ipv6</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/可视化/" style="font-size: 12.86px;">可视化</a> <a href="/tags/哈弗曼树/" style="font-size: 14.29px;">哈弗曼树</a> <a href="/tags/图论/" style="font-size: 14.29px;">图论</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/嵌入式/" style="font-size: 11.43px;">嵌入式</a> <a href="/tags/性能剖析/" style="font-size: 10px;">性能剖析</a> <a href="/tags/我的心得/" style="font-size: 12.86px;">我的心得</a> <a href="/tags/拓展指令集/" style="font-size: 14.29px;">拓展指令集</a> <a href="/tags/操作系统/" style="font-size: 17.14px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据挖掘/" style="font-size: 11.43px;">数据挖掘</a> <a href="/tags/数据管理/" style="font-size: 11.43px;">数据管理</a> <a href="/tags/数据结构/" style="font-size: 18.57px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 15.71px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/智能硬件/" style="font-size: 11.43px;">智能硬件</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/机器学习/" style="font-size: 12.86px;">机器学习</a> <a href="/tags/模拟器/" style="font-size: 10px;">模拟器</a> <a href="/tags/硬件编程/" style="font-size: 10px;">硬件编程</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法设计/" style="font-size: 17.14px;">算法设计</a> <a href="/tags/线程/" style="font-size: 14.29px;">线程</a> <a href="/tags/编码/" style="font-size: 20px;">编码</a> <a href="/tags/编程/" style="font-size: 11.43px;">编程</a> <a href="/tags/网络编程/" style="font-size: 11.43px;">网络编程</a> <a href="/tags/自然语言处理/" style="font-size: 10px;">自然语言处理</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机系统/" style="font-size: 10px;">计算机系统</a> <a href="/tags/计算机网络/" style="font-size: 12.86px;">计算机网络</a> <a href="/tags/设计模式/" style="font-size: 11.43px;">设计模式</a> <a href="/tags/译码/" style="font-size: 14.29px;">译码</a> <a href="/tags/软件安装/" style="font-size: 15.71px;">软件安装</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/静态块/" style="font-size: 10px;">静态块</a> <a href="/tags/面向对象/" style="font-size: 12.86px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">February 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/07/08/设计模式之Decorator装饰者模式/">设计模式之Decorator(油漆工) 装饰者模式</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/08/静态块/">静态块 简单例子</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/28/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/27/Rocket学习常用网址整理/">Rocket学习常用网址整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/26/Linux常用命令总结及内存分配基本知识/">Linux常用命令总结及内存分配基本知识</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Dove Cao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
