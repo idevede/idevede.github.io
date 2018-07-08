@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>新型硬件发展趋势及其对数据管理与分析的挑战（上） | Dove&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文在CSDN的地址：点这里CCF于1月11日发布了最新一期《中国计算机科学技术发展报告》，对可群智协同计算、软件智能化开发技术等11个方向的研究进展做了详细介绍和讨论。加入CCF会员登录CCF官网，可在数字图书馆栏目下载和浏览。">
+<meta name="keywords" content="智能硬件,数据管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新型硬件发展趋势及其对数据管理与分析的挑战（上）">
+<meta property="og:url" content="https://idevede.github.io/2018/01/12/新型硬件发展趋势及其对数据管理与分析的挑战1/index.html">
+<meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里CCF于1月11日发布了最新一期《中国计算机科学技术发展报告》，对可群智协同计算、软件智能化开发技术等11个方向的研究进展做了详细介绍和讨论。加入CCF会员登录CCF官网，可在数字图书馆栏目下载和浏览。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdn.net/2018030211055023">
+<meta property="og:image" content="https://img-blog.csdn.net/2018030211062711">
+<meta property="og:image" content="https://img-blog.csdn.net/20180302110709559">
+<meta property="og:updated_time" content="2018-07-08T03:04:38.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="新型硬件发展趋势及其对数据管理与分析的挑战（上）">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里CCF于1月11日发布了最新一期《中国计算机科学技术发展报告》，对可群智协同计算、软件智能化开发技术等11个方向的研究进展做了详细介绍和讨论。加入CCF会员登录CCF官网，可在数字图书馆栏目下载和浏览。">
+<meta name="twitter:image" content="https://img-blog.csdn.net/2018030211055023">
+  
+    <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dove&#39;s bolg</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://idevede.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-新型硬件发展趋势及其对数据管理与分析的挑战1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/12/新型硬件发展趋势及其对数据管理与分析的挑战1/" class="article-date">
+  <time datetime="2018-01-12T07:24:48.000Z" itemprop="datePublished">2018-01-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/硬件编程语言/">硬件编程语言</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      新型硬件发展趋势及其对数据管理与分析的挑战（上）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/79420984" target="_blank" rel="noopener">点这里</a><br>CCF于1月11日发布了最新一期《中国计算机科学技术发展报告》，对可群智协同计算、软件智能化开发技术等11个方向的研究进展做了详细介绍和讨论。加入CCF会员登录CCF官网，可在数字图书馆栏目下载和浏览。</p>
+<a id="more"></a>
+<hr>
+<h2 id="1-引言"><a href="#1-引言" class="headerlink" title="1 引言"></a>1 引言</h2><p>数据管理与分析系统的发展离不开硬件和软件技术的进步。硬件和软件是构成计算系统的两大要素，软件技术的发展既可以享受硬件技术升级在性能提升方面带来的直接红利，但又受到硬件自身特点和局限性的制约，在架构和系统设计中引入不得已的取舍。同时，软件对于性能无止境的需求又反过来推动硬件技术的不断进步和革新。对于数据管理与分析系统而言，硬件技术是载体支撑，决定了数据存取和查询等处理性能的物理极限；软件的目标是优化算法与数据结构的设计以提高软件与硬件的契合度，最大化硬件使用效率同时规避或减少硬件固有的限制。一直以来，不论传统的“计算密集型”应用还是大数据时代的“数据密集型”应用，都持续对底层硬件系统在访问延迟、容量、带宽、能耗、性价比等指标上提出更高的要求。在多样化的应用负载需求下，传统的数据管理与分析技术正在面临前所未有的挑战。而大数据带来的挑战，本质上就是由现有的信息化基础设施的处理能力在多个维度上都难以满足数据处理多样化需求之间的矛盾所引起的。</p>
+<p>信息化基础设施从广义上包含底层硬件环境与上层软件系统两个层次。而上层软件系统从设计原则、架构选型、核心功能、策略模式到优化技术，在很大程度上都是由当时的计算机硬件环境决定的。现今，信息领域的硬件技术和环境正在经历巨大的变化，特别是高性能处理器和硬件加速器、新型非易失存储器以及高速互联网络的出现正在快速改变传统的数据管理与分析系统的底层载体支撑。这些新型硬件有望突破整个计算体系的架构模式，改变上层软件的设计假设，在提供更高物理性能的同时，也要求数据管理与分析的软件架构和相关技术能够感知并适应新型硬件的特点。</p>
+<h2 id="2-新型硬件发展趋势"><a href="#2-新型硬件发展趋势" class="headerlink" title="2 新型硬件发展趋势"></a>2 新型硬件发展趋势</h2><p>当前的计算机系统仍然广泛采用冯·诺依曼型体系结构，即以存储为中心的数据访问和处理架构。近年来，硬件技术在存储器和处理器两大核心部件以及网络连接上的发展取得了突破性进展，如图1所示，一系列高性能、全新架构、新特征的新型硬件不断涌现并逐渐成为主流技术，成为未来计算机平台的硬件发展趋势。趋势表明，高性能处理器和硬件加速器、新型非易失存储器、高速互联设备以及由它们催生的具有丰富硬件上下文的异构计算微架构、以高速持久化为显著特征的混合存储环境和支持远程直接数据存取的高速互联结构正在显著改变传统的数据管理与分析系统的底层支撑载体[1-4]。<br><img src="https://img-blog.csdn.net/2018030211055023" alt=""><br>图1：新型硬件及环境</p>
+<h3 id="2-1-处理器技术发展趋势"><a href="#2-1-处理器技术发展趋势" class="headerlink" title="2.1 处理器技术发展趋势"></a>2.1 处理器技术发展趋势</h3><p>处理器技术发展至今已经经历了四十多年的发展历史，其发展技术路径经历了从提高主频为目标的Scale-up方式到以增加核心数量为目标的Scale-out方式的显著转变。依据摩尔定律的指引，在串行计算时代不断推高处理器的计算频率是提高计算机性能的最主要的发展途径之一，同时，在处理器Scale-up发展时期，指令级并行、流水线、自动预取、分支判断、乱序指令执行、多级cache、超线程等底层硬件优化技术由处理器硬件和编译程序自动识别和利用，数据管理与分析系统可以透明地利用处理器的性能提升而直接获得收益。但是受限于散热、功耗、指令级并行度以及制造工艺等因素，从半导体技术发展角度而言 Scale-up方式遭遇到了天花板，摩尔定律和Dennard Scaling法则在处理器技术的发展模式转向Scale-out的多/众核方式后才得以维系。</p>
+<p>2005年之后，高性能处理器技术正式迈入多核时代，多核并行处理技术成为主流。虽然，更加丰富的硬件上下文显著增强了多核架构下数据处理的并行能力，但是，软件不能依靠多核处理器技术的升级而自动获得并行处理性能的收益，而是需要将传统的串行程序改写为并行程序，并针对多核处理器共享LLC（Last Level Cache）的特点而优化算法性能。随着处理器制程工艺的提高，多核处理器的性能得到显著提升，如采用14nm工艺的Xeon处理器当前最多集成24个核心，支持高达3.07 TB内存和85 GB/s的内存带宽[5]。但这种x86架构的处理器仍存在着集成度低、功耗高、价格昂贵等缺点，而且以通用为主要设计目标、擅长串行和逻辑控制的多核处理器也难以满足高性能应用愈发强烈的高并发需求。处理器的发展需要分化更多的功能，形成面向特定负载、低功耗、高并发的专用硬件加速器。</p>
+<p><img src="https://img-blog.csdn.net/2018030211062711" alt=""><br>表1：代表性处理器的硬件特征</p>
+<p>近年来，以GPU、Xeon Phi、FPGA（Field Programmable Gate Array，可编辑门阵列）等为代表的专用硬件加速器正在快速发展，借助GPU、Xeon Phi众核协处理器的高并行处理能力、高带宽内存访问性能、高性价比，以及FPGA的高度定制化和完全可重置能力，硬件加速器能够有效地独立完成从CPU卸载的部分计算密集型以及数据密集型任务，或者与CPU协作完成复杂的计算任务。表1显示了部分具有代表性的多/众核处理器，在核心数量、内存带宽性能、缓存容量等方面具有的优势硬件特征。可以预见，随着高性能处理器和硬件加速器融合与协作技术的发展趋势，计算机系统内部的处理环境变得越来越复杂化和异构化，也使得数据管理与分析技术需要寻求更多样化的优化途径。</p>
+<h3 id="2-2-存储技术发展趋势"><a href="#2-2-存储技术发展趋势" class="headerlink" title="2.2 存储技术发展趋势"></a>2.2 存储技术发展趋势</h3><p>虽然高性能处理器和硬件加速器技术一直快速发展，但在经典的冯·诺依曼型体系结构下，处理器和存储器分离的架构使得处理器操作数据的速度与从传统内存获取所需数据的速度之间的差距却日益增大[6]，“内存墙”带来的数据访问性能瓶颈效应也不断加剧。面对传统二级存储设备的低速I/O能力，数据管理与分析系统在设计时不得不采用诸如缓存池、并发控制等多种设计策略以及面向磁盘的算法和数据结构以努力缓解或隐藏存储体之间的I/O性能差异，但I/O瓶颈仍然严重制约了数据密集型计算的处理能力。</p>
+<p>近年来以新型非易失存储器（Non-Volatile Memory，NVM）[7]为代表的新型存储介质的发展为突破上述I/O瓶颈提供了基础。新型非易失存储是一类存储技术的概括性术语，其并不代表某个具体的存储技术或者介质，在部分研究文献中也被称为存储级内存（Storage Class Memory，SCM）[8]。具有代表性的新型非易失存储器包括：相变存储器（Phase Change Memory, PCM）、磁阻式存储器（Magnetoresistive Random-Access Memory，MRAM）、阻变式存储器（Resistive Random Access Memory，RRAM）、铁电存储器（Ferroelectronic RAM, FeRAM）等。虽然不同存储器的工作原理以及设计和制造工艺都存在明显差异，但是总体来说，此类存储器普遍具有可持久化、高存储密度、低延迟随机读写、细粒度的按字节寻址等优良特性，如表2所示。从性能指标来看，NVM比较接近DDR内存性能，而且具有非易失性特征，在新的存储体系中可能逐渐成为主要的存储设备，而DDR内存则作为临时数据的缓存使用。闪存（Flash）技术发展最为成熟，当前PCI-e闪存最高单卡容量达到12.8TB，在读写性能上也达到较高的水平，既可以作为磁盘与系统内存之间的数据缓存，也可以替代硬盘作为持久存储设备。从能耗指标来看，内存在高负载时的能耗较低，但由于低负载时仍然需要刷新，因此低负载时的能耗水平高于其他存储设备。非易失存储器共同的特点使它们同时拥有内存式的高速访问以及外存式的持久化双重能力，其有效地解决了传统存储介质在某些关键指标上无法逾越的“性能墙”。<br><img src="https://img-blog.csdn.net/20180302110709559" alt=""><br>表2：不同存储器的关键性能指标对比</p>
+<p>同时，新型存储技术的发展对处理器技术也具有相当重要的影响，提高新型存储容量的高带宽3D堆叠技术可以应用于众核协处理器的板载存储上，为众核处理器强大的并行处理能力提供内存侧的高性能数据缓存支持。随着NVM技术的不断成熟，其构筑的多层级混合非易失存储环境必将打破计算机传统架构中CPU、主存、系统总线、外存之间的平衡性，改变存储金字塔现有结构，优化数据访问关键路径，弥补存储层级间的性能鸿沟，为数据管理和分析技术的设计带来新的机遇[9]。</p>
+<h3 id="2-3-网络技术发展趋势"><a href="#2-3-网络技术发展趋势" class="headerlink" title="2.3 网络技术发展趋势"></a>2.3 网络技术发展趋势</h3><p>除了本地存储体系带来的I/O瓶颈外，网络I/O子系统也是分布式环境下数据中心最主要的性能瓶颈，传统以太网有限的传输能力和对CPU负载的需求在很大程度上影响了分布式环境下的数据处理性能。受此影响，当分布式事务比例较高时，系统整体吞吐量极度下降，导致系统事务处理能力不能有效扩展。基于此，既有的数据管理系统不得不借助协同划分、放松一致性保证、确定性执行等策略或技术来控制和减少分布式事务的比例。但这些手段大都存在部分不尽合理的假设、适用条件以及对应用开发者的不透明性，特别是当负载不具有可划分特征时，系统的可扩展能力仍然受到很大的限制。</p>
+<p>产生该问题的本质并不是访问冲突的增加而是有限的网络带宽和TCP/IP通信栈引入的CPU开销[10]。在传统以太网和TCP/IP协议支撑的网络环境下，软件技术仅能带来一定程度上的优化，无法从根本上解决分布式环境下数据处理系统的可扩展性问题。近年来，RDMA（Remote Direct Memory Access）高性能网络的出现正在大幅改善服务器集群所依赖的高速互联网络环境。RDMA高性能网络从硬件级别保证了可以从用户态绕过内核态直接在网络间收发数据的能力，由于卸载了CPU的负荷也不存在中断等高昂的软件栈开销，极大改善了服务器间跨节点的数据访问性能。InfiniBand、iWARP以及RoCE等都是采用完全由硬件执行I/O交换的具体实现方式、RDMA使能的新型网络技术和协议。借助于高速、低时延、高带宽、低CPU占有率、高可靠等显著优点，高速互联环境提供了近乎与单机内存带宽相当的数据传输能力，消除了以往分布式环境下固有的内在瓶颈。近年来，随着RDMA相关硬件价格的不断降低，其主要应用环境正在从高性能计算领域逐渐向基于普通集群的数据管理领域迁移，也为数据管理与分析系统的设计提供了全新的网络环境，在分布式查询、事务处理等核心功能上提供了新的发展机遇[11]。</p>
+<p>虽然目前新型处理器和加速器、非易失存储器以及高速互联设备的发展具有很大的多样性，硬件环境的构成也具有不确定性，但可以预见的是，未来他们必将成为计算环境中新的硬件组件标准，针对这些新硬件开展数据管理与分析相关技术的研究将成为新的热点。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2018/01/12/新型硬件发展趋势及其对数据管理与分析的挑战1/" data-id="cjjcay6ac002r14qt3iang7wu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据管理/">数据管理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/智能硬件/">智能硬件</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/22/RISC模拟器使用笔记1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          RISC V Rocket-chip 模拟器使用笔记（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/12/新型硬件发展趋势及其对数据管理与分析的挑2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">新型硬件发展趋势及其对数据管理与分析的挑战（上）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我的心得/">我的心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程/">硬件编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程语言/">硬件编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法设计/">算法设计</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chisel/">Chisel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FPGA/">FPGA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RISC-V/">RISC-V</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rocket-chip/">Rocket chip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/caffe/">caffe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存分配/">内存分配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地图/">地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能剖析/">性能剖析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的心得/">我的心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展指令集/">拓展指令集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能硬件/">智能硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟器/">模拟器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/硬件编程/">硬件编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法设计/">算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机系统/">计算机系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chisel/" style="font-size: 15.71px;">Chisel</a> <a href="/tags/C语言/" style="font-size: 11.43px;">C语言</a> <a href="/tags/FPGA/" style="font-size: 10px;">FPGA</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MATLAB/" style="font-size: 10px;">MATLAB</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nachos/" style="font-size: 14.29px;">Nachos</a> <a href="/tags/QEMU/" style="font-size: 10px;">QEMU</a> <a href="/tags/RISC-V/" style="font-size: 15.71px;">RISC-V</a> <a href="/tags/Rocket-chip/" style="font-size: 11.43px;">Rocket chip</a> <a href="/tags/Scala/" style="font-size: 11.43px;">Scala</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/可视化/" style="font-size: 12.86px;">可视化</a> <a href="/tags/哈弗曼树/" style="font-size: 14.29px;">哈弗曼树</a> <a href="/tags/图论/" style="font-size: 12.86px;">图论</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/嵌入式/" style="font-size: 11.43px;">嵌入式</a> <a href="/tags/性能剖析/" style="font-size: 10px;">性能剖析</a> <a href="/tags/我的心得/" style="font-size: 11.43px;">我的心得</a> <a href="/tags/拓展指令集/" style="font-size: 14.29px;">拓展指令集</a> <a href="/tags/操作系统/" style="font-size: 18.57px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据挖掘/" style="font-size: 11.43px;">数据挖掘</a> <a href="/tags/数据管理/" style="font-size: 11.43px;">数据管理</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 15.71px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/智能硬件/" style="font-size: 11.43px;">智能硬件</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/机器学习/" style="font-size: 12.86px;">机器学习</a> <a href="/tags/模拟器/" style="font-size: 10px;">模拟器</a> <a href="/tags/硬件编程/" style="font-size: 10px;">硬件编程</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法设计/" style="font-size: 17.14px;">算法设计</a> <a href="/tags/线程/" style="font-size: 14.29px;">线程</a> <a href="/tags/编码/" style="font-size: 18.57px;">编码</a> <a href="/tags/编程/" style="font-size: 11.43px;">编程</a> <a href="/tags/网络编程/" style="font-size: 10px;">网络编程</a> <a href="/tags/自然语言处理/" style="font-size: 10px;">自然语言处理</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机系统/" style="font-size: 10px;">计算机系统</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/译码/" style="font-size: 14.29px;">译码</a> <a href="/tags/软件安装/" style="font-size: 12.86px;">软件安装</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/28/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/27/Rocket学习常用网址整理/">Rocket学习常用网址整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/26/Linux常用命令总结及内存分配基本知识/">Linux常用命令总结及内存分配基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/16/Paraphrasing_With_Bilingual_Parallel_Corpora /">NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/deepin_install_perf/">deepin系统（unstable 发行版 4.14）安装perf的正确姿势</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Dove Cao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

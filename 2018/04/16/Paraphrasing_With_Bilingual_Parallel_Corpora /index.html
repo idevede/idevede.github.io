@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义 | Dove&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文在CSDN的地址：点这里 在复述模型的研究方面 ,Bannard 和 Callison 2 Burch基于双语平行语料提出了一种复述模型 [10] , 该模型利用外文翻译作为“枢轴”来计算短语 e 2 是 e 1 的复述的概率 P( e 2 | e 1 ) . 具体地 , 设 f 是 e 2 和 e 1 共有的外文翻译 , 则该模型通过计算 P(f | e 1 ) 和 P( e 2 |f)的乘">
+<meta name="keywords" content="机器学习,数据挖掘,自然语言处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义">
+<meta property="og:url" content="https://idevede.github.io/2018/04/16/Paraphrasing_With_Bilingual_Parallel_Corpora /index.html">
+<meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里 在复述模型的研究方面 ,Bannard 和 Callison 2 Burch基于双语平行语料提出了一种复述模型 [10] , 该模型利用外文翻译作为“枢轴”来计算短语 e 2 是 e 1 的复述的概率 P( e 2 | e 1 ) . 具体地 , 设 f 是 e 2 和 e 1 共有的外文翻译 , 则该模型通过计算 P(f | e 1 ) 和 P( e 2 |f)的乘">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-08T03:30:05.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里 在复述模型的研究方面 ,Bannard 和 Callison 2 Burch基于双语平行语料提出了一种复述模型 [10] , 该模型利用外文翻译作为“枢轴”来计算短语 e 2 是 e 1 的复述的概率 P( e 2 | e 1 ) . 具体地 , 设 f 是 e 2 和 e 1 共有的外文翻译 , 则该模型通过计算 P(f | e 1 ) 和 P( e 2 |f)的乘">
+  
+    <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dove&#39;s bolg</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://idevede.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Paraphrasing_With_Bilingual_Parallel_Corpora " class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/16/Paraphrasing_With_Bilingual_Parallel_Corpora /" class="article-date">
+  <time datetime="2018-04-16T07:24:48.000Z" itemprop="datePublished">2018-04-16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/机器学习/">机器学习</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/80098631" target="_blank" rel="noopener">点这里</a></p>
+<p>在复述模型的研究方面 ,Bannard 和 Callison 2 Burch基于双语平行语料提出了一种复述模型 [10] , 该模型利用外文翻译作为“枢轴”来计算短语 e 2 是 e 1 的复述的概率 P( e 2 | e 1 ) . 具体地 , 设 f 是 e 2 和 e 1 共有的外文翻译 , 则该模型通过计算 P(f | e 1 ) 和 P( e 2 |f)的乘积来得到 P( e 2 | e 1 ) . 同时 , 该模型还结合语言模型来计算 e 2出现在给定上下文中的概率<br><a id="more"></a></p>
+<p>基于枢轴的方法应用于大规模的双语平行语料库 [58] .他们首先使用机器翻译中的词对齐和短语抽取技术从双语平行语料库中抽取出短语翻译对,然后利用外文翻译作为枢轴抽取英文复述短语.设英文短语 e 1 和 e 2 对应的枢轴为 f,则该方法将 e 1 到 f 的翻译概率和 f 到 e 2 的翻译概率的乘积作为 e 1 到 e 2 的复述概率.受该研究的启发,我们将基于枢轴的方法用于复述模板的抽取 [4] .我们使用对数线性(log-linear)模型计算复述概率,抽取出像 consider X 和 take X into consideration 这样的复述模板.</p>
+<p>单语平行语料库的稀缺性。the narrow range of text genres available for monolingual parallel corpora limits the range of contexts in which the paraphrases can be used.</p>
+<p>拓展了一种翻译方法：phrase-based statistical machine translation<br>The essence of our method is to align phrases in a bilingual parallel corpus, and equate different English phrases that are aligned with the same phrase in the other language.<br>Section 2: we rank the extracted paraphrases with a probability assignment<br>Section 3 describes our experimental setup and includes information about how phrases were selected, how we manually aligned parts of the bilingual corpus, and how we evaluated the para- phrases.<br>Section2: 对齐短语：align phrases within sentence pairs<br>2.1 statistical machine translation techniques are used to align phrases within sentence pairs in a bilingual corpus<br>哪些统计技术<br>– recent phrase-based approaches to statistical machine translation</p>
+<p>（1）    The original formulation of statistical  machine translation (Brown et al., 1993) was  defined  as a word-based operation.<br>（2）    More recent approaches to statistical translation calculate  the translation  probability using larger blocks of aligned text.<br>We use the heuristic for phrase alignment  described in Och and Ney (2003) which  aligns phrases by incrementally build- ing longer  phrases from words  and phrases which<br>have adjacent alignment points.<br>（3）     </p>
+<p>2.2如何计算释义的概率：<br>公式3：通过计算短语e和f在平行语料库中对齐的频率，计算最大似然函数。<br>公式4：S allows us to re-rank the candidate paraphrases based on additional contextual information<br>最终：We produced automatic alignments for it with the Giza++ toolkit (Och and Ney, 2003)<br>we also developed a gold standard of word alignments for the set of phrases that we wanted to paraphrase<br>为每个短语提取多种可能的释义：our method frequently extracts more than one possible paraphrase for each phrase.</p>
+<p>2.1NLP中的对齐短语对。<br>2.2 翻译模型概率，， 最大似然估计。</p>
+<p>拓展释义概率。</p>
+<p>补充：协同训练框架图。</p>
+<p>现 有 的 语 料 库 建 设 主 要 表 现 出 以 下 共 同 特 点 ： 第 一 ，句 子 层 面 实 现 对 齐 ，方 便 了 对 特 定 语 言 转 换 现 象 的 大 规 模 观 察 与 分 析 ；第 二 ，自 动 标 注 与 人 工 标 注相 结 合 ，使 得 相 关 研 究 得 以 从 形 式 到 语 义 、语 用 、文 体 等 方 面 深 入 。基 于 平 行 语 料 库 的 翻 译 研 究 主 要 集 中 在 三 个 方 面 ：第 一 ，语 料 库 建 构 技 术 探 索 。 主 要 探 讨 如 何 运 用 计 算 机 技 术 来 研 制 语 料 库 ，尤 其 是 对 汉 语 文 本 的 加 工 、英汉 对齐的处理以及手工标 注 介入 等 问 题 ；第 二 ，基于语料库的实证 研 究 和 理 论 探 讨 。 以 翻 译 共 性 为 例 ，相 关的实证研究不仅关注 单 一类 比 模 式 （ｔｈｅｃｏｍｐａｒａｂｌｅｍｏｄｅ）下 目 标 语 中 翻 译 文 本 与 非 翻 译 文 本 之 间 的 差 异 ，而且也将源文本 作 为 分析 和 解 释 翻 译 文 本 中 特 定 语 言 转 换 现 象 的 一 个 维 度 。既 有 对 翻 译 语言宏观特征 的 探究 ，也 有 对 具 体 语 言 转 换 的 考 察 。 第 三 ，平 行 语 料 库 在 翻 译 教 学 中 的 应 用 ，具 体包括网 络检索平台的辅助翻译 教 学和 自 建 语 料 库 在 课 堂 教 学 中 的 运 用 等 。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2018/04/16/Paraphrasing_With_Bilingual_Parallel_Corpora /" data-id="cjjcay68r000v14qtjclo3t97" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/04/26/Linux常用命令总结及内存分配基本知识/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Linux常用命令总结及内存分配基本知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/16/deepin_install_perf/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">deepin系统（unstable 发行版 4.14）安装perf的正确姿势</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我的心得/">我的心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程/">硬件编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程语言/">硬件编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法设计/">算法设计</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chisel/">Chisel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FPGA/">FPGA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RISC-V/">RISC-V</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rocket-chip/">Rocket chip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/caffe/">caffe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存分配/">内存分配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地图/">地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能剖析/">性能剖析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的心得/">我的心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展指令集/">拓展指令集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能硬件/">智能硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟器/">模拟器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/硬件编程/">硬件编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法设计/">算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机系统/">计算机系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chisel/" style="font-size: 15.71px;">Chisel</a> <a href="/tags/C语言/" style="font-size: 11.43px;">C语言</a> <a href="/tags/FPGA/" style="font-size: 10px;">FPGA</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MATLAB/" style="font-size: 10px;">MATLAB</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nachos/" style="font-size: 14.29px;">Nachos</a> <a href="/tags/QEMU/" style="font-size: 10px;">QEMU</a> <a href="/tags/RISC-V/" style="font-size: 15.71px;">RISC-V</a> <a href="/tags/Rocket-chip/" style="font-size: 11.43px;">Rocket chip</a> <a href="/tags/Scala/" style="font-size: 11.43px;">Scala</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/可视化/" style="font-size: 12.86px;">可视化</a> <a href="/tags/哈弗曼树/" style="font-size: 14.29px;">哈弗曼树</a> <a href="/tags/图论/" style="font-size: 12.86px;">图论</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/嵌入式/" style="font-size: 11.43px;">嵌入式</a> <a href="/tags/性能剖析/" style="font-size: 10px;">性能剖析</a> <a href="/tags/我的心得/" style="font-size: 11.43px;">我的心得</a> <a href="/tags/拓展指令集/" style="font-size: 14.29px;">拓展指令集</a> <a href="/tags/操作系统/" style="font-size: 18.57px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据挖掘/" style="font-size: 11.43px;">数据挖掘</a> <a href="/tags/数据管理/" style="font-size: 11.43px;">数据管理</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 15.71px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/智能硬件/" style="font-size: 11.43px;">智能硬件</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/机器学习/" style="font-size: 12.86px;">机器学习</a> <a href="/tags/模拟器/" style="font-size: 10px;">模拟器</a> <a href="/tags/硬件编程/" style="font-size: 10px;">硬件编程</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法设计/" style="font-size: 17.14px;">算法设计</a> <a href="/tags/线程/" style="font-size: 14.29px;">线程</a> <a href="/tags/编码/" style="font-size: 18.57px;">编码</a> <a href="/tags/编程/" style="font-size: 11.43px;">编程</a> <a href="/tags/网络编程/" style="font-size: 10px;">网络编程</a> <a href="/tags/自然语言处理/" style="font-size: 10px;">自然语言处理</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机系统/" style="font-size: 10px;">计算机系统</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/译码/" style="font-size: 14.29px;">译码</a> <a href="/tags/软件安装/" style="font-size: 12.86px;">软件安装</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/28/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/27/Rocket学习常用网址整理/">Rocket学习常用网址整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/26/Linux常用命令总结及内存分配基本知识/">Linux常用命令总结及内存分配基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/16/Paraphrasing_With_Bilingual_Parallel_Corpora /">NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/deepin_install_perf/">deepin系统（unstable 发行版 4.14）安装perf的正确姿势</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Dove Cao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

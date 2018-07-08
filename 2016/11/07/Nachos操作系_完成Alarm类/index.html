@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Nachos操作系统：Pro1.3：完成Alarm类 | Dove&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文在CSDN的地址：点这里">
+<meta name="keywords" content="操作系统,线程,Nachos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nachos操作系统：Pro1.3：完成Alarm类">
+<meta property="og:url" content="https://idevede.github.io/2016/11/07/Nachos操作系_完成Alarm类/index.html">
+<meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://img.blog.csdn.net/20161107232932318">
+<meta property="og:updated_time" content="2018-07-07T05:04:20.747Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nachos操作系统：Pro1.3：完成Alarm类">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161107232932318">
+  
+    <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dove&#39;s bolg</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://idevede.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Nachos操作系_完成Alarm类" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/07/Nachos操作系_完成Alarm类/" class="article-date">
+  <time datetime="2016-11-07T09:44:55.000Z" itemprop="datePublished">2016-11-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/操作系统/">操作系统</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Nachos操作系统：Pro1.3：完成Alarm类
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/53074410" target="_blank" rel="noopener">点这里</a></p>
+<a id="more"></a>
+<p>##题目要求<br>1)完成Alarm类，实现waitUntil(long x)方法。<br>2)一个线程通过调用waitUntil(long x)方法将自己挂起，一直到经过x时间再被唤醒。（例如：光标的闪烁）<br>3)线程经过x时间后唤醒，但不会立刻运行，而是加入readyqueue中。</p>
+<p>##分析<br>Alarm类使用硬件定时器提供抢占，并允许线程挂起到某个时间。分配的新闹钟设置机器的定时器中断处理程序实现本闹钟的回调，同时Nachos只在有一个计时器的情况下正常行。<br>定时器中断处理程序被称为机器计时器定期（大约每500时钟周期）。当前线程产生后，如果有另一个必须运行的线程，则强制上下文切换。<br> 当前线程睡眠至少x时间周期，在定时器中断处理程序中将其唤醒。当现在时间(current time) &gt;= (WaitUntil called time)+(x)时，线程必须被唤醒（在调度准备集）在第一个定时器中断的产生时。</p>
+<p>##设计思路</p>
+<ol>
+<li>新建一个TreeSet集合：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">private TreeSet&lt;WaitingThread&gt; waiting;  // +dove+</span><br></pre></td></tr></table></figure>
+<p>2.一个线程调用waitUntill()时，该线程设定唤醒时间并阻塞，放入队列中。</p>
+<p>3.Timer每过500个clock ticks会产生一个timeInterrupt。</p>
+<p>4.timeInterupt时，会运行handle()线程，将handler线程设置为 将队列中此时应当唤醒的进程加入就绪队列中 即可。</p>
+<p>##难点<br>线程调用waitUntil方法之后会终止，该线程设定唤醒时间并阻塞，直到传入的时间之后才可以执行。线程只是放入就绪队列，等待分配。可以使用一个线程队列，但是不能产生额外的线程。 </p>
+<p>##实现</p>
+<p>###timerInterrupt:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">while (!waiting.isEmpty() &amp;&amp;</span><br><span class="line">	       ((WaitingThread) waiting.first()).time &lt;= time) &#123;</span><br><span class="line">		//当线程到了等待的时间就把线程从队列中取出放入就绪队列</span><br><span class="line">	    WaitingThread next = (WaitingThread) waiting.first();</span><br><span class="line"></span><br><span class="line">        // Move due thread to waiting thread</span><br><span class="line">        next.thread.ready();</span><br><span class="line">	    waiting.remove(next);</span><br><span class="line"></span><br><span class="line">	    Lib.assertTrue(next.time &lt;= time);</span><br><span class="line">         </span><br><span class="line">	    Lib.debug(dbgInt, &quot;  &quot; + next.thread.getName());</span><br></pre></td></tr></table></figure>
+<p>###waitUtil.java<br>//改变中断方式<br>    boolean intStatus = Machine.interrupt().disable(); // +dove+</p>
+<pre><code>// 该线程设定唤醒时间并阻塞，并调用sleep操作使当前线程挂起, 放入队列中。
+WaitingThread toAlarm = new WaitingThread(wakeTime, KThread.currentThread());
+
+Lib.debug(dbgInt,
+      &quot;Wait thread &quot; + KThread.currentThread().getName() +
+      &quot; until &quot; + wakeTime);
+
+waiting.add(toAlarm);//TreeSet
+</code></pre><p>##测试代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">public static void selfTest() &#123;</span><br><span class="line"></span><br><span class="line">       System.out.print(&quot;Enter Alarm.selfTest\n&quot;);	</span><br><span class="line"></span><br><span class="line">   	Runnable r = new Runnable() &#123;</span><br><span class="line">   	    public void run() &#123;</span><br><span class="line">                   KThread t[] = new KThread[10];</span><br><span class="line"></span><br><span class="line">                   for (int i=0; i&lt;10; i++) &#123;</span><br><span class="line">                        t[i] = new KThread(new AlarmTest(160 + i*100));</span><br><span class="line">                        t[i].setName(&quot;Thread&quot; + i).fork();</span><br><span class="line">                   &#125;</span><br><span class="line">                   for (int i=0; i&lt;10000; i++) &#123;</span><br><span class="line">                       KThread.yield();</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">       &#125;;</span><br><span class="line"></span><br><span class="line">       KThread t = new KThread(r);</span><br><span class="line">       t.setName(&quot;Alarm SelfTest&quot;);</span><br><span class="line">       t.fork();</span><br><span class="line">       KThread.yield();</span><br><span class="line"></span><br><span class="line">       t.join();</span><br><span class="line"></span><br><span class="line">       System.out.print(&quot;Leave Alarm.selfTest\n&quot;);	</span><br><span class="line"></span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>注意，这段代码实现了多个线程公用一个Alarm类。</p>
+<p>##测试结果<img src="http://img.blog.csdn.net/20161107232932318" alt="Nachos操作系统测试结果"></p>
+<p>时间片调度的典型应用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/11/07/Nachos操作系_完成Alarm类/" data-id="cjjcay68i000m14qtesbnwrco" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线程/">线程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/11/09/Nachos操作系统_完成KThread_join方法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Nachos操作系统：Pro1.1：完成KThread.join方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/29/Nachos操作系Pro1_5_实现优先级调度/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Nachos操作系统：Pro1_5:实现优先级调度</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我的心得/">我的心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程/">硬件编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程语言/">硬件编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法设计/">算法设计</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chisel/">Chisel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FPGA/">FPGA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RISC-V/">RISC-V</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rocket-chip/">Rocket chip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/caffe/">caffe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存分配/">内存分配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地图/">地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能剖析/">性能剖析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的心得/">我的心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展指令集/">拓展指令集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能硬件/">智能硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟器/">模拟器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/硬件编程/">硬件编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法设计/">算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机系统/">计算机系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chisel/" style="font-size: 15.71px;">Chisel</a> <a href="/tags/C语言/" style="font-size: 11.43px;">C语言</a> <a href="/tags/FPGA/" style="font-size: 10px;">FPGA</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MATLAB/" style="font-size: 10px;">MATLAB</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nachos/" style="font-size: 14.29px;">Nachos</a> <a href="/tags/QEMU/" style="font-size: 10px;">QEMU</a> <a href="/tags/RISC-V/" style="font-size: 15.71px;">RISC-V</a> <a href="/tags/Rocket-chip/" style="font-size: 11.43px;">Rocket chip</a> <a href="/tags/Scala/" style="font-size: 11.43px;">Scala</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/可视化/" style="font-size: 12.86px;">可视化</a> <a href="/tags/哈弗曼树/" style="font-size: 14.29px;">哈弗曼树</a> <a href="/tags/图论/" style="font-size: 12.86px;">图论</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/嵌入式/" style="font-size: 11.43px;">嵌入式</a> <a href="/tags/性能剖析/" style="font-size: 10px;">性能剖析</a> <a href="/tags/我的心得/" style="font-size: 11.43px;">我的心得</a> <a href="/tags/拓展指令集/" style="font-size: 14.29px;">拓展指令集</a> <a href="/tags/操作系统/" style="font-size: 18.57px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据挖掘/" style="font-size: 11.43px;">数据挖掘</a> <a href="/tags/数据管理/" style="font-size: 11.43px;">数据管理</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 15.71px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/智能硬件/" style="font-size: 11.43px;">智能硬件</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/机器学习/" style="font-size: 12.86px;">机器学习</a> <a href="/tags/模拟器/" style="font-size: 10px;">模拟器</a> <a href="/tags/硬件编程/" style="font-size: 10px;">硬件编程</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法设计/" style="font-size: 17.14px;">算法设计</a> <a href="/tags/线程/" style="font-size: 14.29px;">线程</a> <a href="/tags/编码/" style="font-size: 18.57px;">编码</a> <a href="/tags/编程/" style="font-size: 11.43px;">编程</a> <a href="/tags/网络编程/" style="font-size: 10px;">网络编程</a> <a href="/tags/自然语言处理/" style="font-size: 10px;">自然语言处理</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机系统/" style="font-size: 10px;">计算机系统</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/译码/" style="font-size: 14.29px;">译码</a> <a href="/tags/软件安装/" style="font-size: 12.86px;">软件安装</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/28/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/27/Rocket学习常用网址整理/">Rocket学习常用网址整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/26/Linux常用命令总结及内存分配基本知识/">Linux常用命令总结及内存分配基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/16/Paraphrasing_With_Bilingual_Parallel_Corpora /">NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/deepin_install_perf/">deepin系统（unstable 发行版 4.14）安装perf的正确姿势</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Dove Cao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

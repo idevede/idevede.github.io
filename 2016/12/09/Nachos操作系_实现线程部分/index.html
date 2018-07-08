@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>操作系统：Nachos，java实现线程部分 | Dove&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文在CSDN的地址：点这里 操作系统进程的状态以及进程状态的转换进程是程序的一次执行活动，它是一种动态的概念，而这种动态在宏观上表现为状态的变化。">
+<meta name="keywords" content="操作系统,线程,Nachos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统：Nachos，java实现线程部分">
+<meta property="og:url" content="https://idevede.github.io/2016/12/09/Nachos操作系_实现线程部分/index.html">
+<meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里 操作系统进程的状态以及进程状态的转换进程是程序的一次执行活动，它是一种动态的概念，而这种动态在宏观上表现为状态的变化。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdn.net/20161109094502097">
+<meta property="og:image" content="https://img-blog.csdn.net/20161109094819816">
+<meta property="og:image" content="https://img-blog.csdn.net/20161109095416136">
+<meta property="og:updated_time" content="2018-07-07T05:16:47.162Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="操作系统：Nachos，java实现线程部分">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里 操作系统进程的状态以及进程状态的转换进程是程序的一次执行活动，它是一种动态的概念，而这种动态在宏观上表现为状态的变化。">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20161109094502097">
+  
+    <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dove&#39;s bolg</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://idevede.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Nachos操作系_实现线程部分" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/09/Nachos操作系_实现线程部分/" class="article-date">
+  <time datetime="2016-12-09T01:33:59.000Z" itemprop="datePublished">2016-12-09</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/操作系统/">操作系统</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      操作系统：Nachos，java实现线程部分
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/53096331" target="_blank" rel="noopener">点这里</a></p>
+<p>操作系统进程的状态以及进程状态的转换<br>进程是程序的一次执行活动，它是一种动态的概念，而这种动态在宏观上表现为状态的变化。<br><a id="more"></a><br>进程在运行中，有三种基本状态：</p>
+<p>l  运行态：进程分配到处理机运行。</p>
+<p>l  就绪态：进程已经可以在处理机上运行，只是暂时没有分配到处理机。</p>
+<p>l  阻塞态：进程因等待某一个事件发生而暂时不能调度上处理机运行。</p>
+<p>一个系统中的进程在一定条件下可以在这三种状态之间转换。一般有四种类型的转换。</p>
+<p>l 运行态 -&gt; 就绪态</p>
+<p>进程占用CPU运行了一段时间，但是没有运行结束。为使各就绪进程能比较平衡地共享CPU，此时调度程序需要将其它就绪进程调度上处理机运行，于是原来占据处理机的进程成为就绪态，等待下一次被调度上处理机运行。</p>
+<p>l 就绪态 -&gt; 运行态</p>
+<p>进程处于就绪态，调度程序总是有机会将其调度上处理机，于是该进程从就绪态转为运行态，并从上一次运行的中断点继续运行。</p>
+<p>l 运行态 -&gt; 阻塞态</p>
+<p>进程运行过程中可能因等待某种事件发生而暂时停止，比如等待一次键盘事件或者磁盘输入输出。进程进入阻塞态时，调度程序会调度一个就绪态进程上处理机运行。</p>
+<p>l 阻塞态 -&gt; 就绪态</p>
+<p>当进程进入阻塞态之前等待发生的事件业已发生，则该进程从阻塞态转为就绪态，于是它可以再被调度上处理机继续运行。</p>
+<p>除了个别进程外，一般进程都需要经历这三种状态，并在这三种状态中反复变换直至运行终止。</p>
+<h2 id="Nachos进程的状态以及进程状态的转换"><a href="#Nachos进程的状态以及进程状态的转换" class="headerlink" title="Nachos进程的状态以及进程状态的转换"></a>Nachos进程的状态以及进程状态的转换</h2><p><img src="https://img-blog.csdn.net/20161109094502097" alt="Nachos进程的状态以及进程状态的转换"><br>           Nachos中系统线程和用户进程</p>
+<p>Nachos为线程提供的功能函数有:</p>
+<ol>
+<li><p>生成一个线程(Fork)</p>
+</li>
+<li><p>使线程睡眠等待(Sleep)</p>
+</li>
+<li><p>结束线程(Finish)</p>
+</li>
+<li><p>设置线程状态(setStatus)</p>
+</li>
+<li><p>放弃处理机(Yield)<br>上面这5个方法对于我们实现自己selftest方法来说是必须掌握的。</p>
+</li>
+</ol>
+<p><img src="https://img-blog.csdn.net/20161109094819816" alt=""><br>            Nachos系统结构</p>
+<h2 id="Nachos线程管理同实际进程管理的不同"><a href="#Nachos线程管理同实际进程管理的不同" class="headerlink" title="Nachos线程管理同实际进程管理的不同"></a>Nachos线程管理同实际进程管理的不同</h2><p>Nachos除了在线程管理上作了一系列的简化外，和实际的进程管理还有以下的不同：</p>
+<p>l  不存在系统中所有线程的列表</p>
+<p>在一般的操作系统中，进程的数目总是有限的，但是Nachos中的线程数目可以是无限的（当然，用户进程的数目应该也是有限的。当虚拟机内存以及虚拟内存都耗尽时，就不能产生新的用户线程）。这是因为，线程的控制结构和系统线程的运行是占用宿主机的。能够开多少线程完全由宿主机条件限制，理论上是无限的。</p>
+<p>l  线程的调度比较简单</p>
+<p>在启动了时钟中断的情况下，当时钟中断到来时，如果就绪线程队列中有就绪线程，就必须进行线程切换；当没有启动时钟中断的情况下，Nachos使用非抢占式调度。</p>
+<p>l  没有实现父子线程的关系</p>
+<p>可以说，所有的Nachos线程都是Nachos的一个子线程。但是Nachos线程之间的父子关系没有实现。这样产生的混乱体现在线程的空间释放上，一个线程空间的释放是由下一个被切换的线程也即兄弟线程进行的，而这两个线程可以是没有任何关系的。这样的情况对以后进一步进行系统扩充是不利的。</p>
+<p>没有实现父子线程关系这点很重要！！！这直接导致了fork函数跟我们正常操作系统中的巨大差异：</p>
+<p>简单来说Nachos的fork就是将创建的线程加入到ready队列当中，但是Linux的fork函数描述是：内核根据父进程复制出一个子进程，父进程和子进程的PCB信息相同，用户态代码和数据也相同。因此，子进程现在的状态看起来和父进程一样，做完了初始化，刚调用了fork进入内核，还没有从内核返回。</p>
+<p><img src="https://img-blog.csdn.net/20161109095416136" alt="Nachos线程转换图"><br>Nachos线程转换图</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2016/12/09/Nachos操作系_实现线程部分/" data-id="cjjcay68k000q14qth2vz7bz5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线程/">线程</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/12/CCF_消除类问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CCF 消除类问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/11/30/ 从键盘按下字符到它出现在显示器的过程详解/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">总结－从键盘按下字符到它出现在显示器的过程详解</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我的心得/">我的心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程/">硬件编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程语言/">硬件编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法设计/">算法设计</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chisel/">Chisel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FPGA/">FPGA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RISC-V/">RISC-V</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rocket-chip/">Rocket chip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/caffe/">caffe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存分配/">内存分配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地图/">地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能剖析/">性能剖析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的心得/">我的心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展指令集/">拓展指令集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能硬件/">智能硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟器/">模拟器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/硬件编程/">硬件编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法设计/">算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机系统/">计算机系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chisel/" style="font-size: 15.71px;">Chisel</a> <a href="/tags/C语言/" style="font-size: 11.43px;">C语言</a> <a href="/tags/FPGA/" style="font-size: 10px;">FPGA</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MATLAB/" style="font-size: 10px;">MATLAB</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nachos/" style="font-size: 14.29px;">Nachos</a> <a href="/tags/QEMU/" style="font-size: 10px;">QEMU</a> <a href="/tags/RISC-V/" style="font-size: 15.71px;">RISC-V</a> <a href="/tags/Rocket-chip/" style="font-size: 11.43px;">Rocket chip</a> <a href="/tags/Scala/" style="font-size: 11.43px;">Scala</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/可视化/" style="font-size: 12.86px;">可视化</a> <a href="/tags/哈弗曼树/" style="font-size: 14.29px;">哈弗曼树</a> <a href="/tags/图论/" style="font-size: 12.86px;">图论</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/嵌入式/" style="font-size: 11.43px;">嵌入式</a> <a href="/tags/性能剖析/" style="font-size: 10px;">性能剖析</a> <a href="/tags/我的心得/" style="font-size: 11.43px;">我的心得</a> <a href="/tags/拓展指令集/" style="font-size: 14.29px;">拓展指令集</a> <a href="/tags/操作系统/" style="font-size: 18.57px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据挖掘/" style="font-size: 11.43px;">数据挖掘</a> <a href="/tags/数据管理/" style="font-size: 11.43px;">数据管理</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 15.71px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/智能硬件/" style="font-size: 11.43px;">智能硬件</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/机器学习/" style="font-size: 12.86px;">机器学习</a> <a href="/tags/模拟器/" style="font-size: 10px;">模拟器</a> <a href="/tags/硬件编程/" style="font-size: 10px;">硬件编程</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法设计/" style="font-size: 17.14px;">算法设计</a> <a href="/tags/线程/" style="font-size: 14.29px;">线程</a> <a href="/tags/编码/" style="font-size: 18.57px;">编码</a> <a href="/tags/编程/" style="font-size: 11.43px;">编程</a> <a href="/tags/网络编程/" style="font-size: 10px;">网络编程</a> <a href="/tags/自然语言处理/" style="font-size: 10px;">自然语言处理</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机系统/" style="font-size: 10px;">计算机系统</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/译码/" style="font-size: 14.29px;">译码</a> <a href="/tags/软件安装/" style="font-size: 12.86px;">软件安装</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/28/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/27/Rocket学习常用网址整理/">Rocket学习常用网址整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/26/Linux常用命令总结及内存分配基本知识/">Linux常用命令总结及内存分配基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/16/Paraphrasing_With_Bilingual_Parallel_Corpora /">NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/deepin_install_perf/">deepin系统（unstable 发行版 4.14）安装perf的正确姿势</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Dove Cao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

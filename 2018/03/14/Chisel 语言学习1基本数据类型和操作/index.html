@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Chisel 语言学习 1 基本数据类型和操作 | Dove&#39;s bolg</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文在CSDN的地址：点这里  系列文章主要用来记录学习Chisel和scala过程中遇到的难点或知识点：”">
+<meta name="keywords" content="Scala,RISC-V,Chisel,拓展指令集">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chisel 语言学习 1 基本数据类型和操作">
+<meta property="og:url" content="https://idevede.github.io/2018/03/14/Chisel 语言学习1基本数据类型和操作/index.html">
+<meta property="og:site_name" content="Dove&#39;s bolg">
+<meta property="og:description" content="本文在CSDN的地址：点这里  系列文章主要用来记录学习Chisel和scala过程中遇到的难点或知识点：”">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://img.blog.csdn.net/20180314142811666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaWRldmVkZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180314144040101?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaWRldmVkZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:image" content="http://img.blog.csdn.net/20180314144900621?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaWRldmVkZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2018-07-08T03:17:37.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chisel 语言学习 1 基本数据类型和操作">
+<meta name="twitter:description" content="本文在CSDN的地址：点这里  系列文章主要用来记录学习Chisel和scala过程中遇到的难点或知识点：”">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20180314142811666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaWRldmVkZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+  
+    <link rel="alternate" href="/atom.xml" title="Dove&#39;s bolg" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Dove&#39;s bolg</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://idevede.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Chisel 语言学习1基本数据类型和操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/14/Chisel 语言学习1基本数据类型和操作/" class="article-date">
+  <time datetime="2018-03-14T07:24:48.000Z" itemprop="datePublished">2018-03-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/硬件编程语言/">硬件编程语言</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Chisel 语言学习 1 基本数据类型和操作
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文在CSDN的地址：<a href="https://blog.csdn.net/idevede/article/details/79554748" target="_blank" rel="noopener">点这里</a></p>
+<blockquote>
+<p>系列文章主要用来记录学习Chisel和scala过程中遇到的难点或知识点：”</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>用 <code>[TOC]</code>来生成目录：</p>
+<p>[TOC]</p>
+<h2 id="变量的声明与赋值"><a href="#变量的声明与赋值" class="headerlink" title="变量的声明与赋值"></a>变量的声明与赋值</h2><p> <strong>=</strong> , 　可立即得出数值<br> <strong>:=</strong>，  具体值需要依赖前边变量的值。<br> 在写Scala时要特别注意变量计算需要用“=”还是用“：=”</p>
+<p>##数据位操作</p>
+<p>###截取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class ByteSelector extends Module &#123;</span><br><span class="line">  val io = IO(new Bundle &#123;</span><br><span class="line">    val in     = Input(UInt(32.W))</span><br><span class="line">    val offset = Input(UInt(2.W))</span><br><span class="line">    val out    = Output(UInt(8.W))</span><br><span class="line">  &#125;)</span><br><span class="line">  io.out := 0.U(8.W)</span><br><span class="line">  when (io.offset === 0.U(2.W)) &#123;</span><br><span class="line">    io.out := io.in(7,0)</span><br><span class="line">  &#125; .elsewhen (io.offset === 1.U) &#123;</span><br><span class="line">    io.out := io.in(15,8)</span><br><span class="line">  &#125; .elsewhen (io.offset === 2.U) &#123;</span><br><span class="line">    io.out := io.in(23,16)</span><br><span class="line">  &#125; .otherwise &#123;</span><br><span class="line">    io.out := io.in(31,24)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###合并</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val A = UInt(32.W)</span><br><span class="line">val B = UInt(32.W)</span><br><span class="line">val bus = Cat(A, B) // concatenate A and B</span><br></pre></td></tr></table></figure>
+<p>##练习</p>
+<p>LFSR16<br><img src="http://img.blog.csdn.net/20180314142811666?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaWRldmVkZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="LSFR16 chisel"><br>实现一个16位线性反馈移位寄存器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class LFSR16 extends Module &#123;</span><br><span class="line">  val io = IO(new Bundle &#123;</span><br><span class="line">    val inc = Input(Bool())</span><br><span class="line">    val out = Output(UInt(16.W))</span><br><span class="line">  &#125;)</span><br><span class="line">  // ...</span><br><span class="line">  io.out := 0.U</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>将代码补充完整：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LFSR16</span> <span class="keyword">extends</span> <span class="title">Module</span> </span>&#123;</span><br><span class="line">  val io = IO(<span class="keyword">new</span> Bundle &#123;</span><br><span class="line">    val inc = Input(Bool())</span><br><span class="line">    val out = Output(UInt(<span class="number">16</span>.W))</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  val res = RegInit(<span class="number">1</span>.U(<span class="number">16</span>.W))</span><br><span class="line">  when (io.inc) &#123; </span><br><span class="line">    val nxt_res = Cat(res(<span class="number">0</span>)^res(<span class="number">2</span>)^res(<span class="number">3</span>)^res(<span class="number">5</span>), res(<span class="number">15</span>,<span class="number">1</span>)) </span><br><span class="line">    res := nxt_res</span><br><span class="line">  &#125;</span><br><span class="line">  io.out := res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用C++实现如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">uint16_t</span> reg = <span class="number">0xACE1</span>;</span><br><span class="line">       <span class="keyword">uint16_t</span> bit;</span><br><span class="line">       <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">       &#123;</span><br><span class="line">               bit =((reg &gt;&gt; <span class="number">0</span>) ^</span><br><span class="line">                     (reg &gt;&gt; <span class="number">2</span>) ^</span><br><span class="line">                     (reg &gt;&gt; <span class="number">3</span>) ^</span><br><span class="line">                     (reg &gt;&gt; <span class="number">5</span>) ) &amp; <span class="number">0x0001</span>;</span><br><span class="line">               reg = (reg &gt;&gt; <span class="number">1</span>) | (bit &lt;&lt; <span class="number">15</span>);</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"%04X/n"</span>,reg);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>###进行测试</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./run-problem.sh LFSR16</span><br></pre></td></tr></table></figure>
+<p>出现问题如下：</p>
+<p><img src="http://img.blog.csdn.net/20180314144040101?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaWRldmVkZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="cat出现问题"><br><strong>注意</strong>　连接操作不是chisel内核代码，因此使用时需要进行import</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import chisel3.util.Cat</span><br><span class="line"></span><br><span class="line">import chisel3.util._</span><br></pre></td></tr></table></figure>
+<p>修改之后重新运行：<br><img src="http://img.blog.csdn.net/20180314144900621?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaWRldmVkZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="Cat成果运行"></p>
+<p><strong>生成的verilog内容如下</strong>　</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">`ifdef RANDOMIZE_GARBAGE_ASSIGN</span><br><span class="line">`define RANDOMIZE</span><br><span class="line">`endif</span><br><span class="line">`ifdef RANDOMIZE_INVALID_ASSIGN</span><br><span class="line">`define RANDOMIZE</span><br><span class="line">`endif</span><br><span class="line">`ifdef RANDOMIZE_REG_INIT</span><br><span class="line">`define RANDOMIZE</span><br><span class="line">`endif</span><br><span class="line">`ifdef RANDOMIZE_MEM_INIT</span><br><span class="line">`define RANDOMIZE</span><br><span class="line">`endif</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">module</span> <span class="title">LFSR16</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">  input         clock,</span></span></span><br><span class="line"><span class="function"><span class="params">  input         reset,</span></span></span><br><span class="line"><span class="function"><span class="params">  input         io_inc,</span></span></span><br><span class="line"><span class="function"><span class="params">  output [<span class="number">15</span>:<span class="number">0</span>] io_out</span></span></span><br><span class="line"><span class="function"><span class="params">)</span></span>;</span><br><span class="line">  reg [<span class="number">15</span>:<span class="number">0</span>] res; <span class="comment">// @[LFSR16.scala 19:20]</span></span><br><span class="line">  reg [<span class="number">31</span>:<span class="number">0</span>] _RAND_0;</span><br><span class="line">  wire  _T_6; <span class="comment">// @[LFSR16.scala 21:26]</span></span><br><span class="line">  wire  _T_7; <span class="comment">// @[LFSR16.scala 21:33]</span></span><br><span class="line">  wire  _T_8; <span class="comment">// @[LFSR16.scala 21:29]</span></span><br><span class="line">  wire  _T_9; <span class="comment">// @[LFSR16.scala 21:40]</span></span><br><span class="line">  wire  _T_10; <span class="comment">// @[LFSR16.scala 21:36]</span></span><br><span class="line">  wire  _T_11; <span class="comment">// @[LFSR16.scala 21:47]</span></span><br><span class="line">  wire  _T_12; <span class="comment">// @[LFSR16.scala 21:43]</span></span><br><span class="line">  wire [<span class="number">14</span>:<span class="number">0</span>] _T_13; <span class="comment">// @[LFSR16.scala 21:55]</span></span><br><span class="line">  wire [<span class="number">15</span>:<span class="number">0</span>] _T_14; <span class="comment">// @[Cat.scala 30:58]</span></span><br><span class="line">  wire [<span class="number">15</span>:<span class="number">0</span>] _GEN_0; <span class="comment">// @[LFSR16.scala 20:17]</span></span><br><span class="line">  assign _T_6 = res[<span class="number">0</span>]; <span class="comment">// @[LFSR16.scala 21:26]</span></span><br><span class="line">  assign _T_7 = res[<span class="number">2</span>]; <span class="comment">// @[LFSR16.scala 21:33]</span></span><br><span class="line">  assign _T_8 = _T_6 ^ _T_7; <span class="comment">// @[LFSR16.scala 21:29]</span></span><br><span class="line">  assign _T_9 = res[<span class="number">3</span>]; <span class="comment">// @[LFSR16.scala 21:40]</span></span><br><span class="line">  assign _T_10 = _T_8 ^ _T_9; <span class="comment">// @[LFSR16.scala 21:36]</span></span><br><span class="line">  assign _T_11 = res[<span class="number">5</span>]; <span class="comment">// @[LFSR16.scala 21:47]</span></span><br><span class="line">  assign _T_12 = _T_10 ^ _T_11; <span class="comment">// @[LFSR16.scala 21:43]</span></span><br><span class="line">  assign _T_13 = res[<span class="number">15</span>:<span class="number">1</span>]; <span class="comment">// @[LFSR16.scala 21:55]</span></span><br><span class="line">  assign _T_14 = &#123;_T_12,_T_13&#125;; <span class="comment">// @[Cat.scala 30:58]</span></span><br><span class="line">  assign _GEN_0 = io_inc ? _T_14 : res; <span class="comment">// @[LFSR16.scala 20:17]</span></span><br><span class="line">  assign io_out = res;</span><br><span class="line">`ifdef RANDOMIZE</span><br><span class="line">  integer initvar;</span><br><span class="line">  initial begin</span><br><span class="line">    `ifndef verilator</span><br><span class="line">      #0.002 begin end</span><br><span class="line">    `endif</span><br><span class="line">  `ifdef RANDOMIZE_REG_INIT</span><br><span class="line">  _RAND_0 = &#123;<span class="number">1</span>&#123;$random&#125;&#125;;</span><br><span class="line">  res = _RAND_0[<span class="number">15</span>:<span class="number">0</span>];</span><br><span class="line">  `endif <span class="comment">// RANDOMIZE_REG_INIT</span></span><br><span class="line">  end</span><br><span class="line">`endif <span class="comment">// RANDOMIZE</span></span><br><span class="line">  always @(posedge clock) begin</span><br><span class="line">    <span class="keyword">if</span> (reset) begin</span><br><span class="line">      res &lt;= <span class="number">16</span><span class="string">'h1;</span></span><br><span class="line"><span class="string">    end else begin</span></span><br><span class="line"><span class="string">      if (io_inc) begin</span></span><br><span class="line"><span class="string">        res &lt;= _T_14;</span></span><br><span class="line"><span class="string">      end</span></span><br><span class="line"><span class="string">    end</span></span><br><span class="line"><span class="string">  end</span></span><br><span class="line"><span class="string">endmodule</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://idevede.github.io/2018/03/14/Chisel 语言学习1基本数据类型和操作/" data-id="cjjcay67o000614qtdu1dy71y" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Chisel/">Chisel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RISC-V/">RISC-V</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Scala/">Scala</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拓展指令集/">拓展指令集</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/15/Chisel 语言学习2实例化模型和向量操作/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Chisel 语言（Scala）学习 2 实例化模型和向量操作
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/02/22/RISC模拟器使用笔记1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">RISC V Rocket-chip 模拟器使用笔记（一）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/学习心得/">学习心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/我的心得/">我的心得</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/操作系统/">操作系统</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/学习心得/">学习心得</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/机器学习/">机器学习</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程/">硬件编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/硬件编程语言/">硬件编程语言</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法设计/">算法设计</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Chisel/">Chisel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C语言/">C语言</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FPGA/">FPGA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GUI/">GUI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MATLAB/">MATLAB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nachos/">Nachos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/QEMU/">QEMU</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RISC-V/">RISC-V</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Rocket-chip/">Rocket chip</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Scala/">Scala</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/caffe/">caffe</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/中断/">中断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内存分配/">内存分配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可视化/">可视化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/哈弗曼树/">哈弗曼树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图论/">图论</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/地图/">地图</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安卓/">安卓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/嵌入式/">嵌入式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能剖析/">性能剖析</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/我的心得/">我的心得</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/拓展指令集/">拓展指令集</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据库/">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据管理/">数据管理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构/">数据结构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构，算法设计/">数据结构，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/文件操作/">文件操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/时延/">时延</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/智能硬件/">智能硬件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/最小生成树/">最小生成树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模拟器/">模拟器</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/硬件编程/">硬件编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/神经网络/">神经网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/移动开发/">移动开发</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法设计/">算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络编程/">网络编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自然语言处理/">自然语言处理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/蚁群算法，算法设计/">蚁群算法，算法设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机系统/">计算机系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/计算机网络/">计算机网络</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/译码/">译码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件安装/">软件安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面向对象/">面向对象</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Chisel/" style="font-size: 15.71px;">Chisel</a> <a href="/tags/C语言/" style="font-size: 11.43px;">C语言</a> <a href="/tags/FPGA/" style="font-size: 10px;">FPGA</a> <a href="/tags/GUI/" style="font-size: 10px;">GUI</a> <a href="/tags/Java/" style="font-size: 10px;">Java</a> <a href="/tags/MATLAB/" style="font-size: 10px;">MATLAB</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Nachos/" style="font-size: 14.29px;">Nachos</a> <a href="/tags/QEMU/" style="font-size: 10px;">QEMU</a> <a href="/tags/RISC-V/" style="font-size: 15.71px;">RISC-V</a> <a href="/tags/Rocket-chip/" style="font-size: 11.43px;">Rocket chip</a> <a href="/tags/Scala/" style="font-size: 11.43px;">Scala</a> <a href="/tags/caffe/" style="font-size: 10px;">caffe</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/linux/" style="font-size: 12.86px;">linux</a> <a href="/tags/中断/" style="font-size: 10px;">中断</a> <a href="/tags/内存分配/" style="font-size: 10px;">内存分配</a> <a href="/tags/可视化/" style="font-size: 12.86px;">可视化</a> <a href="/tags/哈弗曼树/" style="font-size: 14.29px;">哈弗曼树</a> <a href="/tags/图论/" style="font-size: 12.86px;">图论</a> <a href="/tags/地图/" style="font-size: 10px;">地图</a> <a href="/tags/安卓/" style="font-size: 10px;">安卓</a> <a href="/tags/嵌入式/" style="font-size: 11.43px;">嵌入式</a> <a href="/tags/性能剖析/" style="font-size: 10px;">性能剖析</a> <a href="/tags/我的心得/" style="font-size: 11.43px;">我的心得</a> <a href="/tags/拓展指令集/" style="font-size: 14.29px;">拓展指令集</a> <a href="/tags/操作系统/" style="font-size: 18.57px;">操作系统</a> <a href="/tags/数据库/" style="font-size: 10px;">数据库</a> <a href="/tags/数据挖掘/" style="font-size: 11.43px;">数据挖掘</a> <a href="/tags/数据管理/" style="font-size: 11.43px;">数据管理</a> <a href="/tags/数据结构/" style="font-size: 20px;">数据结构</a> <a href="/tags/数据结构，算法设计/" style="font-size: 10px;">数据结构，算法设计</a> <a href="/tags/文件操作/" style="font-size: 15.71px;">文件操作</a> <a href="/tags/时延/" style="font-size: 10px;">时延</a> <a href="/tags/智能硬件/" style="font-size: 11.43px;">智能硬件</a> <a href="/tags/最小生成树/" style="font-size: 11.43px;">最小生成树</a> <a href="/tags/机器学习/" style="font-size: 12.86px;">机器学习</a> <a href="/tags/模拟器/" style="font-size: 10px;">模拟器</a> <a href="/tags/硬件编程/" style="font-size: 10px;">硬件编程</a> <a href="/tags/神经网络/" style="font-size: 10px;">神经网络</a> <a href="/tags/移动开发/" style="font-size: 10px;">移动开发</a> <a href="/tags/算法/" style="font-size: 11.43px;">算法</a> <a href="/tags/算法设计/" style="font-size: 17.14px;">算法设计</a> <a href="/tags/线程/" style="font-size: 14.29px;">线程</a> <a href="/tags/编码/" style="font-size: 18.57px;">编码</a> <a href="/tags/编程/" style="font-size: 11.43px;">编程</a> <a href="/tags/网络编程/" style="font-size: 10px;">网络编程</a> <a href="/tags/自然语言处理/" style="font-size: 10px;">自然语言处理</a> <a href="/tags/蚁群算法，算法设计/" style="font-size: 10px;">蚁群算法，算法设计</a> <a href="/tags/计算机系统/" style="font-size: 10px;">计算机系统</a> <a href="/tags/计算机网络/" style="font-size: 10px;">计算机网络</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a> <a href="/tags/译码/" style="font-size: 14.29px;">译码</a> <a href="/tags/软件安装/" style="font-size: 12.86px;">软件安装</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a> <a href="/tags/面向对象/" style="font-size: 10px;">面向对象</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">August 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">May 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">November 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">October 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/28/Qemu中TCG操作数的定义及注释/">Qemu中TCG操作数的定义及注释</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/27/Rocket学习常用网址整理/">Rocket学习常用网址整理</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/26/Linux常用命令总结及内存分配基本知识/">Linux常用命令总结及内存分配基本知识</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/16/Paraphrasing_With_Bilingual_Parallel_Corpora /">NLP论文笔记Paraphrasing With Bilingual Parallel Corpora 双语平行语料库释义</a>
+          </li>
+        
+          <li>
+            <a href="/2018/03/16/deepin_install_perf/">deepin系统（unstable 发行版 4.14）安装perf的正确姿势</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Dove Cao<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
