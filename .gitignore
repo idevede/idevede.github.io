@@ -1,0 +1,28 @@
+# Jekyll site files
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+.bundle/
+vendor/
+
+# Ruby dependencies
+Gemfile.lock
+
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# IDE and system files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Log files
+*.log
+
+# Local configuration
+.env
+.env.*
