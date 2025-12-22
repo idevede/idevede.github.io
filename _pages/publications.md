@@ -141,7 +141,7 @@ author_profile: true
 ### Patents:
 
 1. **Representation Learning for Continuous Vector Graphics**  
-   **Defu Cao**, Zhaowen Wang, Jose Echevarria, Yan Liu  
+   **Defu Cao**, Zhaowen Wang, Jose Echevarria
    *US Patent Application US20240303870A1* | Status: Published Patent Application, United States, 2024 | [USPTO](https://patents.google.com/patent/US20240303870A1/)
 
 ## Publication Impact
