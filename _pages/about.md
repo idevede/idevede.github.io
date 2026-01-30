@@ -30,6 +30,8 @@ In addition, he is also interested in causal representation learning and pre-tra
 - 01/2026: One paper on Human Involved Agentic Systems  accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Physics Informed Diffusion Foundation Model accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Offline RL accepted by [AISTATS](https://aistats.org/aistats2026/)!
+- 01/2026: Invited talk "Frontiers of Physics-Informed Time Series Foundation Models." Host: Peking University, School of AI for Science.
+- 01/2026: Invited talk "TSFoundation: From Foundation Models to Agents Orchestration." Host: DataDog AI Research Lab.
 - 12/2025: 🚀 [TSOrchestra](https://x.com/caodefu_dove/status/2002102494948966812?s=20), our agentic-guided foundation model forecasting framework from USC Melady Lab, reached **Rank #1** on the Salesforce GIFT-Eval leaderboard (MASE & CRPS)!
 - 10/2025: Invited talk on Advancing Time Series Analysis with Unified Foundation Models at Rice University - CS Department!
 - 10/2025: Invited talk on Advancing Time Series Analysis with Unified Foundation Models at Prairie View A&M University - Center of Excellence in Research and Education for Big Military Data Intelligence!
