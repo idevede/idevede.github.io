@@ -25,7 +25,7 @@ In addition, he is also interested in causal representation learning and pre-tra
 - 🎤 **Invited Speaker** - 15+ talks at leading institutions including Caltech, Rice, UBC, UCSD (2024-2025)
 - 🏅 **Best RA Award 2024** - Selected as Best Research Assistant in USC CS Department (1 per department)
 
-## Recent News (2024-2025)
+## Recent News (2025-2026)
 
 - 01/2026: One paper on Human Involved Agentic Systems  accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Physics Informed Diffusion Foundation Model accepted by [ICLR](https://iclr.cc/)!
@@ -40,7 +40,7 @@ In addition, he is also interested in causal representation learning and pre-tra
 - 03/2025: Invited talk on New Frontiers in Time Series Foundation Models at University of British Columbia!
 
 <details markdown="1">
-<summary><strong>Past Achievements (2021-2023)</strong> <i>(click to expand)</i></summary>
+<summary><strong>Past Achievements</strong> <i>(click to expand)</i></summary>
 - 10/2024: Invited talk on Time Series Foundation Model in QuantLLM Community!
 - 10/2024: Invited talk on Time Series Foundation Model in Lehigh University!
 - 09/2024: Invited talk on Time Series Foundation Model in Emory University!

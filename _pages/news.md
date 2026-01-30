@@ -5,7 +5,7 @@ permalink: /news/
 author_profile: true
 ---
 
-## Recent News (2024-2025)
+## Recent News (2025-2026)
 
 - 01/2026: One paper on Human Involved Agentic Systems  accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Physics Informed Diffusion Foundation Model accepted by [ICLR](https://iclr.cc/)!
@@ -29,7 +29,7 @@ author_profile: true
 - 01/2024: One paper accepted by [WWW](https://www2024.thewebconf.org/) and two papers accepted by [ICLR](https://iclr.cc/)!
 
 <details markdown="1">
-<summary><strong>Past Achievements (2021-2023)</strong> <i>(click to expand)</i></summary>
+<summary><strong>Past Achievements</strong> <i>(click to expand)</i></summary>
 
 - 12/2023: One paper on multi-modal time series foundation model accepted by [AAAI Mentored Undergraduate Research Program](https://aaai.org/aaai-conference/eaai-24-program/)!
 - 10/2023: One paper on Financial Time-Series Forecasting accepted by [ICAIF](https://ai-finance.org/) as Oral paper!
