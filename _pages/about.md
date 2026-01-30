@@ -15,7 +15,7 @@ Prior, he earned his Master's Degree at the School of EECS [Peking University](h
 
 Cao's research primarily focuses on developing advanced machine learning and data mining algorithms for structured data, with a particular emphasis on time series foundation models. His work aims to create models that demonstrate a deep understanding of temporal patterns and dynamics in various domains, including spatio-temporal and relational data. To this end, his research aims to integrate causal inference, graph neural networks, spectral domain representation, interpretability, and robustness.
 
-In addition, he is also interested in causal representation learning and pre-training large language models. He has published his research in top conference proceedings including NeurIPS, CVPR, ICLR, ICRA, ICDM, and NAACL.
+In addition, he is also interested in causal representation learning and pre-training large language models. He has published his research in top conference proceedings including NeurIPS, ICML,ICLR, CVPR, ICRA, and NAACL, etc.
 
 ## Research Highlights
 
@@ -27,12 +27,18 @@ In addition, he is also interested in causal representation learning and pre-tra
 
 ## Recent News (2024-2025)
 
+- 01/2026: One paper on Human Involved Agentic Systems  accepted by [ICLR](https://iclr.cc/)!
+- 01/2026: One paper on Physics Informed Diffusion Foundation Model accepted by [ICLR](https://iclr.cc/)!
+- 01/2026: One paper on Offline RL accepted by [AISTATS](https://aistats.org/aistats2026/)!
 - 12/2025: 🚀 [TSOrchestra](https://x.com/caodefu_dove/status/2002102494948966812?s=20), our agentic-guided foundation model forecasting framework from USC Melady Lab, reached **Rank #1** on the Salesforce GIFT-Eval leaderboard (MASE & CRPS)!
 - 10/2025: Invited talk on Advancing Time Series Analysis with Unified Foundation Models at Rice University - CS Department!
 - 10/2025: Invited talk on Advancing Time Series Analysis with Unified Foundation Models at Prairie View A&M University - Center of Excellence in Research and Education for Big Military Data Intelligence!
 - 09/2025: Invited talk on Time Series Foundation Models at Caltech - Academia-Industry X!
 - 07/2025: Invited talk on Time Series Foundation Models at UCSD & Abel.AI!
 - 03/2025: Invited talk on New Frontiers in Time Series Foundation Models at University of British Columbia!
+
+<details markdown="1">
+<summary><strong>Past Achievements (2021-2023)</strong> <i>(click to expand)</i></summary>
 - 10/2024: Invited talk on Time Series Foundation Model in QuantLLM Community!
 - 10/2024: Invited talk on Time Series Foundation Model in Lehigh University!
 - 09/2024: Invited talk on Time Series Foundation Model in Emory University!
@@ -43,8 +49,6 @@ In addition, he is also interested in causal representation learning and pre-tra
 - 03/2024: Awarded a Graduate School Endowed Fellowship for the academic year!
 - 01/2024: One paper accepted by [WWW](https://www2024.thewebconf.org/) and two papers accepted by [ICLR](https://iclr.cc/)!
 
-<details markdown="1">
-<summary><strong>Past Achievements (2021-2023)</strong> <i>(click to expand)</i></summary>
 
 - 12/2023: One paper on multi-modal time series foundation model accepted by [AAAI Mentored Undergraduate Research Program](https://aaai.org/aaai-conference/eaai-24-program/)!
 - 10/2023: One paper on Financial Time-Series Forecasting accepted by [ICAIF](https://ai-finance.org/) as Oral paper!
