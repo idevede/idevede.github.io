@@ -16,6 +16,8 @@ author_profile: true
 {% endfor %}
 
 ## Talks
+- 01/2026: Invited talk "Frontiers of Physics-Informed Time Series Foundation Models." Host: Peking University, School of AI for Science.
+- 01/2026: Invited talk "TSFoundation: From Foundation Models to Agents Orchestration." Host: DataDog AI Research Lab.
 - 10/2025: Invited talk "Advancing Time Series Analysis with Unified Foundation Models" at Rice University - CS Department
 - 10/2025: Invited talk "Advancing Time Series Analysis with Unified Foundation Models" at Prairie View A&M University - Center of Excellence in Research and Education for Big Military Data Intelligence
 - 09/2025: Invited talk "Time Series Foundation Models" at Caltech - Academia-Industry X
