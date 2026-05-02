@@ -47,29 +47,29 @@ author_profile: true
 
 ### Conference Papers:
 
-1. **PINFDiT: Energy-Based Physics-Informed Diffusion Transformers for General-purpose Time Series Tasks**  
-   **Defu Cao**, Wen Ye, Yizhou Zhang, Sam Griesemer, Yan Liu  
-   *[ICLR 2026](https://iclr.cc/)*
-
-2. **Adaptive Collaboration with Humans: Metacognitive Policy Optimization for Multi-Agent LLMs with Continual Learning**  
-   Wei Yang, **Defu Cao**, Jiacheng Pang, Muyan Weng, Yan Liu  
-   *[ICLR 2026](https://iclr.cc/)*
-
-3. **Orthogonalized estimation of difference of q-functions**  
-   **Defu Cao**, Angela Zhou  
-   *[AISTATS 2026](https://aistats.org/)*
-
-4. **"Someone Hid It!": Query-Agnostic Black-Box Attacks on LLM-Based Retrieval**  
+1. **"Someone Hid It!": Query-Agnostic Black-Box Attacks on LLM-Based Retrieval**  
    Jiate Li, **Defu Cao**, Li Li, Wei Yang, Yuehan Qin, Chenxiao Yu, Tiannuo Yang, Ryan A. Rossi, Yan Liu, Xiyang Hu, Yue Zhao  
    *[ICML 2026](https://icml.cc/)*
 
-5. **Position: Beyond Prediction: Toward Verifiable Physiological Waveform Reasoning with Foundation Models and Agentic LLMs**  
+2. **Position: Beyond Prediction: Toward Verifiable Physiological Waveform Reasoning with Foundation Models and Agentic LLMs**  
    Xiaoda Wang, Ching Chang, **Defu Cao**, Kaiqiao Han, Fang Sun, Yue Huang, Minxiao Wang, Chang Xu, Xiao Luo, Runze Yan, Xiangliang Zhang, Xiao Hu, Yan Liu, Yizhou Sun, Wei Wang, Carl Yang  
    *[ICML 2026](https://icml.cc/)*
 
-6. **Speaking Numbers to LLMs: Multi-Wavelet Number Embeddings for Time Series Forecasting**  
+3. **Speaking Numbers to LLMs: Multi-Wavelet Number Embeddings for Time Series Forecasting**  
    **Defu Cao**, Zijie Lei, Muyan Weng, Jiao Sun, Yan Liu  
    *[IJCAI 2026](https://www.ijcai.org/)*
+
+4. **PINFDiT: Energy-Based Physics-Informed Diffusion Transformers for General-purpose Time Series Tasks**  
+   **Defu Cao**, Wen Ye, Yizhou Zhang, Sam Griesemer, Yan Liu  
+   *[ICLR 2026](https://iclr.cc/)*
+
+5. **Adaptive Collaboration with Humans: Metacognitive Policy Optimization for Multi-Agent LLMs with Continual Learning**  
+   Wei Yang, **Defu Cao**, Jiacheng Pang, Muyan Weng, Yan Liu  
+   *[ICLR 2026](https://iclr.cc/)*
+
+6. **Orthogonalized estimation of difference of q-functions**  
+   **Defu Cao**, Angela Zhou  
+   *[AISTATS 2026](https://aistats.org/)*
 
 7. **Neuron-based Multifractal Analysis of Neuron Interaction Dynamics in Large Models**  
    Xiongye Xiao, Heng Ping, Chenyu Zhou, **Defu Cao**, Yaxing Li, Yizhuo Zhou, Shixuan Li, Nikos Kanakaris, Paul Bogdan  
