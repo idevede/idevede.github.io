@@ -45,9 +45,7 @@ author_profile: true
 - 10/2022: One paper on Out-of-distribution benchmark accepted by [NeurIPS DistShift](https://sites.google.com/view/distshift2022)!
 - 09/2022: One paper on Causal Inference accepted by [NeurIPS](https://neurips.cc/)!
 - 07/2022: One paper on Causal Inference accepted by [ICML Continuous time workshop](https://sites.google.com/view/continuous-time-methods-icml/home)!
-- 05/2022: One paper accepted by [IEEE ICCCAS](http://www.icccas.org/)!
 - 04/2022: One paper accepted by [NAACL](https://2022.naacl.org/) main conference!
-- 03/2022: Published the pre-print survey paper of 'Physics-Informed Machine Learning'!
 - 02/2022: Accepted the Research Scientist Intern offer at [Adobe Research](https://research.adobe.com/)!
 - 01/2022: One paper accepted by [PAKDD](http://pakdd.net/)!
 - 11/2021: Organized [ICAIF 2021 workshop - Time Series in Finance](https://sites.google.com/view/icaif-time-series/home)!
