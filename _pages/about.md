@@ -26,7 +26,9 @@ In addition, he is also interested in causal representation learning and pre-tra
 - 🏅 **Best RA Award 2024** - Selected as Best Research Assistant in USC CS Department (1 per department)
 
 ## Recent News (2025-2026)
-
+- 04/2026: One paper on Safty Agents: query-agnostic black-box attacks accepted by [ICML](https://icml.cc/)!
+- 04/2026: One position paper on LLM reasoning for healthcare accepted by [ICML](https://icml.cc/)!
+- 04/2026: One paper on LLM embedding: multi-wavelet number embeddings accepted by [IJCAI](https://www.ijcai.org/)!
 - 01/2026: One paper on Human Involved Agentic Systems  accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Physics Informed Diffusion Foundation Model accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Offline RL accepted by [AISTATS](https://aistats.org/aistats2026/)!
