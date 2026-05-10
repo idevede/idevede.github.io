@@ -37,12 +37,12 @@ author_profile: true
 
 1. **Conversational Time Series Foundation Models: Towards Explainable and Effective Forecasting**<br>
    **Defu Cao**, Michael Gee, Jinbo Liu, Hengxuan Wang, Wei Yang, Rui Wang, Yan Liu<br>
-   *arXiv 2025* | [paper](https://arxiv.org/abs/2512.16022)<br> | [code] https://github.com/DC-research/TSorchestra
+   *arXiv 2025* | [paper](https://arxiv.org/abs/2512.16022)| [code] https://github.com/DC-research/TSorchestra <br> 
    *Positioning:* TSOrchestra; R1-style fine-tuned LLM judge that explains and orchestrates foundation-model ensembles through multi-turn optimization.
 
 2. **Adaptive Collaboration with Humans: Metacognitive Policy Optimization for Multi-Agent LLMs with Continual Learning**<br>
    Wei Yang, **Defu Cao**, Jiacheng Pang, Muyan Weng, Yan Liu<br>
-   *[ICLR 2026](https://iclr.cc/)* | [paper](https://openreview.net/forum?id=IKVUB9Exuc)<br> |[code](https://github.com/USC-Melady/HILA)
+   *[ICLR 2026](https://iclr.cc/)* | [paper](https://openreview.net/forum?id=IKVUB9Exuc) |[code](https://github.com/USC-Melady/HILA) <br>
    *Positioning:* HILA; post-training for human-agent collaboration through GRPO-based metacognitive deferral and continual learning from expert feedback.
 
 3. **TS-Reasoner: Domain-Oriented Time Series Inference Agents for Reasoning and Automated Analysis**<br>
