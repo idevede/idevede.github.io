@@ -147,7 +147,7 @@ author_profile: true
    *arXiv 2022* | [paper](https://arxiv.org/abs/2203.16797)<br>
    *Positioning:* actual survey of physics-informed machine learning.
 
-## Peer-Reviewed Conference and Journal Papers
+## Selected Publications
 
 ### 2026
 
@@ -177,9 +177,9 @@ author_profile: true
 
 7. **Orthogonalized estimation of difference of q-functions**<br>
    **Defu Cao**, Angela Zhou<br>
-   *[AISTATS 2026](https://aistats.org/)*
+   *[AISTATS 2026](https://aistats.org/)* | [paper](https://arxiv.org/abs/2406.08697)
 
-### 2025
+### 2024-2025
 
 1. **Neuron-based Multifractal Analysis of Neuron Interaction Dynamics in Large Models**<br>
    Xiongye Xiao, Heng Ping, Chenyu Zhou, **Defu Cao**, Yaxing Li, Yizhuo Zhou, Shixuan Li, Nikos Kanakaris, Paul Bogdan<br>
@@ -189,33 +189,31 @@ author_profile: true
    Yizhou Zhang\*, **Defu Cao**\*, Yan Liu<br>
    *[CoLM 2025](https://colmweb.org/)*
 
-### 2024
-
-1. **TEMPO: Prompt-based Generative Pre-trained Transformer for Time Series Forecasting**<br>
+3. **TEMPO: Prompt-based Generative Pre-trained Transformer for Time Series Forecasting**<br>
    **Defu Cao**, Furong Jia, Sercan O Arik, Tomas Pfister, Yixiang Zheng, Wen Ye, Yan Liu<br>
    *[ICLR 2024](https://iclr.cc/)* | [paper](https://arxiv.org/abs/2310.04948) | [code](https://github.com/DC-research/TEMPO) | [huggingface](https://huggingface.co/Melady/TEMPO)
 
-2. **GPT4MTS: Prompt-based Large Language Model for Multimodal Time-series Forecasting**<br>
+4. **GPT4MTS: Prompt-based Large Language Model for Multimodal Time-series Forecasting**<br>
    Furong Jia, Kevin Wang, Yixiang Zheng, **Defu Cao**, Yan Liu<br>
    *[AAAI/EAAI 2024](https://aaai.org/conference/aaai/aaai-24/)* | [paper](https://doi.org/10.1609/aaai.v38i21.30383)
 
-3. **Active Sequential Posterior Estimation for Sample-Efficient Simulation-Based Inference**<br>
+5. **Active Sequential Posterior Estimation for Sample-Efficient Simulation-Based Inference**<br>
    Sam Griesemer, **Defu Cao**, Zijun Cui, Carolina Osorio, Yan Liu<br>
    *[NeurIPS 2024](https://neurips.cc/)*
 
-4. **An Empirical Examination of Balancing Strategy for Counterfactual Estimation on Time Series**<br>
+6. **An Empirical Examination of Balancing Strategy for Counterfactual Estimation on Time Series**<br>
    Qiang Huang, Chuizheng Meng, **Defu Cao**, Biwei Huang, Yi Chang, Yan Liu<br>
    *[ICML 2024](https://icml.cc/)*
 
-5. **Neuro-Inspired Hierarchical Multimodal Learning**<br>
+7. **Neuro-Inspired Hierarchical Multimodal Learning**<br>
    Xiongye Xiao, Gengshuo Liu, Gaurav Gupta, **Defu Cao**, Shixuan Li, Yaxing Li, Tianqing Fang, Mingxi Cheng, Paul Bogdan<br>
    *[ICLR 2024](https://iclr.cc/)*
 
-6. **MUGSI: Distilling GNNs with Multi-Granularity Structural Information for Graph Classification**<br>
+8. **MUGSI: Distilling GNNs with Multi-Granularity Structural Information for Graph Classification**<br>
    Tianjun Yao, Jiaqi Sun, **Defu Cao**, Kun Zhang, Guangyi Chen<br>
    *[WWW 2024](https://www2024.thewebconf.org/)* | [paper](https://dl.acm.org/doi/10.1145/3589334.3645550)
 
-7. **Coupled Multiwavelet Neural Operator Learning for Coupled Partial Differential Equations**<br>
+9. **Coupled Multiwavelet Neural Operator Learning for Coupled Partial Differential Equations**<br>
    Xiongye Xiao, **Defu Cao**, Ruochen Yang, Gaurav Gupta, Gengshuo Liu, Chenzhong Yin, Radu Balan, Paul Bogdan<br>
    *[ICLR 2024](https://iclr.cc/)* | [paper](https://arxiv.org/abs/2303.02304)
 

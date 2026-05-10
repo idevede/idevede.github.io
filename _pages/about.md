@@ -21,14 +21,14 @@ His current research agenda connects several layers:
 | **Post-training and agentic systems** | [TSOrchestra](https://arxiv.org/abs/2512.16022), [HILA](https://openreview.net/forum?id=IKVUB9Exuc), [TS-Reasoner](https://openreview.net/forum?id=yhy7Vigjcf) | How can LLMs become judges, planners, tool users, collaborators, and continually improving agents? |
 | **LLM safety and agent security** | ["Someone Hid It!"](https://arxiv.org/abs/2602.00364), [Topology Matters](https://arxiv.org/abs/2512.04668) | How do retrieval systems, RAG, agent memory, and multi-agent topologies fail under attack or privacy pressure? |
 | **Foundation models for structured/scientific data** | [TEMPO](https://arxiv.org/abs/2310.04948), [ClimateLLM](https://arxiv.org/abs/2502.11059), [TimeDiT](https://arxiv.org/abs/2409.02322), [PINFDiT](https://openreview.net/forum?id=EphTlUJ4XN) | How can foundation models capture numerical structure, uncertainty, multi-resolution dynamics, and physics constraints? |
-| **Numerical interfaces for LLMs** | [Speaking Numbers to LLMs](https://openreview.net/pdf?id=mk2ADdNQAI), GPT4MTS | How should LLMs ingest continuous values, multimodal signals, and domain-specific numerical evidence? |
+| **Numerical interfaces for LLMs** | [Speaking Numbers to LLMs](https://openreview.net/pdf?id=mk2ADdNQAI), [GPT4MTS](https://doi.org/10.1609/aaai.v38i21.30383) | How should LLMs ingest continuous values, multimodal signals, and domain-specific numerical evidence? |
 | **Benchmarks and high-stakes evaluation** | [TSAIA](https://arxiv.org/abs/2509.01822), [TemporalBench](https://arxiv.org/abs/2602.13272), [Physiological Waveform Reasoning](https://openreview.net/forum?id=cgpU6fhUXx) | How do we evaluate reasoning quality, traceability, and utility beyond benchmark accuracy? |
 
 He has published his research in top conference proceedings including NeurIPS, ICML, ICLR, CVPR, ICRA, and NAACL.
 
 ## Research Highlights
 
-- **Agentic post-training.** Works on R1-style orchestration, human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration.
+- **TSOrchestra and agentic post-training.** Builds R1-style orchestration systems where LLMs act as judges, explainers, and coordinators for foundation-model ensembles; also works on human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration.
 - **LLM safety.** Studies query-agnostic attacks on LLM-based retrieval and memory leakage in multi-agent systems.
 - **Foundation model line.** Builds GPT-style, frequency-aware, diffusion-based, and physics-informed models for structured and scientific data.
 - **Numerical LLM interfaces.** Develops representation layers such as multi-wavelet number embeddings so LLMs can work with continuous values more faithfully.
@@ -58,7 +58,7 @@ He has published his research in top conference proceedings including NeurIPS, I
 - 10/2024: Invited talk on Time Series Foundation Model in Lehigh University!
 - 09/2024: Invited talk on Time Series Foundation Model in Emory University!
 - 09/2024: One paper on Simulator Calibration with Google Research accepted by [NeurIPS](https://neurips.cc/)!
-- 06/2024: Started summer internship at [Cubist](https://point72.com/cubist/) as a Quantitative Researcher in Foundation Models!
+- 06/2024: Started summer internship at [Cubist](https://point72.com/cubist/) as a Quantitative Researcher!
 - 04/2024: Time Series Foundation Model - TEMPO (ICLR 2024) published on [Github](https://github.com/DC-research/TEMPO) and [Hugging Face](https://huggingface.co/Melady/TEMPO)!
 - 04/2024: Selected for the 2024 Best Research Assistant Award in USC CS Department! (1 per department)
 - 03/2024: Awarded a Graduate School Endowed Fellowship for the academic year!
@@ -89,8 +89,8 @@ He has published his research in top conference proceedings including NeurIPS, I
 ## Internships & Research Experience
 
 - **Summer 2025**: Visiting Scholar at [California Institute of Technology](https://www.caltech.edu/), working with [Prof. Yisong Yue](http://www.yisongyue.com/)
-- **2024-2025**: Contributor to [Humanity Unleashed](https://humun.org/get-involved)'s open-source cooperative AI policymaking platform; helped lead the pretraining track for the foundation-model component.
-- **Summer 2024**: Quantitative Researcher in Foundation Models at [Cubist Systematic Strategies](https://point72.com/cubist/)
+- **2024-2025**: Contributor to [Humanity Unleashed](https://humun.org)'s open-source cooperative AI policymaking platform; helped lead the pretraining track for the foundation-model component.
+- **Summer 2024**: Quantitative Researcher  at [Cubist Systematic Strategies](https://point72.com/cubist/)
 - **Summer 2023**: Research Assistant at [MBZUAI](https://mbzuai.ac.ae/research/), working with [Prof. Kun Zhang](https://www.andrew.cmu.edu/user/kunz1/) and [Prof. Biwei Huang](https://biweihuang.com/) on causality
 - **Summer 2022**: Research Intern at Adobe Research, mentored by [Dr. Zhaowen Wang](https://scholar.google.com/citations?user=lwlYARMAAAAJ&hl=en)
 - **Previous**: Research Intern at [Microsoft Research Lab Asia (MSRA)](https://www.microsoft.com/en-us/research/lab/microsoft-research-asia/) (twice), working with [Dr. Yujing Wang](https://dblp.org/pid/16/4075.html) and [Alibaba Damo Academy's Data Analytics and Intelligence Lab](https://damo.alibaba.com/labs/data-analytics-and-intelligence), advised by [Dr. Jingren Zhou](https://scholar.google.com/citations?user=64zxhRUAAAAJ&hl=en)

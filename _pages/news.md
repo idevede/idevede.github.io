@@ -27,7 +27,7 @@ author_profile: true
 - 10/2024: Invited talk on Time Series Foundation Model in Lehigh University!
 - 09/2024: Invited talk on Time Series Foundation Model in Emory University!
 - 09/2024: One paper on Simulator Calibration with Google Research accepted by [NeurIPS](https://neurips.cc/)!
-- 06/2024: Started summer internship at [Cubist](https://point72.com/cubist/) as a Quantitative Researcher in Foundation Models!
+- 06/2024: Started summer internship at [Cubist](https://point72.com/cubist/) as a Quantitative Researcher!
 - 04/2024: Time Series Foundation Model - TEMPO (ICLR 2024) published on [Github](https://github.com/DC-research/TEMPO) and [Hugging Face](https://huggingface.co/Melady/TEMPO)!
 - 04/2024: Selected for the 2024 Best Research Assistant Award in USC CS Department! (1 per department)
 - 03/2024: Awarded a Graduate School Endowed Fellowship for the academic year!
