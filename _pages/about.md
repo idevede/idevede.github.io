@@ -7,9 +7,13 @@ redirect_from:
   - /about.html
 ---
 
-**Research identity.** I build foundation models and agentic LLM systems for structured, scientific, and decision-critical data.
+<div class="notice--info" markdown="1">
+## Research Identity
 
-`Agentic Post-Training` · `LLM Safety` · `Scientific Foundation Models` · `Numerical LLM Interfaces`
+I build **foundation models** and **agentic LLM systems** for structured, scientific, and decision-critical data.
+
+**Agentic Post-Training** · **LLM Safety** · **Scientific Foundation Models** · **Numerical LLM Interfaces**
+</div>
 
 Defu Cao /dəfu: tsaʊ/ is a Ph.D. candidate in the [Thomas Lord Department of Computer Science](https://www.cs.usc.edu/) at the [University of Southern California](https://homeadmin.usc.edu/www/), working with [Prof. Yan Liu](https://viterbi-web.usc.edu/~liu32/) at the USC [Melady Lab](https://melady.usc.edu). He is also working closely with [Prof. Yue Zhao](https://viterbi-web.usc.edu/~yzhao010/) and [Prof. Angela Zhou](https://angelamzhou.github.io/) from USC Marshall Data Sciences and Operations. Prior, he earned his Master's Degree at the School of EECS [Peking University](https://english.pku.edu.cn/).
 
