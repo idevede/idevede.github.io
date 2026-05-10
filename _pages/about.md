@@ -7,6 +7,10 @@ redirect_from:
   - /about.html
 ---
 
+**Research identity.** I build foundation models and agentic LLM systems for structured, scientific, and decision-critical data.
+
+`Agentic Post-Training` · `LLM Safety` · `Scientific Foundation Models` · `Numerical LLM Interfaces`
+
 Defu Cao /dəfu: tsaʊ/ is a Ph.D. candidate in the [Thomas Lord Department of Computer Science](https://www.cs.usc.edu/) at the [University of Southern California](https://homeadmin.usc.edu/www/), working with [Prof. Yan Liu](https://viterbi-web.usc.edu/~liu32/) at the USC [Melady Lab](https://melady.usc.edu). He is also working closely with [Prof. Yue Zhao](https://viterbi-web.usc.edu/~yzhao010/) and [Prof. Angela Zhou](https://angelamzhou.github.io/) from USC Marshall Data Sciences and Operations. Prior, he earned his Master's Degree at the School of EECS [Peking University](https://english.pku.edu.cn/).
 
 He has been fortunate to work as a visiting scholar with [Prof. Yisong Yue](http://www.yisongyue.com/) at the [California Institute of Technology](https://www.caltech.edu/) (2025), focusing on multimodal foundation models and LLM infrastructure, and [Prof. Kun Zhang](https://www.andrew.cmu.edu/user/kunz1/) at [MBZUAI](https://mbzuai.ac.ae/research/) (2023), focusing on causal inference and causal discovery.
@@ -28,11 +32,13 @@ He has published his research in top conference proceedings including NeurIPS, I
 
 ## Research Highlights
 
-- **Agentic post-training.** Works on R1-style orchestration, human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration.
-- **LLM safety.** Studies query-agnostic attacks on LLM-based retrieval and memory leakage in multi-agent systems.
-- **Foundation model line.** Builds GPT-style, frequency-aware, diffusion-based, and physics-informed models for structured and scientific data.
-- **Numerical LLM interfaces.** Develops representation layers such as multi-wavelet number embeddings so LLMs can work with continuous values more faithfully.
-- **Impact.** TSOrchestra reached Rank #1 on the Salesforce GIFT-Eval leaderboard; 3,500+ citations across 30+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; invited workshop presentation at Google; Best RA Award 2024 in the USC CS Department.
+| Highlight | Signal |
+| --- | --- |
+| **TSOrchestra** | Rank #1 on the Salesforce GIFT-Eval leaderboard; LLM-as-judge orchestration for foundation-model ensembles. |
+| **Agentic systems** | HILA, TS-Reasoner, human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration. |
+| **LLM safety** | Query-agnostic attacks on LLM-based retrieval and memory leakage in multi-agent systems. |
+| **Foundation models** | TEMPO, ClimateLLM, TimeDiT, and PINFDiT for structured, scientific, and physics-constrained data. |
+| **Impact** | 3,500+ citations across 30+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; invited workshop presentation at Google; Best RA Award 2024 in the USC CS Department. |
 
 ## Recent News (2025-2026)
 - 05/2026: I am honored to have been awarded the USC Dissertation Completion Fellowship!
