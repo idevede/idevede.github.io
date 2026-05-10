@@ -9,8 +9,9 @@ author_profile: true
 
 - 05/2026: I am honored to have been awarded the USC Dissertation Completion Fellowship!
 - 04/2026: One paper on LLM retrieval security, query-agnostic black-box attacks, accepted by [ICML](https://icml.cc/)!
-- 04/2026: One position paper on verifiable physiological waveform reasoning with foundation models and agentic LLMs accepted by [ICML](https://icml.cc/)!
+- 04/2026: One position paper on verifiable Physiological Waveform Reasoning with foundation models and agentic LLMs accepted by [ICML](https://icml.cc/)!
 - 04/2026: One paper on numerical embeddings for LLM time-series forecasting, multi-wavelet number embeddings, accepted by [IJCAI](https://www.ijcai.org/)!
+- 03/2026: [TS-Reasoner](https://openreview.net/forum?id=yhy7Vigjcf), our domain-oriented time series inference agent, was accepted by [TMLR](https://jmlr.org/tmlr/papers/)!
 - 01/2026: One paper on human-in-the-loop multi-agent LLM systems accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on physics-informed diffusion transformers for time series foundation models accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Offline RL accepted by [AISTATS](https://aistats.org/aistats2026/)!
