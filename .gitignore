@@ -26,3 +26,5 @@ package-lock.json
 # Local configuration
 .env
 .env.*
+
+materials/

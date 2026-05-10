@@ -7,11 +7,12 @@ author_profile: true
 
 ## Recent News (2025-2026)
 
-- 04/2026: One paper on Safty Agents: query-agnostic black-box attacks accepted by [ICML](https://icml.cc/)!
-- 04/2026: One position paper on LLM reasoning for healthcare accepted by [ICML](https://icml.cc/)!
-- 04/2026: One paper on LLM embedding: multi-wavelet number embeddings accepted by [IJCAI](https://www.ijcai.org/)!
-- 01/2026: One paper on Human Involved Agentic Systems  accepted by [ICLR](https://iclr.cc/)!
-- 01/2026: One paper on Physics Informed Diffusion Foundation Model accepted by [ICLR](https://iclr.cc/)!
+- 05/2026: I am honored to have been awarded the USC Dissertation Completion Fellowship!
+- 04/2026: One paper on LLM retrieval security, query-agnostic black-box attacks, accepted by [ICML](https://icml.cc/)!
+- 04/2026: One position paper on verifiable physiological waveform reasoning with foundation models and agentic LLMs accepted by [ICML](https://icml.cc/)!
+- 04/2026: One paper on numerical embeddings for LLM time-series forecasting, multi-wavelet number embeddings, accepted by [IJCAI](https://www.ijcai.org/)!
+- 01/2026: One paper on human-in-the-loop multi-agent LLM systems accepted by [ICLR](https://iclr.cc/)!
+- 01/2026: One paper on physics-informed diffusion transformers for time series foundation models accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Offline RL accepted by [AISTATS](https://aistats.org/aistats2026/)!
 - 01/2026: Invited talk "Frontiers of Physics-Informed Time Series Foundation Models." Host: Peking University, School of AI for Science.
 - 01/2026: Invited talk "TSFoundation: From Foundation Models to Agents Orchestration." Host: DataDog AI Research Lab.
@@ -37,7 +38,7 @@ author_profile: true
 - 12/2023: One paper on multi-modal time series foundation model accepted by [AAAI Mentored Undergraduate Research Program](https://aaai.org/aaai-conference/eaai-24-program/)!
 - 10/2023: One paper on Financial Time-Series Forecasting accepted by [ICAIF](https://ai-finance.org/) as Oral paper!
 - 06/2023: Joined [MBZUAI](https://mbzuai.ac.ae/research/) as a visiting scholar, working with Prof. [Kun Zhang](https://www.andrew.cmu.edu/user/kunz1/)!
-- 06/2023: Invited talk at Google Sustainable Urban Mobility: [Simulation and Optimization Workshop](https://rsvp.withgoogle.com/events/urban-mobility-workshop)! [Video](https://www.youtube.com/watch?v=XGXUDINIPD8) | [Slides](pdf/Google%20workshop%20presentation.pptx.pdf)
+- 06/2023: Invited talk at Google Sustainable Urban Mobility: [Simulation and Optimization Workshop](https://rsvp.withgoogle.com/events/urban-mobility-workshop)! [Video](https://www.youtube.com/watch?v=XGXUDINIPD8) \&  [Slides](pdf/Google%20workshop%20presentation.pptx.pdf)
 - 02/2023: One paper on Representation Learning accepted by [CVPR](https://cvpr.thecvf.com/)!
 - 01/2023: One paper on Neural Operator accepted by [ICLR](https://iclr.cc/)!
 - 12/2022: One paper on Time-Series Forecasting accepted by [SDM](https://www.siam.org/conferences/cm/conference/sdm23)!

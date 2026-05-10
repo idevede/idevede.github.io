@@ -2,35 +2,45 @@
 permalink: /
 title: "Welcome to Defu Cao's Homepage"
 author_profile: true
-redirect_from: 
+redirect_from:
   - /about/
   - /about.html
 ---
 
-Defu Cao /dəfu: tsaʊ/ is a Ph.D. candidate in the [Thomas Lord Department of Computer Science](https://www.cs.usc.edu/) at the [University of Southern California](https://homeadmin.usc.edu/www/), working with [Prof. Yan Liu](https://viterbi-web.usc.edu/~liu32/) at the USC [Melady Lab](https://melady.usc.edu). He is also working with [Prof. Angela Zhou](https://angelamzhou.github.io/) from USC Marshall Data Sciences and Operations.
+Defu Cao /dəfu: tsaʊ/ is a Ph.D. candidate in the [Thomas Lord Department of Computer Science](https://www.cs.usc.edu/) at the [University of Southern California](https://homeadmin.usc.edu/www/), working with [Prof. Yan Liu](https://viterbi-web.usc.edu/~liu32/) at the USC [Melady Lab](https://melady.usc.edu). He is also working closely with [Prof. Yue Zhao](https://viterbi-web.usc.edu/~yzhao010/) and [Prof. Angela Zhou](https://angelamzhou.github.io/) from USC Marshall Data Sciences and Operations. Prior, he earned his Master's Degree at the School of EECS [Peking University](https://english.pku.edu.cn/).
 
-He has been fortunate to work as a visiting scholar with [Prof. Yisong Yue](http://www.yisongyue.com/) at the [California Institute of Technology](https://www.caltech.edu/) (2025), focusing on multimodal foundation models, and [Prof. Kun Zhang](https://www.andrew.cmu.edu/user/kunz1/) at [MBZUAI](https://mbzuai.ac.ae/research/) (2023), focusing on causal inference and time series analysis.
+He has been fortunate to work as a visiting scholar with [Prof. Yisong Yue](http://www.yisongyue.com/) at the [California Institute of Technology](https://www.caltech.edu/) (2025), focusing on multimodal foundation models and LLM infrastructure, and [Prof. Kun Zhang](https://www.andrew.cmu.edu/user/kunz1/) at [MBZUAI](https://mbzuai.ac.ae/research/) (2023), focusing on causal inference and causal discovery.
 
-Prior, he earned his Master's Degree at the School of EECS [Peking University](https://english.pku.edu.cn/), where he was co-advised by [Prof. Xu Cheng](https://eecs.pku.edu.cn/info/1499/6782.htm) and [Prof. Xianhua Liu](https://eecs.pku.edu.cn/info/1499/6779.htm).
 
-Cao's research primarily focuses on developing advanced machine learning and data mining algorithms for structured data, with a particular emphasis on time series foundation models. His work aims to create models that demonstrate a deep understanding of temporal patterns and dynamics in various domains, including spatio-temporal and relational data. To this end, his research aims to integrate causal inference, graph neural networks, spectral domain representation, interpretability, and robustness.
+Cao's research focuses on foundation models for structured and scientific data, agentic post-training systems, and LLM safety. Time series and scientific signals are a major application domain, but the broader goal is to build models that can represent complex numerical structure, reason with evidence, interact with tools and humans, and remain reliable under distribution shift, physical constraints, privacy risks, and high-stakes deployment.
 
-In addition, he is also interested in causal representation learning and pre-training large language models. He has published his research in top conference proceedings including NeurIPS, ICML,ICLR, CVPR, ICRA, and NAACL, etc.
+His current research agenda connects several layers:
+
+| Direction | Representative Work | Core Question |
+| --- | --- | --- |
+| **Foundation models for structured/scientific data** | [TEMPO](https://arxiv.org/abs/2310.04948), [ClimateLLM](https://arxiv.org/abs/2502.11059), [TimeDiT](https://arxiv.org/abs/2409.02322), [PINFDiT](https://openreview.net/forum?id=EphTlUJ4XN) | How can foundation models capture numerical structure, uncertainty, multi-resolution dynamics, and physics constraints? |
+| **Numerical interfaces for LLMs** | [Speaking Numbers to LLMs](https://openreview.net/pdf?id=mk2ADdNQAI), GPT4MTS | How should LLMs ingest continuous values, multimodal signals, and domain-specific numerical evidence? |
+| **Post-training and agentic systems** | [TSOrchestra](https://arxiv.org/abs/2512.16022), [HILA](https://openreview.net/forum?id=IKVUB9Exuc), [TS-Reasoner](https://arxiv.org/abs/2410.04047) | How can LLMs become judges, planners, tool users, collaborators, and continually improving agents? |
+| **LLM safety and agent security** | ["Someone Hid It!"](https://arxiv.org/abs/2602.00364), [Topology Matters](https://arxiv.org/abs/2512.04668) | How do retrieval systems, RAG, agent memory, and multi-agent topologies fail under attack or privacy pressure? |
+| **Benchmarks and high-stakes evaluation** | [TSAIA](https://arxiv.org/abs/2509.01822), [TemporalBench](https://arxiv.org/abs/2602.13272), physiological waveform reasoning | How do we evaluate reasoning quality, traceability, and utility beyond benchmark accuracy? |
+
+He has published his research in top conference proceedings including NeurIPS, ICML, ICLR, CVPR, ICRA, and NAACL.
 
 ## Research Highlights
 
-- 🏆 **#1 on Salesforce GIFT-Eval Leaderboard** - TSOrchestra achieves top ranking on MASE & CRPS metrics (Dec 2025)
-- 📚 **3,000+ Citations** across 20+ publications in top-tier AI/ML conferences
-- 🎓 **Student Success** - Mentored 6+ students → Duke PhD, UC Berkeley RA, TikTok MLE positions
-- 🎤 **Invited Speaker** - 15+ talks at leading institutions including Caltech, Rice, UBC, UCSD (2024-2025)
-- 🏅 **Best RA Award 2024** - Selected as Best Research Assistant in USC CS Department (1 per department)
+- **Foundation model line.** Builds GPT-style, frequency-aware, diffusion-based, and physics-informed models for structured and scientific data.
+- **Numerical LLM interfaces.** Develops representation layers such as multi-wavelet number embeddings so LLMs can work with continuous values more faithfully.
+- **Agentic post-training.** Works on R1-style orchestration, human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration.
+- **LLM safety.** Studies query-agnostic attacks on LLM-based retrieval and memory leakage in multi-agent systems.
+- **Impact.** 3,000+ citations across 20+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; Best RA Award 2024 in the USC CS Department.
 
 ## Recent News (2025-2026)
-- 04/2026: One paper on Safty Agents: query-agnostic black-box attacks accepted by [ICML](https://icml.cc/)!
-- 04/2026: One position paper on LLM reasoning for healthcare accepted by [ICML](https://icml.cc/)!
-- 04/2026: One paper on LLM embedding: multi-wavelet number embeddings accepted by [IJCAI](https://www.ijcai.org/)!
-- 01/2026: One paper on Human Involved Agentic Systems  accepted by [ICLR](https://iclr.cc/)!
-- 01/2026: One paper on Physics Informed Diffusion Foundation Model accepted by [ICLR](https://iclr.cc/)!
+- 05/2026: I am honored to have been awarded the USC Dissertation Completion Fellowship!
+- 04/2026: One paper on LLM retrieval security, query-agnostic black-box attacks, accepted by [ICML](https://icml.cc/)!
+- 04/2026: One position paper on verifiable physiological waveform reasoning with foundation models and agentic LLMs accepted by [ICML](https://icml.cc/)!
+- 04/2026: One paper on numerical embeddings for LLM time-series forecasting, multi-wavelet number embeddings, accepted by [IJCAI](https://www.ijcai.org/)!
+- 01/2026: One paper on human-in-the-loop multi-agent LLM systems accepted by [ICLR](https://iclr.cc/)!
+- 01/2026: One paper on physics-informed diffusion transformers for time series foundation models accepted by [ICLR](https://iclr.cc/)!
 - 01/2026: One paper on Offline RL accepted by [AISTATS](https://aistats.org/aistats2026/)!
 - 01/2026: Invited talk "Frontiers of Physics-Informed Time Series Foundation Models." Host: Peking University, School of AI for Science.
 - 01/2026: Invited talk "TSFoundation: From Foundation Models to Agents Orchestration." Host: DataDog AI Research Lab.
@@ -57,7 +67,7 @@ In addition, he is also interested in causal representation learning and pre-tra
 - 12/2023: One paper on multi-modal time series foundation model accepted by [AAAI Mentored Undergraduate Research Program](https://aaai.org/aaai-conference/eaai-24-program/)!
 - 10/2023: One paper on Financial Time-Series Forecasting accepted by [ICAIF](https://ai-finance.org/) as Oral paper!
 - 06/2023: Joined [MBZUAI](https://mbzuai.ac.ae/research/) as a visiting scholar, working with Prof. [Kun Zhang](https://www.andrew.cmu.edu/user/kunz1/)!
-- 06/2023: Invited talk at Google Sustainable Urban Mobility: [Simulation and Optimization Workshop](https://rsvp.withgoogle.com/events/urban-mobility-workshop)! [Video](https://www.youtube.com/watch?v=XGXUDINIPD8) | [Slides](pdf/Google%20workshop%20presentation.pptx.pdf)
+- 06/2023: Invited talk at Google Sustainable Urban Mobility: [Simulation and Optimization Workshop](https://rsvp.withgoogle.com/events/urban-mobility-workshop)! [Video](https://www.youtube.com/watch?v=XGXUDINIPD8) \& [Slides](pdf/Google%20workshop%20presentation.pptx.pdf)
 - 02/2023: One paper on Representation Learning accepted by [CVPR](https://cvpr.thecvf.com/)!
 - 01/2023: One paper on Neural Operator accepted by [ICLR](https://iclr.cc/)!
 - 12/2022: One paper on Time-Series Forecasting accepted by [SDM](https://www.siam.org/conferences/cm/conference/sdm23)!
@@ -78,6 +88,7 @@ In addition, he is also interested in causal representation learning and pre-tra
 ## Internships & Research Experience
 
 - **Summer 2025**: Visiting Scholar at [California Institute of Technology](https://www.caltech.edu/), working with [Prof. Yisong Yue](http://www.yisongyue.com/)
+- **2024-2025**: Contributor to [Humanity Unleashed](https://humun.org/get-involved)'s open-source cooperative AI policymaking platform; helped lead the pretraining track for the foundation-model component.
 - **Summer 2024**: Quantitative Researcher in Foundation Models at [Cubist Systematic Strategies](https://point72.com/cubist/)
 - **Summer 2023**: Research Assistant at [MBZUAI](https://mbzuai.ac.ae/research/), working with [Prof. Kun Zhang](https://www.andrew.cmu.edu/user/kunz1/) and [Prof. Biwei Huang](https://biweihuang.com/) on causality
 - **Summer 2022**: Research Intern at Adobe Research, mentored by [Dr. Zhaowen Wang](https://scholar.google.com/citations?user=lwlYARMAAAAJ&hl=en)
