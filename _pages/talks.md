@@ -37,6 +37,8 @@ author_profile: true
 
 ### Organizer:
 
+- KDD 2026 "Beyond Prediction" Tutorial
+
 - ICDM 2024 Causal Representation Learning Workshop
 - [MLNLP 2022 Causal Discovery And Time Series Workshop](http://www.mlnlp2022.net/)
 

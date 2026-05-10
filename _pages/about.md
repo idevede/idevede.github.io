@@ -28,11 +28,11 @@ He has published his research in top conference proceedings including NeurIPS, I
 
 ## Research Highlights
 
-- **TSOrchestra and agentic post-training.** Builds R1-style orchestration systems where LLMs act as judges, explainers, and coordinators for foundation-model ensembles; also works on human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration.
+- **Agentic post-training.** Works on R1-style orchestration, human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration.
 - **LLM safety.** Studies query-agnostic attacks on LLM-based retrieval and memory leakage in multi-agent systems.
 - **Foundation model line.** Builds GPT-style, frequency-aware, diffusion-based, and physics-informed models for structured and scientific data.
 - **Numerical LLM interfaces.** Develops representation layers such as multi-wavelet number embeddings so LLMs can work with continuous values more faithfully.
-- **Impact.** 3,500+ citations across 30+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; Best RA Award 2024 in the USC CS Department.
+- **Impact.** TSOrchestra reached Rank #1 on the Salesforce GIFT-Eval leaderboard; 3,500+ citations across 30+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; invited workshop presentation at Google; Best RA Award 2024 in the USC CS Department.
 
 ## Recent News (2025-2026)
 - 05/2026: I am honored to have been awarded the USC Dissertation Completion Fellowship!
