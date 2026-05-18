@@ -7,6 +7,10 @@ author_profile: true
 
 ## Recent News (2025-2026)
 
+- 05/2026: Serving as an Area Chair for the KDD 2026 D&B Track.
+- 05/2026: Our paper "Trustworthy Protein-Ligand Binding Affinity Prediction via Reliability-Aware Multi-Engine Fusion" was accepted to the AI4Sciences Track at [KDD 2026](https://kdd.org/)!
+- 05/2026: Our paper "TemporalBench: A Benchmark for Evaluating LLM-Based Agents on Contextual and Event-Informed Time Series Tasks" was accepted to the D&B Track at [KDD 2026](https://kdd.org/)!
+- 05/2026: Honored to be recognized as an [ICML](https://icml.cc/) 2026 Gold Reviewer, placing among the top reviewers for this year's conference.
 - 05/2026: I am honored to have been awarded the USC Dissertation Completion Fellowship!
 - 04/2026: One paper on LLM retrieval security, query-agnostic black-box attacks, accepted by [ICML](https://icml.cc/)!
 - 04/2026: One position paper on verifiable Physiological Waveform Reasoning with foundation models and agentic LLMs accepted by [ICML](https://icml.cc/)!

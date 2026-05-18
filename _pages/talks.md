@@ -33,6 +33,7 @@ author_profile: true
 
 ### Area Chair:
 
+- KDD 2026 D&B Track
 - NeurIPS 2025 AI for Science Workshop
 
 ### Organizer:
@@ -61,7 +62,7 @@ author_profile: true
 
 - [ICLR 2022-2025](https://iclr.cc/)
 - [NeurIPS 2021-2025](https://nips.cc/Conferences/)
-- [ICML 2022-2025](https://icml.cc/Conferences/)
+- [ICML 2022-2026](https://icml.cc/Conferences/) (Gold Reviewer in 2026)
 - [AAAI 2022-2025](https://aaai.org/Conferences/AAAI-22/)
 - [CVPR 2023-2025](https://cvpr.thecvf.com/)
 - [KDD 2023-2025](https://kdd.org/)
