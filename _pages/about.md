@@ -12,7 +12,7 @@ redirect_from:
 
 I build **foundation models** and **agentic LLM systems** for structured, scientific, and decision-critical data.
 
-**Agentic Post-Training** · **LLM Safety** · **Scientific Foundation Models** · **Numerical LLM Interfaces**
+**Agentic Post-Training** · **Agent Harnesses & Skills** · **LLM Safety** · **Scientific Foundation Models** · **Numerical LLM Interfaces**
 </div>
 
 Defu Cao /dəfu: tsaʊ/ is a Ph.D. candidate in the [Thomas Lord Department of Computer Science](https://www.cs.usc.edu/) at the [University of Southern California](https://homeadmin.usc.edu/www/), working with [Prof. Yan Liu](https://viterbi-web.usc.edu/~liu32/) at the USC [Melady Lab](https://melady.usc.edu). He is also working closely with [Prof. Yue Zhao](https://viterbi-web.usc.edu/~yzhao010/) and [Prof. Angela Zhou](https://angelamzhou.github.io/) from USC Marshall Data Sciences and Operations. Prior, he earned his Master's Degree at the School of EECS [Peking University](https://english.pku.edu.cn/).
@@ -20,13 +20,13 @@ Defu Cao /dəfu: tsaʊ/ is a Ph.D. candidate in the [Thomas Lord Department of C
 He has been fortunate to work as a visiting scholar with [Prof. Yisong Yue](http://www.yisongyue.com/) at the [California Institute of Technology](https://www.caltech.edu/) (2025), focusing on multimodal foundation models and LLM infrastructure, and [Prof. Kun Zhang](https://www.andrew.cmu.edu/user/kunz1/) at [MBZUAI](https://mbzuai.ac.ae/research/) (2023), focusing on causal inference and causal discovery.
 
 
-Cao's research focuses on foundation models for structured and scientific data, agentic post-training systems, and LLM safety. Time series and scientific signals are a major application domain, but the broader goal is to build models that can represent complex numerical structure, reason with evidence, interact with tools and humans, and remain reliable under distribution shift, physical constraints, privacy risks, and high-stakes deployment.
+Cao's research focuses on foundation models for structured and scientific data, agentic post-training systems, and LLM safety. Time series and scientific signals are a major application domain, but the broader goal is to build models and agent harnesses that can represent complex numerical structure, compose tools and reusable skills, reason with evidence, interact with humans, and remain reliable under distribution shift, physical constraints, privacy risks, and high-stakes deployment.
 
 His current research agenda connects several layers:
 
 | Direction | Representative Work | Core Question |
 | --- | --- | --- |
-| **Post-training and agentic systems** | [TSOrchestra](https://arxiv.org/abs/2512.16022), [HILA](https://openreview.net/forum?id=IKVUB9Exuc), [TS-Reasoner](https://openreview.net/forum?id=yhy7Vigjcf) | How can LLMs become judges, planners, tool users, collaborators, and continually improving agents? |
+| **Post-training and agentic systems** | [TSOrchestra](https://arxiv.org/abs/2512.16022), [HILA](https://openreview.net/forum?id=IKVUB9Exuc), [TS-Reasoner](https://openreview.net/forum?id=yhy7Vigjcf) | How can LLMs become judges, planners, tool users, skill composers, collaborators, and continually improving agents? |
 | **LLM safety and agent security** | ["Someone Hid It!"](https://arxiv.org/abs/2602.00364), [Topology Matters](https://arxiv.org/abs/2512.04668) | How do retrieval systems, RAG, agent memory, and multi-agent topologies fail under attack or privacy pressure? |
 | **Foundation models for structured/scientific data** | [TEMPO](https://arxiv.org/abs/2310.04948), [ClimateLLM](https://arxiv.org/abs/2502.11059), [TimeDiT](https://arxiv.org/abs/2409.02322), [PINFDiT](https://openreview.net/forum?id=EphTlUJ4XN) | How can foundation models capture numerical structure, uncertainty, multi-resolution dynamics, and physics constraints? |
 | **Numerical interfaces for LLMs** | [Speaking Numbers to LLMs](https://openreview.net/pdf?id=mk2ADdNQAI), [GPT4MTS](https://doi.org/10.1609/aaai.v38i21.30383) | How should LLMs ingest continuous values, multimodal signals, and domain-specific numerical evidence? |
@@ -39,9 +39,10 @@ He has published his research in top conference proceedings including NeurIPS, I
 | Highlight | Signal |
 | --- | --- |
 | **TSOrchestra** | Rank #1 on the Salesforce GIFT-Eval leaderboard; LLM-as-judge orchestration for foundation-model ensembles. |
-| **Agentic systems** | HILA, TS-Reasoner, human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration. |
+| **Agentic systems** | HILA, TS-Reasoner, agent harnesses, reusable skills, human-in-the-loop multi-agent learning, tool-augmented reasoning, and adaptive collaboration. |
 | **LLM safety** | Query-agnostic attacks on LLM-based retrieval and memory leakage in multi-agent systems. |
 | **Foundation models** | TEMPO, ClimateLLM, TimeDiT, and PINFDiT for structured, scientific, and physics-constrained data. |
+| **Journal impact** | 🏆 "When Physics Meets Machine Learning" ranked #1 in *Machine Learning for Computational Science and Engineering*'s "Top 10 Downloaded Articles in 2025". |
 | **Impact** | 3,500+ citations across 30+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; invited workshop presentation at Google; Best RA Award 2024 in the USC CS Department. |
 
 ## Recent News (2025-2026)
@@ -60,6 +61,7 @@ He has published his research in top conference proceedings including NeurIPS, I
 - 01/2026: Invited talk "Frontiers of Physics-Informed Time Series Foundation Models." Host: Peking University, School of AI for Science.
 - 01/2026: Invited talk "TSFoundation: From Foundation Models to Agents Orchestration." Host: DataDog AI Research Lab.
 - 12/2025: 🚀 [TSOrchestra](https://x.com/caodefu_dove/status/2002102494948966812?s=20), our agentic-guided foundation model forecasting framework from USC Melady Lab, reached **Rank #1** on the Salesforce GIFT-Eval leaderboard (MASE & CRPS)!
+- 12/2025: 🏆 "When Physics Meets Machine Learning: A Survey of Physics-Informed Machine Learning" ranked #1 in *Machine Learning for Computational Science and Engineering*'s "Top 10 Downloaded Articles in 2025".
 - 10/2025: Invited talk on Advancing Time Series Analysis with Unified Foundation Models at Rice University - CS Department!
 - 10/2025: Invited talk on Advancing Time Series Analysis with Unified Foundation Models at Prairie View A&M University - Center of Excellence in Research and Education for Big Military Data Intelligence!
 - 09/2025: Invited talk on Time Series Foundation Models at Caltech - Academia-Industry X!

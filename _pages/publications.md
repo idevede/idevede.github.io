@@ -143,9 +143,9 @@ author_profile: true
    *Positioning:* research framework for learning paradigms in LLM-based multi-agent systems, especially MARL-driven adaptive and evolutionary agent societies.
 
 3. **When Physics Meets Machine Learning: A Survey of Physics-Informed Machine Learning**<br>
-   Chuizheng Meng, Sungyong Seo, **Defu Cao**, Sam Griesemer, Yan Liu<br>
-   *arXiv 2022* | [paper](https://arxiv.org/abs/2203.16797)<br>
-   *Positioning:* actual survey of physics-informed machine learning.
+   Chuizheng Meng, Sam Griesemer, **Defu Cao**, Sungyong Seo, Yan Liu<br>
+   *Machine Learning for Computational Science and Engineering, 2025* | [journal](https://link.springer.com/article/10.1007/s44379-025-00016-0) | [arXiv](https://arxiv.org/abs/2203.16797)<br>
+   *Positioning:* actual survey of physics-informed machine learning; ranked #1 in the journal's "Top 10 Downloaded Articles in 2025".
 
 ## Selected Publications
 
