@@ -7,6 +7,7 @@ author_profile: true
 
 ## Recent News (2025-2026)
 
+- 06/2026: Our paper "Physics-Aware Variational Autoencoder for Urban Travel Demand Calibration" was accepted by [TMLR](https://jmlr.org/tmlr/papers/) as is, in collaboration with Google Maps and Google Research.
 - 05/2026: Serving as an Area Chair for the KDD 2026 D&B Track.
 - 05/2026: Our paper "Trustworthy Protein-Ligand Binding Affinity Prediction via Reliability-Aware Multi-Engine Fusion" was accepted to the AI4Sciences Track at [KDD 2026](https://kdd.org/)!
 - 05/2026: Our paper "TemporalBench: A Benchmark for Evaluating LLM-Based Agents on Contextual and Event-Informed Time Series Tasks" was accepted to the D&B Track at [KDD 2026](https://kdd.org/)!

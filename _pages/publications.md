@@ -28,6 +28,7 @@ author_profile: true
 | **Post-training and agentic systems** | TSOrchestra, HILA, TS-Reasoner | R1-style fine-tuning, metacognitive policy optimization, tool use, feedback loops, and human-agent collaboration. |
 | **LLM safety and agent security** | "Someone Hid It!", Topology Matters | Robustness and privacy risks in LLM retrieval, RAG, agent memory, and multi-agent communication topology. |
 | **Foundation models for structured and scientific data** | TEMPO, ClimateLLM, TimeDiT, PINFDiT | Pretraining and generative modeling for complex numerical, spatiotemporal, weather, and physics-constrained data. |
+| **Physics-embedded mobility calibration** | Physics-Aware VAE | Differentiable traffic physics for sample-efficient urban travel demand calibration with physics guidance. |
 | **Numerical interfaces for LLMs** | Speaking Numbers to LLMs, GPT4MTS | Representation and prompting layers that let language models consume continuous values, multimodal signals, and numerical structure. |
 | **Benchmarks and high-stakes evaluation** | TSAIA, TemporalBench, ECG benchmark, waveform reasoning | Diagnostic evaluation for whether LLM/agent systems reason reliably under contextual, event-driven, and clinical constraints. |
 | **AI policy and governance collaboration** | Cooperative AI policymaking platform | Open-source collaboration on policy interfaces, economic forecasting, and public-value elicitation. |
@@ -171,11 +172,16 @@ author_profile: true
    **Defu Cao**, Wen Ye, Yizhou Zhang, Sam Griesemer, Yan Liu<br>
    *[ICLR 2026](https://iclr.cc/)* | [paper](https://openreview.net/forum?id=EphTlUJ4XN)
 
-6. **Adaptive Collaboration with Humans: Metacognitive Policy Optimization for Multi-Agent LLMs with Continual Learning**<br>
+6. **Physics-Aware Variational Autoencoder for Urban Travel Demand Calibration**<br>
+   **Defu Cao**, et al.<br>
+   *TMLR 2026* | [OpenReview](https://openreview.net/forum?id=r5oS1XXbT3)<br>
+   *Positioning:* physics-embedded OD calibration for urban travel demand, combining conditional variational inference with differentiable traffic guidance for sample-efficient simulator-based learning.
+
+7. **Adaptive Collaboration with Humans: Metacognitive Policy Optimization for Multi-Agent LLMs with Continual Learning**<br>
    Wei Yang, **Defu Cao**, Jiacheng Pang, Muyan Weng, Yan Liu<br>
    *[ICLR 2026](https://iclr.cc/)* | [paper](https://openreview.net/forum?id=IKVUB9Exuc)
 
-7. **Orthogonalized estimation of difference of q-functions**<br>
+8. **Orthogonalized estimation of difference of q-functions**<br>
    **Defu Cao**, Angela Zhou<br>
    *[AISTATS 2026](https://aistats.org/)* | [paper](https://arxiv.org/abs/2406.08697)
 
