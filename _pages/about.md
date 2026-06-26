@@ -43,9 +43,10 @@ He has published his research in top conference proceedings including NeurIPS, I
 | **LLM safety** | Query-agnostic attacks on LLM-based retrieval and memory leakage in multi-agent systems. |
 | **Foundation models** | TEMPO, ClimateLLM, TimeDiT, and PINFDiT for structured, scientific, and physics-constrained data. |
 | **Journal impact** | 🏆 "When Physics Meets Machine Learning" ranked #1 in *Machine Learning for Computational Science and Engineering*'s "Top 10 Downloaded Articles in 2025". |
-| **Impact** | 3,500+ citations across 30+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; invited workshop presentation at Google; Best RA Award 2024 in the USC CS Department. |
+| **Impact** | 4,000+ citations across 30+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; invited workshop presentation at Google; Best RA Award 2024 in the USC CS Department. |
 
 ## Recent News (2025-2026)
+- 06/2026: Our survey "[A Survey of Reasoning and Agentic Systems in Time Series with Large Language Models](https://openreview.net/forum?id=l3QW42g6u3)" was accepted by [TMLR](https://jmlr.org/tmlr/papers/) as is.
 - 06/2026: Our paper "Physics-Aware Variational Autoencoder for Urban Travel Demand Calibration" was accepted by [TMLR](https://jmlr.org/tmlr/papers/) as is, in collaboration with Google Maps and Google Research.
 - 05/2026: Serving as an Area Chair for the KDD 2026 D&B Track.
 - 05/2026: Our paper "Trustworthy Protein-Ligand Binding Affinity Prediction via Reliability-Aware Multi-Engine Fusion" was accepted to the AI4Sciences Track at [KDD 2026](https://kdd.org/)!

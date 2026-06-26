@@ -135,8 +135,8 @@ author_profile: true
 
 1. **A Survey of Reasoning and Agentic Systems in Time Series with Large Language Models**<br>
    Ching Chang, Yidan Shi, **Defu Cao**, Wei Yang, Jeehyun Hwang, Haixin Wang, Jiacheng Pang, Wei Wang, Yan Liu, Wen-Chih Peng, Tien-Fu Chen<br>
-   *arXiv 2025* | [paper](https://arxiv.org/abs/2509.11575) | [repo](https://github.com/blacksnail789521/Time-Series-Reasoning-Survey)<br>
-   *Positioning:* actual survey; organizes reasoning topologies, tool use, evidence grounding, benchmarks, and agent loops for temporal data.
+   *TMLR, June 2026* | [OpenReview](https://openreview.net/forum?id=l3QW42g6u3) | [arXiv](https://arxiv.org/abs/2509.11575) | [repo](https://github.com/blacksnail789521/Time-Series-Reasoning-Survey)<br>
+   *Positioning:* TMLR-accepted survey; organizes reasoning topologies, tool use, evidence grounding, benchmarks, and agent loops for temporal data.
 
 2. **Toward Evolutionary Intelligence: LLM-based Agentic Systems with Multi-Agent Reinforcement Learning**<br>
    Wei Yang, Muyan Weng, Jiacheng Pang, **Defu Cao**, Heng Ping, Peiyu Zhang, Shixuan Li, Yue Zhao, Qiang Yang, Mengdi Wang, Yan Liu<br>
@@ -156,32 +156,36 @@ author_profile: true
    Wen Ye, Wei Yang, **Defu Cao**, Yizhou Zhang, Lumingyuan Tang, Jie Cai, Yan Liu<br>
    *TMLR, March 2026* | [OpenReview](https://openreview.net/forum?id=yhy7Vigjcf) | [code](https://github.com/wen-ye-xwz/TS-Reasoner)
 
-2. **"Someone Hid It!": Query-Agnostic Black-Box Attacks on LLM-Based Retrieval**<br>
+2. **A Survey of Reasoning and Agentic Systems in Time Series with Large Language Models**<br>
+   Ching Chang, Yidan Shi, **Defu Cao**, Wei Yang, Jeehyun Hwang, Haixin Wang, Jiacheng Pang, Wei Wang, Yan Liu, Wen-Chih Peng, Tien-Fu Chen<br>
+   *TMLR, June 2026* | [OpenReview](https://openreview.net/forum?id=l3QW42g6u3) | [arXiv](https://arxiv.org/abs/2509.11575) | [repo](https://github.com/blacksnail789521/Time-Series-Reasoning-Survey)
+
+3. **"Someone Hid It!": Query-Agnostic Black-Box Attacks on LLM-Based Retrieval**<br>
    Jiate Li, **Defu Cao**, Li Li, Wei Yang, Yuehan Qin, Chenxiao Yu, Tiannuo Yang, Ryan A. Rossi, Yan Liu, Xiyang Hu, Yue Zhao<br>
    *[ICML 2026](https://icml.cc/)* | [paper](https://arxiv.org/abs/2602.00364)
 
-3. **Position: Beyond Prediction: Toward Verifiable Physiological Waveform Reasoning with Foundation Models and Agentic LLMs**<br>
+4. **Position: Beyond Prediction: Toward Verifiable Physiological Waveform Reasoning with Foundation Models and Agentic LLMs**<br>
    Xiaoda Wang, Ching Chang, **Defu Cao**, Kaiqiao Han, Fang Sun, Yue Huang, Minxiao Wang, Chang Xu, Xiao Luo, Runze Yan, Xiangliang Zhang, Xiao Hu, Yan Liu, Yizhou Sun, Wei Wang, Carl Yang<br>
    *[ICML 2026](https://icml.cc/)* | [paper](https://openreview.net/forum?id=cgpU6fhUXx)
 
-4. **Speaking Numbers to LLMs: Multi-Wavelet Number Embeddings for Time Series Forecasting**<br>
+5. **Speaking Numbers to LLMs: Multi-Wavelet Number Embeddings for Time Series Forecasting**<br>
    **Defu Cao**, Zijie Lei, Jiao Sun, Yan Liu<br>
    *[IJCAI 2026](https://www.ijcai.org/)* | [paper](https://openreview.net/pdf?id=mk2ADdNQAI)
 
-5. **PINFDiT: Energy-Based Physics-Informed Diffusion Transformers for General-purpose Time Series Tasks**<br>
+6. **PINFDiT: Energy-Based Physics-Informed Diffusion Transformers for General-purpose Time Series Tasks**<br>
    **Defu Cao**, Wen Ye, Yizhou Zhang, Sam Griesemer, Yan Liu<br>
    *[ICLR 2026](https://iclr.cc/)* | [paper](https://openreview.net/forum?id=EphTlUJ4XN)
 
-6. **Physics-Aware Variational Autoencoder for Urban Travel Demand Calibration**<br>
+7. **Physics-Aware Variational Autoencoder for Urban Travel Demand Calibration**<br>
    **Defu Cao**, et al.<br>
    *TMLR 2026* | [OpenReview](https://openreview.net/forum?id=r5oS1XXbT3)<br>
    *Positioning:* physics-embedded OD calibration for urban travel demand, combining conditional variational inference with differentiable traffic guidance for sample-efficient simulator-based learning.
 
-7. **Adaptive Collaboration with Humans: Metacognitive Policy Optimization for Multi-Agent LLMs with Continual Learning**<br>
+8. **Adaptive Collaboration with Humans: Metacognitive Policy Optimization for Multi-Agent LLMs with Continual Learning**<br>
    Wei Yang, **Defu Cao**, Jiacheng Pang, Muyan Weng, Yan Liu<br>
    *[ICLR 2026](https://iclr.cc/)* | [paper](https://openreview.net/forum?id=IKVUB9Exuc)
 
-8. **Orthogonalized estimation of difference of q-functions**<br>
+9. **Orthogonalized estimation of difference of q-functions**<br>
    **Defu Cao**, Angela Zhou<br>
    *[AISTATS 2026](https://aistats.org/)* | [paper](https://arxiv.org/abs/2406.08697)
 
