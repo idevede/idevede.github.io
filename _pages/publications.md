@@ -85,6 +85,11 @@ author_profile: true
    *[ICLR 2026](https://iclr.cc/)* | [paper](https://openreview.net/forum?id=EphTlUJ4XN)<br>
    *Positioning:* physics-guided inference for diffusion foundation models, using calibrated Langevin correction to enforce physical consistency without retraining.
 
+5. **PG-LRF: Physiology-Guided Latent Rectified Flow for Electro-Hemodynamic PPG-to-ECG Generation**<br>
+   **Defu Cao**, et al.<br>
+   *[NeurIPS 2026](https://neurips.cc/)* | **Poster**<br>
+   *Positioning:* physiology-guided latent rectified flow for cross-modal PPG-to-ECG generation, coupling electro-hemodynamic structure with generative modeling.
+
 ## Numerical Interfaces for LLMs
 
 1. **Speaking Numbers to LLMs: Multi-Wavelet Number Embeddings for Time Series Forecasting**<br>
@@ -131,6 +136,16 @@ author_profile: true
    *arXiv 2025* | [paper](https://arxiv.org/abs/2512.08954)<br>
    *Positioning:* benchmark asking whether language, general time-series, and ECG foundation models are useful for ECG analysis.
 
+6. **L-MTSF: Large-scale Datasets for Re-evaluating Long-term Multivariate Time Series Forecasting**<br>
+   **Defu Cao**, et al.<br>
+   *[npj Artificial Intelligence](https://www.nature.com/npjai/) (Nature Portfolio), 2026*<br>
+   *Positioning:* large-scale datasets for re-evaluating long-term multivariate time series forecasting beyond small-benchmark overfitting.
+
+7. **ViRuleEval: Interpretable Neuro-Symbolic Evaluation of Text-to-Video Generative Models**<br>
+   **Defu Cao**, et al.<br>
+   *IEEE AIHCIR 2026*<br>
+   *Positioning:* interpretable neuro-symbolic evaluation framework for text-to-video generative models.
+
 ## Surveys and Research Frameworks
 
 1. **A Survey of Reasoning and Agentic Systems in Time Series with Large Language Models**<br>
@@ -140,7 +155,7 @@ author_profile: true
 
 2. **Toward Evolutionary Intelligence: LLM-based Agentic Systems with Multi-Agent Reinforcement Learning**<br>
    Wei Yang, Muyan Weng, Jiacheng Pang, **Defu Cao**, Heng Ping, Peiyu Zhang, Shixuan Li, Yue Zhao, Qiang Yang, Mengdi Wang, Yan Liu<br>
-   *SSRN 2026* | [paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5819182)<br>
+   *[AI Open](https://www.sciencedirect.com/journal/ai-open) 2026* | [paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5819182)<br>
    *Positioning:* research framework for learning paradigms in LLM-based multi-agent systems, especially MARL-driven adaptive and evolutionary agent societies.
 
 3. **When Physics Meets Machine Learning: A Survey of Physics-Informed Machine Learning**<br>
@@ -152,7 +167,23 @@ author_profile: true
 
 ### 2026
 
-1. **TS-Reasoner: Domain-Oriented Time Series Inference Agents for Reasoning and Automated Analysis**<br>
+1. **PG-LRF: Physiology-Guided Latent Rectified Flow for Electro-Hemodynamic PPG-to-ECG Generation**<br>
+   **Defu Cao**, et al.<br>
+   *[NeurIPS 2026](https://neurips.cc/)* | **Poster**
+
+2. **L-MTSF: Large-scale Datasets for Re-evaluating Long-term Multivariate Time Series Forecasting**<br>
+   **Defu Cao**, et al.<br>
+   *[npj Artificial Intelligence](https://www.nature.com/npjai/) (Nature Portfolio), 2026*
+
+3. **ViRuleEval: Interpretable Neuro-Symbolic Evaluation of Text-to-Video Generative Models**<br>
+   **Defu Cao**, et al.<br>
+   *IEEE AIHCIR 2026*
+
+4. **Toward Evolutionary Intelligence: LLM-based Agentic Systems with Multi-Agent Reinforcement Learning**<br>
+   Wei Yang, Muyan Weng, Jiacheng Pang, **Defu Cao**, Heng Ping, Peiyu Zhang, Shixuan Li, Yue Zhao, Qiang Yang, Mengdi Wang, Yan Liu<br>
+   *[AI Open](https://www.sciencedirect.com/journal/ai-open) 2026* | [paper](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5819182)
+
+5. **TS-Reasoner: Domain-Oriented Time Series Inference Agents for Reasoning and Automated Analysis**<br>
    Wen Ye, Wei Yang, **Defu Cao**, Yizhou Zhang, Lumingyuan Tang, Jie Cai, Yan Liu<br>
    *TMLR, March 2026* | [OpenReview](https://openreview.net/forum?id=yhy7Vigjcf) | [code](https://github.com/wen-ye-xwz/TS-Reasoner)
 

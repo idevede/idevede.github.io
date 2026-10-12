@@ -46,9 +46,18 @@ He has published his research in top conference proceedings including NeurIPS, I
 | **Impact** | 4,000+ citations across 30+ publications; invited talks at Caltech, Rice, UBC, UCSD, DataDog AI Research Lab, and Peking University; invited workshop presentation at Google; Best RA Award 2024 in the USC CS Department. |
 
 ## Recent News (2025-2026)
+- 09/2026: Our paper "ViRuleEval: Interpretable Neuro-Symbolic Evaluation of Text-to-Video Generative Models" was accepted by IEEE AIHCIR 2026!
+- 09/2026: Our paper "PG-LRF: Physiology-Guided Latent Rectified Flow for Electro-Hemodynamic PPG-to-ECG Generation" was accepted to [NeurIPS 2026](https://neurips.cc/) as a Poster!
+- 09/2026: Our paper "Toward Evolutionary Intelligence: LLM-based Agentic Systems with Multi-Agent Reinforcement Learning" was accepted by [AI Open](https://www.sciencedirect.com/journal/ai-open)!
+- 08/2026: 🏆 Received the Outstanding Paper Award at the KDD 2026 RelSciFM Workshop (Reliable Scientific Foundation Models) for "Trustworthy Protein-Ligand Binding Affinity Prediction via Reliability-Aware Multi-Engine Fusion," presented in Jeju, Korea!
+- 08/2026: Our [KDD 2026](https://kdd.org/) lecture-style tutorial "Beyond Prediction: Toward Verifiable Physiological Waveform Reasoning" was published in the ACM Digital Library ([DOI: 10.1145/3770855.3817485](https://doi.org/10.1145/3770855.3817485)).
+- 07/2026: Our paper "L-MTSF: Large-scale Datasets for Re-evaluating Long-term Multivariate Time Series Forecasting" was accepted by [npj Artificial Intelligence](https://www.nature.com/npjai/) (Nature Portfolio)!
+- 07/2026: Serving as a Senior Program Committee member for [AAAI 2027](https://aaai.org/)!
+- 06/2026: Serving as an Area Chair for the [KDD 2027](https://kdd.org/) Datasets & Benchmarks Track (Cycle 1)!
 - 06/2026: Our survey "[A Survey of Reasoning and Agentic Systems in Time Series with Large Language Models](https://openreview.net/forum?id=l3QW42g6u3)" was accepted by [TMLR](https://jmlr.org/tmlr/papers/) as is.
 - 06/2026: Our paper "Physics-Aware Variational Autoencoder for Urban Travel Demand Calibration" was accepted by [TMLR](https://jmlr.org/tmlr/papers/) as is, in collaboration with Google Maps and Google Research.
 - 05/2026: Serving as an Area Chair for the KDD 2026 D&B Track.
+- 05/2026: Our lecture-style tutorial "Beyond Prediction: Toward Verifiable Physiological Waveform Reasoning" was accepted to [KDD 2026](https://kdd.org/) (44 submissions, 50% acceptance rate)!
 - 05/2026: Our paper "Trustworthy Protein-Ligand Binding Affinity Prediction via Reliability-Aware Multi-Engine Fusion" was accepted to the AI4Sciences Track at [KDD 2026](https://kdd.org/)!
 - 05/2026: Our paper "TemporalBench: A Benchmark for Evaluating LLM-Based Agents on Contextual and Event-Informed Time Series Tasks" was accepted to the D&B Track at [KDD 2026](https://kdd.org/)!
 - 05/2026: Honored to be recognized as an [ICML](https://icml.cc/) 2026 Gold Reviewer, placing among the top reviewers for this year's conference.
@@ -115,6 +124,7 @@ He has published his research in top conference proceedings including NeurIPS, I
 - **First Internship**:   Baidu, 7 years ago
 
 ## Awards
+- 2026, Outstanding Paper Award, KDD 2026 RelSciFM Workshop (Reliable Scientific Foundation Models)
 - 2025, 1st Place on GIFT-EVAL Leaderboard, Salesforce
 - 2024, Best Poster Award, USC
 - 2024, Best Research Assistant Award, USC (1 per department)
